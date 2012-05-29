@@ -1,7 +1,13 @@
-Environment Variables needed for csurf compilation:
+Welcome to the source code of the CSurf_Klinke_MCU Extension for
+Reaper (v3.6 or higher). This extension enhances support for the
+Mackie Control Universal (MCU) controller, but can also be used for
+other controllers that use the MCU protocol (please read the manual of
+your controller to check if and how your controller supports this
+protocol).
 
-Beside the Reaper SDK the code also depends on the JUCE and BOOST libraries. So you will need to
-indicate three SDK locations via environment variables.
+Beside the Reaper SDK the code also depends on the JUCE and BOOST
+libraries. So you will need to indicate three SDK locations via
+environment variables.
 
 Example: The juce SDK (v1.5 or above) is installed in C:\juce and the
 header file is found in C:\juce\juce.h

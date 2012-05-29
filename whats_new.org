@@ -5,7 +5,8 @@
   can enable the MCU again.
 
 * v0.8.0.4
-Anschauen
+- Fixed a bug in the Track level meter (which occur with newer Mackie
+  Control firmwares).
 * v0.8.0.3
 - Fixed a compatibility problem with newer Mackie Control firmwares
   which garbled the display. When closing Reaper, no Reset messages
