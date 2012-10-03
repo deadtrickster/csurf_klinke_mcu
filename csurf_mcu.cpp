@@ -220,8 +220,6 @@ void CSurf_MCU::MCUReset()
 {
 	m_pButtonManager->reset();
   memset(m_mackie_lasttime,0,sizeof(m_mackie_lasttime));
-  memset(m_fader_touchstate,0,sizeof(m_fader_touchstate));
-  memset(m_pan_lasttouch,0,sizeof(m_pan_lasttouch));
   m_mackie_lasttime_mode=-1;
   s_mackie_modifiers=0;
   m_buttonstate_lastrun=0;
@@ -300,7 +298,7 @@ bool CSurf_MCU::OnRotaryEncoder( MIDI_event_t *evt ) {
 			evt->midi_message[1] < 0x18 ) { // pan
     int tid=evt->midi_message[1]-0x10;
 
-    m_pan_lasttouch[tid&7]=timeGetTime();
+		m_pan_lasttouch[Tracks::instance()->getMediaTrackForChannel(tid+1)]=timeGetTime();
 
 		int adj=(evt->midi_message[2]&0x3f);
 		if (evt->midi_message[2]&0x40) 
@@ -437,11 +435,9 @@ bool CSurf_MCU::OnSMPTEBeats( MIDI_event_t *evt ) {
 
 bool CSurf_MCU::OnRotaryEncoderPush( MIDI_event_t *evt ) {
   int trackid=evt->midi_message[1]-0x20;
-  m_pan_lasttouch[trackid]=timeGetTime();
+	m_pan_lasttouch[Tracks::instance()->getMediaTrackForChannel(trackid + 1)]=timeGetTime();
 
 	m_pCCSManager->vpotPressed(trackid + 1, evt->midi_message[2] > 0x3f);
-
-  trackid += Tracks::instance()->getGlobalOffset()+m_offset;
 
   return true;
 }
@@ -641,7 +637,7 @@ bool CSurf_MCU::OnScroll( MIDI_event_t *evt ) {
 
 bool CSurf_MCU::OnTouch( MIDI_event_t *evt ) {
   int fader = evt->midi_message[1]-0x68;
-  m_fader_touchstate[fader]=evt->midi_message[2]>=0x7f;
+	m_fader_touchstate[Tracks::instance()->getMediaTrackForChannel(fader+1)] = evt->midi_message[2]>=0x7f;
 
 	return m_pCCSManager->faderTouched(fader!=8 ? fader + 1 : 0, evt->midi_message[2] > 0x3f);
 }
@@ -1190,24 +1186,23 @@ void CSurf_MCU::SetTrackTitle(MediaTrack *trackid, const char *title)
 {
 }
 
-bool CSurf_MCU::GetTouchState(MediaTrack *trackid, int isPan) 
+bool CSurf_MCU::GetTouchState(MediaTrack *pMT, int isPan) 
 { 
-  FIXID(id)
-	
 	if (MultiTrackMode::getFlipMode() == !isPan) 
   {
-    if (id >= 0 && id < 8)
+		if (pMT && m_pan_lasttouch.find(pMT) != m_pan_lasttouch.end())
     {
       DWORD now=timeGetTime();
-      if (m_pan_lasttouch[id]==1 || (now<m_pan_lasttouch[id]+3000)) // fake touch, go for 3s after last movement
+      if (m_pan_lasttouch[pMT]==1 || (now<m_pan_lasttouch[pMT]+3000)) // fake touch, go for 3s after last movement
       {
         return true;
       }
     }
     return false;
   }
-  if (id>=0 && id < 9)
-    return m_fader_touchstate[id];
+
+	if (pMT && m_fader_touchstate.find(pMT) != m_fader_touchstate.end())
+		return m_fader_touchstate[pMT];
 
   return false; 
 }

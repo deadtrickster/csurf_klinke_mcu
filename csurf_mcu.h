@@ -274,8 +274,8 @@ private:
   static int s_mackie_modifiers; // don't use this direcly, only via IsModifierPressed etc.. (todo: create a Modifiers class)
   static int s_cfg_flags;  //CONFIG_FLAG_FADER_TOUCH_MODE etc
 
-  bool m_fader_touchstate[256];
-  unsigned int m_pan_lasttouch[256];
+	std::map<MediaTrack*, bool> m_fader_touchstate;
+	std::map<MediaTrack*, unsigned int> m_pan_lasttouch;
 
   WDL_String m_descspace;
   char m_configtmp[1024];
@@ -419,7 +419,7 @@ public:
 
 	const char* CSurf_MCU::GetDescString()
   {
-    m_descspace.Set(m_is_mcuex ? "Mackie Control Extended (Klinke v0.8.0.4)" : "Mackie Control (Klinke v0.8.0.4)");
+    m_descspace.Set(m_is_mcuex ? "Mackie Control Extended (Klinke v0.8.0.5)" : "Mackie Control (Klinke v0.8.0.5)");
     char tmp[512];
     sprintf(tmp," (dev %d,%d)",m_midi_in_dev,m_midi_out_dev);
     m_descspace.Append(tmp);
