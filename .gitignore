@@ -1,4 +1,6 @@
 /Release/*
 /Debug/*
+/x64/*
 /reaper_csurf.ncb
 /reaper_csurf.suo
+/reaper_csurf.vcproj.W510.Steffen_2.user
