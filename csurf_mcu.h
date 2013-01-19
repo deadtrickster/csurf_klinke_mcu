@@ -1,10 +1,13 @@
 #ifndef MCU_CSURF_MCU
 #define MCU_CSURF_MCU
 
-
-#define EXT_ID  "MCUEXM5"
+#ifdef EXT_B
+#define EXT_ID  "unused"
+#define MAIN_ID "MCUBM5B"
+#else
+#define EXT_ID  "unused"
 #define MAIN_ID "MCUM5"
-
+#endif
 // list of CCs that are send to reaper (for midi learn):
 // 
 // for global view buttons: Channel 1-16, 0x3e - 0x45 (62 - 69). Till v0.4 also 0x0e - 0x15, 0x1e - 0x25, 0x2e - 0x35   
@@ -419,7 +422,11 @@ public:
 
 	const char* CSurf_MCU::GetDescString()
   {
-    m_descspace.Set(m_is_mcuex ? "Mackie Control Extended (Klinke v0.8.0.4)" : "Mackie Control (Klinke v0.8.0.4)");
+#ifdef EXT_B
+    m_descspace.Set("Mackie Control B (Klinke v0.8.1.0)");
+#else
+    m_descspace.Set("Mackie Control (Klinke v0.8.1.0)");
+#endif
     char tmp[512];
     sprintf(tmp," (dev %d,%d)",m_midi_in_dev,m_midi_out_dev);
     m_descspace.Append(tmp);
