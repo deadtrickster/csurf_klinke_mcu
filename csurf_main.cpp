@@ -12,6 +12,7 @@ extern reaper_csurf_reg_t csurf_mcu_modified_reg;//,csurf_mcuex_modified_reg;
 
 REAPER_PLUGIN_HINSTANCE g_hInst; // used for dialogs, if any
 HWND g_hwnd;
+reaper_plugin_info_t *g_rec;
 
 
 double (*DB2SLIDER)(double x);
@@ -166,6 +167,7 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
       return 0;
 
   g_hwnd = rec->hwnd_main;
+  g_rec = rec;
   int errcnt=0;
 #define IMPAPI(x) if (!((*((void **)&(x)) = (void *)rec->GetFunc(#x)))) errcnt++;
 

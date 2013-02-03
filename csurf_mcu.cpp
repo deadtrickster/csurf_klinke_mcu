@@ -23,7 +23,7 @@
 #include "ActionsDisplay.h"
 #include "ActionsDialogComponent.h"
 #include "CCSModesEditor.h"
-
+#include "Actions.h"
 
 /*
 MCU documentation:
@@ -817,6 +817,8 @@ m_pActionsDialogComponent(NULL)
 	m_pTransport->updateLeds();
 
 	connect2FrameSignal(boost::bind(&UndoEnd::run, UndoEnd::instance(), _1));
+
+  Actions::instance()->init(this);
 }
     
 CSurf_MCU::~CSurf_MCU() 
@@ -879,6 +881,7 @@ CSurf_MCU::~CSurf_MCU()
 		delete(PlugMoveWatcher::instance());
 		delete(ProjectConfig::instance());
 		delete(UndoEnd::instance());
+//    delete(Actions::instance());
 	}
 }
 
