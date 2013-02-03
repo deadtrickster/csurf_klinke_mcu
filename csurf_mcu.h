@@ -420,7 +420,6 @@ public:
 	const char* CSurf_MCU::GetDescString()
   {
     m_descspace.Set(m_is_mcuex ? "Mackie Control Extended (Klinke v0.8.2.0)" : "Mackie Control (Klinke v0.8.2.0)");
-=======
     char tmp[512];
     sprintf(tmp," (dev %d,%d)",m_midi_in_dev,m_midi_out_dev);
     m_descspace.Append(tmp);
