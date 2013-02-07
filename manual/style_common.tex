@@ -1,0 +1,128 @@
+\usepackage{times}
+\pagestyle{scrheadings}
+
+% ************* Two Colomn? *************
+%\newcommand{\twocolumnbegin}{\begin{multicols}{2}}
+%\newcommand{\twocolumnend}{\end{multicols}}            
+\newcommand{\twocolumnbegin}{}
+\newcommand{\twocolumnend}{}   
+
+% ************* Colors *************
+\definecolor{ECFLightBlue}{cmyk}{0.63,0.0,0.63,0.2} 
+\definecolor{ECFBlue}{cmyk}{0.63,0.0,0.63,0.55} 
+\definecolor{ECFDarkBlue}{cmyk}{0.63,0.0,0.63,0.8} 
+
+% ************* Tables **************
+
+\definecolor{TC1}{cmyk}{0.1,0.00,0.1,0.0}
+\definecolor{TC2}{cmyk}{0.05,0.0,0.05,0.0}
+\definecolor{TCH}{cmyk}{0.2,0.0,0.2,0.0}
+\definecolor{TCHH}{cmyk}{0.3,0.0,0.3,0.0}
+
+% ******* shortcuts for different version of the title
+% as used in the header layout ***********************
+\newcommand{\langTitleUC}{\MakeUppercase{\langTitle}}
+\newcommand{\langTitleUCLeft}{\langTitleUC} 
+\newcommand{\langTitleUCRight}{\quad \quad \quad \langTitleUC}
+
+% ************* Section *************
+\def\thesection{{\arabic{section}}}
+
+\newcommand{\sectionWithAdditionalLine}{
+\titleformat{\section}[block]{\normalfont\sffamily} 
+{\huge{\textcolor{ECFLightBlue}{\thesection}}}{1em}{\color{ECFLightBlue}\titlerule\\[0.8ex]\Large\bfseries}
+}
+
+\newcommand{\sectionInSameLine}{
+\titleformat{\section}[block]{\normalfont\sffamily} 
+{\huge{\textcolor{ECFLightBlue}{\thesection}}}{1em}{\color{ECFLightBlue}\Large\bfseries}[\color{ECFLightBlue}\titlerule*{\tiny\textbullet~}]
+}
+
+\titleformat{\subsection}[block]{\normalfont\sffamily} 
+{{\textcolor{ECFBlue}{\bfseries\thesubsection}\color{ECFBlue}}}{0.75em}{\color{ECFBlue}\bfseries}
+
+\titleformat{\subsubsection}[block]{\normalfont\sffamily} 
+{\normalsize{\textcolor{ECFDarkBlue}{\thesubsubsection}\color{ECFDarkBlue}}}{0.5em}{\color{ECFDarkBlue}}
+
+
+
+\newcommand{\piksection}[1]{
+%	\twocolumnend
+		\section{#1}
+%	\twocolumnbegin	
+}
+
+% ************* Figures, Tables, Boxes ***
+
+\newcommand{\tableColSep}{0.8pt} 
+\newcommand{\tableColSepHSpace}{2.75mm}
+
+\newcommand{\headerDefaultHeight}{5.5mm}
+\newcommand{\headerMinimumHeight}{\headerDefaultHeight}
+
+\newcommand*\figureHead[1]{%
+  {\begin{tikzpicture}
+  	\hspace{\captionMarge}
+    \node[rectangle, anchor=north west, 
+          inner xsep=-1pt, minimum width=\textwidth-2*\captionMarge, inner
+          ysep=-1pt, minimum height=\headerMinimumHeight, text width=\textwidth,
+          fill=ECFLightBlue] {\color{white}~#1};
+   \end{tikzpicture}}}
+
+\newcommand*\innerFigureHead[1]{%
+  {\begin{tikzpicture}
+  	\hspace{\captionMarge}
+    \node[rectangle, anchor=north west, 
+          inner xsep=-1pt, minimum width=\textwidth-2*\captionMarge, inner
+          ysep=-1pt, minimum height=\headerMinimumHeight, text width=\textwidth,
+          text badly centered, fill=white] {\color{ECFBlue}#1};
+   \end{tikzpicture}}}
+
+
+\newcommand{\createBox}[2]{%
+	\setlength{\fboxrule}{1.2pt}% 
+	\setlength{\fboxsep}{0pt}%
+	{\color{ECFDarkBlue}%
+		\ifempty{#1}{%
+			\begin{boxedminipage}[c]{\textwidth}%
+		}{% else
+			\begin{center}
+			\begin{boxedminipage}[c]{#1}%
+		}% begin{boxedminipage}
+ 			{\color{ECFDarkBlue}%
+ 				#2% 
+			}%
+		\end{boxedminipage}%
+		\ifempty{#1}{}{\end{center}}%
+	}%
+}
+
+% ************* Bibliography *************
+\bibliographystyle{jurecofull}
+\jurabibsetup{
+ 	authorformat=year,
+ 	human,
+ 	titleformat=
+}
+
+\renewcommand*{\jbcitationyearformat}[1]{#1}
+\renewcommand*{\bibtfont}{\textit}
+\renewcommand*{\bibapifont}{\textit}
+\biburlfont{same}
+
+% In Kombination mit jurecofulls sollten nun alle Authoren im
+% Literaturverzeichnis aufgefuehrt werden
+\makeatletter
+\def\jb@use@fullcite{%
+\jbauthorfont{\jb@@author}\normalfont{\jbhowsepbef oretitle}\jb@@fulltitle}%
+\makeatother 
+
+% *************************
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000      
+
+\setlength{\pltopsep}{1.5mm}
+\setlength{\plitemsep}{1mm}
+

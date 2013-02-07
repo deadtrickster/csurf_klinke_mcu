@@ -1,0 +1,98 @@
+\clearpage
+\section{Transport}\label{transport}
+
+For the Transport and also the \hyperref[regions]{Regions and Markers} section
+the modifier buttons have some common usage, \control is used to store stuff
+(this is always the case if something can be stored), \option is used
+if the Time Region should be modified\footnote{If there is a difference
+between Time Region start and end, \shift is used to select the start and
+\option to select the end.} and \alt is used for the Loop selection\footnote{If
+there is a distinction between Loop start and end, \option is used to select the
+start and \alt to select the end.}. In the event that something
+corresponds to the time signature, \shift can be used to select beats instead of bars.
+\subsection{\play, \stopp and \cancel}
+\begin{itemize}
+  \item \stopp: Stop the playback and jump to the \ec
+  \bemod
+  \begin {compactitem}
+    \item while recording: Stop and save all recorded media
+    \bebemod
+	\begin {itemize}
+	  \item \alt: Stop and show Dialog
+	\end{itemize}
+	\item Double-click: Set the \ec to the nearest bar\footnote{Time
+	Signature changes are ignored.}
+	\bebemod
+	\bebemod
+	\begin {compactitem}
+		\item \shift: Set the \ec to the nearest beat 
+		\item \option: Set Time Selection start/end to the nearest bar
+		\item \shift \option:  Set Time Selection start/end to the nearest beat
+		\item \alt: Set Loop start/end to the nearest bar
+		\item \shift \alt: Set Loop start/end to the nearest beat
+	\end{compactitem}
+  \end{compactitem}
+  \item \cancel: Stop and delete all recorded media
+  \item \play: Start the playback
+  \bemod
+  \begin {compactitem}
+    \item while playing: Stop at current play position
+    \item \alt: Create a Loop around the \ec with a length of 1 bar and
+    play this loop
+    \item \shift \alt: Create a Loop around the \ec with a length of 1
+    beat and play this loop
+  \end{compactitem}
+\end{itemize}
+
+\subsection{Jog Wheel}
+The Jog Wheel's behaviour can be modifier with the MODIFIER buttons:
+\begin{compactitem}
+\item \shift: move Time Region start
+\item \option: move Time Region end
+\item \control: move Loop start
+\item \alt: move Loop end
+\end{compactitem}
+
+The movement depends on the Zoom level and the status of the \scrub
+button. If \scrub is off, the position will move one bar or beat, if
+\scrub is on, the position will be moved by the time that is equivalent to two
+pixel in the \reaper GUI.
+
+\subsection{\rewind and \forward}
+
+The \rewind \& Fast Fwd (\forward) Button can be set in Mode "Normal", "Marker" or
+"Nudge" (note that the Nudge Mode has not been implemented). When \rewind or \forward is
+pressed in combination with the \marker or \nudge button, the MCU will
+automatically switch back to the original mode after you release the \marker/\nudge
+button.\footnote{The same mechanism works for the VPOT ASSIGN buttons in the
+\hyperref[csmodes]{\csms}.}
+
+\subsubsection{Normal-Mode}
+\begin{itemize}
+\item \rewind/\forward: move \ec 1 bar backward/forward. The \rewind/\forward
+buttons can be held down for continuous movements.\footnote{The maximum speed of
+the movement depends on the Control surface display update frequency which can be set
+in the preferences.}
+\bemod
+\begin{itemize}
+  \item \shift: move \ec 1 beat backward/forward 
+  \item \control: Goto Project start/end
+  \item \option: Goto Time Selection start/end
+  \item \shift/\option: Set Time Selection start/end to the \ec position 
+  \item \alt: Goto Loop start/end
+  \item \shift/\alt: Set Loop start/end to \ec 
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Marker-Mode}
+\begin{itemize}
+\item \rewind/\forward: Previous/Next marker
+\bemod
+\begin{itemize}
+	\item \option: Previous/Next Region as Time Selection
+	\item \shift \option: Swap Time Selection to left/right
+	\item \alt: Previous/Next Region as Loop
+	\item \control \alt:  Swap Loop to left/right
+\end{itemize}
+\end{itemize}
+

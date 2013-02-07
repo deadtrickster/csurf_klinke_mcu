@@ -1,0 +1,113 @@
+\section{Introduction}
+
+Welcome to the manual for the \mcu Extension for \reaper (v3.6 or
+higher). This extension enhances support for the Mackie Control
+Universal (MCU) controller, but can also be used for other controllers
+that use the MCU protocol (please read the manual of your
+controller to check if and how your controller supports this
+protocol). In addition, the extension also supports the Behringer
+BCF2000 and BCR2000. Musicbynumber has written a setup guide for the
+BCF2000 that can be found
+\href{http://forum.cockos.com/showpost.php?p=473466&postcount=127}{here}
+and nofish wrote a setup guide for the BCR2000 that can be found
+\href{http://forum.cockos.com/showthread.php?t=60110}{here}.
+
+\mcu is released under the GPL 2 licence, for details check
+section~\ref{disclaimer}.
+
+\subsection{Current Limitations}
+\begin{itemize}
+\item \mcu only runs under Microsoft Windows, no OS X version exists
+  and none is planned from my side. However, the source code is open to
+  everyone and most parts are based on the cross platform library
+  JUCE, so if anyone wants to try to port the extension to OS X, this
+  should be feasible (and I will try to support them as much as
+  possible).
+
+\item In the current version the extension does not support the Mackie
+  Control Extender (MCE), the changes from v0.64 to v0.8 where too
+  far-reaching to keep the extension compatible without owning a
+  MCE. 
+%I hope that this can be changed in the future (somewhen in
+%2011), but i can't guarantee anything. 
+  If you have a MCE and think
+  it is more important to use the extender than the new features in
+  v0.8, you can still download the older v0.6 from here:
+  \url{http://tinyurl.com/67qjt6y}.
+% No support is planned for the Mackie C4.
+\end{itemize}
+
+% \subsection{Manual style}
+% 
+% Buttons are written in \textsc{Small Caps Shape}. Links (to URL-adresses or
+% also to different part of the manual) are marked in blue.
+% \todo{vervollstaendigen}
+
+\subsection{New in v0.8}
+
+The most important changes in v0.8:
+\begin{compactitem}
+\item \reaper folders can now be reflected on the MCU using the \foldermode
+\item \anchors allows locking a \cs to a fixed track
+\item \hyperref[fxpresets]{FX presets} (store and recall FX settings) including
+a Blind Test feature
+\item \hyperref[localmaps]{FX Local maps} (different maps for each FX
+instances of the same FX)
+\item improved syncing of the MCU state with the \reaper GUI
+\item \hyperref[globalactions]{Global Actions} assignments can be named and
+shown in MCU display
+\item \hyperref[quickjump]{Quick Jumps} added for faster navigation  
+\item improved \hyperref[tracknames]{Track Name} handling
+\item FX favorites can be stored in \reaper project file
+\end{compactitem}
+
+\subsection{Known Issues}
+\begin{itemize}
+\item On some computers the MCU freezes after  \reaper is started and
+  some buttons are pressed. This problem disappears automatically after
+  a few minutes or by touching one of the faders several times (until you
+  see that the display reacts to the touch, e.g. shows the dB
+  value of the track).
+\end{itemize}
+
+\subsection{Donations}
+
+Writing the plugin was a lot of work (but also fun most of the time), writing this
+manual too (without the fun part). So acknowledgments in the form of donations are
+welcome and can be made via PayPal. To donate click
+\href{https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LR54GZHGL6VHA}{here}
+or on the Donate button in the Control Surface
+Settings dialog. If your DAW does not have an internet connection, you can also
+send the donation via PayPal manually to klinkenstecker@gmx.de. But I am also
+delighted when I get positive feedback via email or the \reaper forum ;-)
+
+
+\subsection{Credits}
+I want to thank:
+\begin{compactitem}
+\item Kathrin for proof-reading the manual and being such a great
+  hiking companion
+\item Justin for always improving the \reaper API when I need
+  additional features (and of course \reaper in general)
+\item Chris Doerman (cdoerman) for his Overlay (see
+  section~\ref{overlay}), FX maps (e.g. take a look at the hugh Pod
+  Farm map, it's an amazing piece of work) and his great help during
+  beta-testing
+\item Ryan (yagonnawantthatcowbell) and Curvespace for contributing so
+  many FX maps
+\item axelsk for the Oxford FX maps
+\item musicbynumbers for the
+  \href{http://forum.cockos.com/showpost.php?p=473466&postcount=127}{Behringer
+    BCF2000 setup-guide} and a lot of help on the BCF2000 mode
+\item nofish for the Behringer
+  \href{http://forum.cockos.com/showthread.php?t=60110}{BCR2000
+    setup guide}
+\item Jason (Drumbum), Miquel (anticlick), Alison and JosMuysers for
+beta-testing
+\item Jules for the great JUCE library
+\end{compactitem}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mcu_klinke_manual"
+%%% End: 

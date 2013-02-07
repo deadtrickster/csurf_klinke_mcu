@@ -1,0 +1,193 @@
+\subsection{Pan-Mode}\label{panmode} 
+The extended version of the behaviour of the MCU plugin that comes
+with \reaper is called Pan-Mode and can be selected by pressing the \pan
+button. The Fader and the \vpots,  \mute and \solo buttons should be
+self-explanatory with the exception that double-clicking \solo can be
+used to solo the track exclusively. The other functions are:
+
+\begin{itemize}
+\item \vpots: Change the pan of the track
+
+\item \rec: Arm Track on/off
+	\bemod
+	\begin{itemize}
+	\item \shift: Monitor on/off. As long as \shift is pressed the
+          \solo button LEDs show the Monitor status (On = monitoring
+          is active)
+ 	\item \option: Rec Mode Input/None. As long as \option is
+          pressed the \solo button LEDs are show the Rec Mode
+          status (On = Rec Mode is set to Input, Off = all other
+          settings)
+	\end{itemize}
+	
+\item \select: Select a track and deselect the other tracks
+	\bemod 
+	\begin{itemize}
+	\item \control: Add the track to the tracks already selected.
+	\item \shift: Select all tracks from the selected track to the
+          track selected before (via the MCU). So \control \& \shift
+          has the same behaviour as using the Control \& Shift key
+          while selected track using the mouse in \reaper.
+	\item \alt: Same as \shift, but only the tracks that are
+          accessible via the MCU are selected. See section
+          \hyperref[trackfilter]{Trackfilter} for details.
+	\item press and hold: If the \hyperref[foldermode]{Folder
+            mode} is activated and the track has children, use the
+          track as root track. See \hyperref[foldermode]{next
+            section} for details.
+	\end{itemize}
+
+\item \bankdu: Show the previous/next eight\footnote{When
+\anchors are activated: the previous/next eight tracks minus the
+number of \anchors.} tracks on the MCU
+
+\item \channeldu: Show the previous/next track on the MCU
+
+\item \gv: If the \hyperref[foldermode]{Folder mode} is activated and the
+track has a parent track the LED is switched on and when the button is pressed,
+the parent track is used as root track. See \hyperref[foldermode]{next
+section} for details.
+
+\item \flip: Flip volume and pan (use the \faders to change the pan, and the
+\vpots to change the volume)
+
+\item \mfader: Change the master volume
+\end{itemize}
+
+\noindent
+
+\subsubsection{Folder-Mode}\label{foldermode}
+By default the folder structure of \reaper is not reflected on the
+MCU. However, it is possible to change this via the Folder-Mode
+\attribute in the \hyperref[T:multitrack_options1]{Pan-Mode
+  Options}. When the Folder mode is activated, the tree-like structure
+of the tracks in \reaper is reflected on the MCU and you only see the
+children of a track and, if desired, the parent of these children. The
+idea behind this is that the folder structure corresponds to
+sub-mixes, and you can easily select and work on a single sub-mix or
+go back a step and mix only on the level of the sub-mixes. This can
+improve track navigation a lot.\footnote{Theoretically, you can create a
+  structure with 584 tracks and each track is no more then five clicks
+  away. Or in combination with the \hyperref[quickjump]{Quick Jump}
+  feature, no more then three click.} When you switch to Folder-Mode, only
+tracks are shown that have the Master track as their root. For all
+tracks that have children, the LED below the \vpot is illuminated. You can
+select these tracks as a new root track by pressing the
+corresponding \select button for longer than one second. To move back to
+the root track, press the \gv button.
+
+\subsubsection{Editor}\label{panmodeeditor}
+Before other concepts are introduced, it is useful to take a look at the
+\hyperref[F:Screenshot_Track_Mode]{Track Settings Editor} in
+Figure~\ref{F:Screenshot_Track_Mode}.\footnote{To safe space, the screenshot
+displays less tracks then the real editor.} You can open this editor by pressing
+\alt \pan. 
+
+\pikFigure[0.75][13.75cm][-2.2mm]{Screenshot_Track_Mode}{Track settings editor
+(\alt \pan)}{}{}
+
+The table rows represent the tracks of the current project. The
+leftmost column shows the \cs that controls the track (if any). In the
+``Nr.'' column the track number as defined in \reaper is shown. TCP and MCP
+are equal to the ``Show tracks in track list'' and ``Show tracks in
+Mixer'' settings in \reaper. The other columns are explained in the
+following sections.
+
+\subsubsection{Track Names}\label{tracknames} 
+Before v0.8, the name shown on the MCU was just the first six characters of the
+track name in \reaper. This has been  improved, the name is now derived using the
+following rules:
+
+\begin{compactitem}
+\item When a name is given in the Display column, this name is used
+  for the MCU display
+\item When no name is given but the track name contains the character
+  '$\mid$', the first six characters after the $\mid$ are used
+\item If neither is the case, the first six characters of the track
+  name are used
+\end{compactitem}
+
+
+\subsubsection{Track Filter}\label{trackfilter}
+With the ``Show'' \attribute in the
+\hyperref[T:multitrack_options1]{Main Options} you can limit the
+MCU-accessible tracks to different sets. Some of these
+sets are defined via the \reaper GUI, like tracks
+with sends, or tracks that are also shown in the \reaper mixer. However,
+you can also define a \mcu specific set, so that the tracks 
+shown on the MCU are independent of any setting in the \reaper
+GUI. To do this, set  Show \attribute to ``MCU Set'' in the
+\hyperref[F:Screenshot_Track_Mode]{Track settings editor} and select
+the tracks that should be accessible in the ``MCU'' column.
+
+\subsubsection{Anchors}\label{anchor}
+
+A \cs can be attached to a track, so this track can always be
+controlled via the same fader etc., independent of the track
+navigation via the \bankdu and \channeldu buttons. To attach a track,
+select one of the eight anchors in the Anchor column of the
+\hyperref[F:Screenshot_Track_Mode]{Track Settings Editor}. For example
+in the screenshot the track number 9 ``voc'' is always accessible through
+\cs 2. This is also the case when the \foldermode is active, so that
+anchor tracks are shown on the MCU even when they are not part of the 
+sub-mix displayed.
+
+I suggest avoiding gaps between anchored Channel Strips because otherwise navigation
+throgh tracks can get confusing.
+
+It is possible to turn off all anchors via the ``Use Anchor''
+\attribute in the \hyperref[T:multitrack_options1]{Main Options}, in
+which case the settings in the
+\hyperref[F:Screenshot_Track_Mode]{Track settings editor} will be
+ignored.
+
+\subsubsection{Quick Jump}\label{quickjump}
+
+To simplify navigation, you can define up to eight tracks that can be
+set to the leftmost \cs (the one that is not used for an Anchor track)
+quickly, followed by the other tracks as usual. To activate the Quick
+Jump feature, press and hold the \pan button. The display will show
+the names of the targets tracks (called Pads). The track can then be
+selected by pressing the corresponding \vpot.
+
+The three rightmost columns in the
+\hyperref[F:Screenshot_Track_Mode]{Track Settings Editor} are used to define the
+Pads for this purpose:
+
+\begin{compactitem}
+\item Jump Slot: This column determines the tracks which can be
+  selected as leftmost shown tracks.
+\item J. Name: If empty, the name displayd will be the same as the
+  track name. It can be useful to replace the track name by a
+  different name in the Quick Jump display.  E.g. if the track is
+  named ``BD'' and the following tracks are named ``SD'', ``Hi Hat''
+  etc., you can overwrite the ``BD'' text in this column with
+  ``Drums''. When you select the ``Drums'' Jump Slot, you will get the
+  ``BD'' track at the leftmost position on the MCU. 
+\item Root: This checkbox plays only a role when the \foldermode is
+  active and the track has children. If this is the case and the Root
+  checkbox is set, the track will be used as the new root track, so
+  that all the children will be shown. If the checkbox is not set, the
+  track and other tracks on the same level will be shown instead. This
+  is also reflected in the MCU display, Root jumps are shown in the
+  upper row, ``normal'' jumps in the lower.
+\end{compactitem}
+
+\subsubsection{Options}
+Table~\ref{T:multitrack_options1} shows the Main Options of the Pan-Mode which
+already explained in the sections before.
+
+\pikTable[14.43cm]{multitrack_options1}{Main Options in Pan-Mode and Action-Mode
+(\option)}{}{}
+
+The 2nd Options are shown in Table~\ref{T:multitrack_options2}. They allow to
+synchronize the tracks in the TCP/mixer to the tracks shown on the MCU, or, in
+the caseof the TCP, only the tracks are shown that are selected.
+
+\pikTable[15cm]{multitrack_options2}{2nd Options in Pan-Mode and Action-Mode
+(\shift \option)}{}{} 
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mcu_klinke_manual"
+%%% End: 

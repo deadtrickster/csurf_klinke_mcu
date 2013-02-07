@@ -1,0 +1,39 @@
+\input{style_common}
+
+\newcommand*\tikzhead[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-2cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=LightSkyBlue] (0,0) rectangle
+          (\paperwidth,2cm);
+        \node[anchor=west,yshift=1.7cm,xshift=-.012\paperwidth,rectangle,
+              rounded corners=10pt,inner sep=11pt,
+              fill=MidnightBlue]
+              {\color{white}\langTitleUC};          
+        \node[anchor=east,xshift=1.014\paperwidth,rectangle,
+              rounded corners=10pt,inner sep=11pt,
+              fill=MidnightBlue]
+              {\color{white}#1};
+       \end{tikzpicture}
+      };  
+   \end{tikzpicture}} 
+\newcommand*\tikzfoot[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-27.3cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=east,xshift=1.017\paperwidth,rectangle,
+              rounded corners=11pt,inner sep=11pt,
+              fill=MidnightBlue]
+              {\color{white}#1};
+       \end{tikzpicture}
+      };
+   \end{tikzpicture}} 
+
+\newcommand*\abbildunghead[1]{%
+  {\begin{tikzpicture}
+    \node[rectangle, anchor=north west, 
+          inner xsep=1pt, inner ysep=4pt, minimum width=\textwidth, text
+          width=\textwidth, text badly centered, fill=LightSkyBlue]
+          {\color{black}#1};
+   \end{tikzpicture}}}
+ 

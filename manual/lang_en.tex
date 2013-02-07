@@ -1,0 +1,41 @@
+\usepackage[greek, english]{babel}
+
+% title
+
+\newcommand{\langTitle}{CSurf\_MCU\_Klinke manual}
+
+% labels
+
+\newcommand{\langFigure}{Figure }
+\newcommand{\langFigureShort}{Fig. }
+
+\newcommand{\langTable}{Table }
+\newcommand{\langBox}{Box }
+
+\newcommand{\langSource}{Source}
+\newcommand{\owngraph}{authors' own graph; data source: }
+\newcommand{\owntable}{authors' own table; data source: }
+
+\newcommand{\langAnnex}{Annex}
+
+\newcommand{\langBib}{References}
+
+% folders
+
+\newcommand{\pikText}[1]{
+	\input{./text_en/#1}
+}
+
+\newcommand{\pikTextWord}[1]{
+	\input{./text_en/word/#1}
+}
+
+%internal use only
+\newcommand{\internalpikgraph}[2]{
+ 	\includegraphics[scale=#1]{./graphs_en/#2.png}
+}
+
+%internal use only
+\newcommand{\internalinputtable}[1] {
+  \input{./tables_en/#1}
+}

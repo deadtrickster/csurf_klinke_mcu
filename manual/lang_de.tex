@@ -1,0 +1,44 @@
+\usepackage[greek, german]{babel}
+
+% title
+
+\newcommand{\langTitleUC}{THE EUROPE MITIGATION PROJECT}
+\newcommand{\langTitle}{The Europe Mitigation Project}
+\newcommand{\langTitleUCLeft}{THE EUROPE MITIGATION PROJECT}
+\newcommand{\langTitleUCRight}{\quad \quad \quad THE EUROPE MITIGATION PROJECT}
+
+% labels
+
+\newcommand{\langFigure}{Abbildung }
+\newcommand{\langFigureShort}{Abb. }
+
+\newcommand{\langTable}{Tabelle }
+\newcommand{\langBox}{Box }
+
+\newcommand{\langSource}{Quelle }
+\newcommand{\owngraph}{Quelle: Eigene Darstellung; Datenbasis: }
+\newcommand{\owntable}{Quelle: Eigene Tabelle; Datenbasis: }
+
+\newcommand{\langAnnex}{Anhang}
+
+\newcommand{\langBib}{Literatur}
+
+% folders
+
+\newcommand{\pikText}[1]{
+	\input{./text_de/#1}
+}
+
+\newcommand{\pikTextWord}[1]{
+	\input{./text_de/word/#1}
+}
+
+%internal use only
+\newcommand{\internalpikgraph}[2]{
+ 	\includegraphics[scale=#1]{./graphs_de/#2.png}
+}
+
+%internal use only
+\newcommand{\internalinputtable}[1] {
+  \input{./tables_de/#1}
+}

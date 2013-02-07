@@ -1,0 +1,89 @@
+\section{Installation}\label{installation} 
+
+To install the extension download \url{http://tinyurl.com/6664hym}
+and unpack the zip--archiv in the
+plugin directory of \reaper. Afterwards the folder with the original
+{\tt reaper\_csurf.dll} file should also contain the file {\tt
+  reaper\_csurf\_mcu\_klinke.dll}, this manual and a new folder named
+{\tt MCU}. This {\tt MCU} folder contains default configuration files
+and FX maps. Do not modify them. Your own configuration files and FX
+maps are stored in the folder {\tt My Documents\textbackslash MCU}
+that is created when you start the
+\mcu surface for the first time.\\
+
+\noindent
+To activate the plugin you need to follow these steps:
+\begin{compactitem}
+\item open the \reaper preferences
+\item scroll down and select ``Control Surfaces'' 
+\item if the original ``Mackie Control Universal'' surface was added, remove it
+\item add the ``Mackie Control Universal (Klinke)'' surface
+% \item optional: increase the ``Control surface display
+% update frequency'' in the Control surfaces preferences of \reaper to something between
+% 30 and 50 Hz.  
+\end{compactitem}
+
+%If you have extenders:
+%\begin{itemize}
+%\item set the Bank Size parameter in the "Mackie Control Universal (Klinke)"
+%preferences dialog to the total number of channels (or maybe to 8 less, in the
+%case that you want to use the main unit in non-mixing modes the most time)
+%\item remove original "Extender" surfaces and add "Extentder (Klinke)" surfaces
+%for each of your extenders
+%\item set the Surface Offset parameter in the Surface prefercences dialogs
+%corresponding to the order of your setup (the leftmost unit should have an
+%offset of 0, the unit on his right side an offset of 8 ...)
+%\end{itemize}
+
+\noindent
+For the \actionmode it is useful to import Action
+shortcuts:\footnote{If you want to assign all actions by yourself
+  there is need to import anything, but  the predefined actions can be
+  useful to understand the features described in the
+  \hyperref[actionmode]{Action-Mode} section.}
+ 
+\begin{compactitem}
+\item open the \hyperref[F:actiondialog]{Actions dialog} in
+  \reaper(e.g. by pressing the '?' key)
+\item press the Import/Export button on the lower left corner and select
+  "Import..."
+\item in the appearing file-dialog, select the file {\tt \ldots\tbs
+    Reaper\tbs Plugins\tbs MCU}\newline{\tt \tbs
+    DefaultActions.reaperKeyMap}.
+\end{compactitem}
+
+\subsection{Control Surface Settings Options}\label{settings}
+There are four options in the Control Surface Settings dialog that can
+be activated (the later three are useful for owners of the Behringer
+BCF2000 and maybe other controllers as well):
+%\pikFigure[][8.05cm][-2.5mm]{Screenshot_CSS}{Control Surface Settings}{}{}
+%\vspace{-5mm}
+\begin{itemize}
+\item Swap left/right arrow on zoom: By default the left arrow key
+  zooms out of the arrangement and the right arrow button zooms in (assuming
+  zooming is activated via the \zoom button). This can be swapped.
+%\item Controller follows track selection: Per default the shown tracks at the
+%Mackie Control can be only changed via the Mackie Control itself. If this
+%option is turned on and a track that isn't shown at the controller is selected,
+%then the shown tracks are adjusted so that the selected track is one of the
+%shown tracks.
+
+\item No level meter: Do not show the level-meters in the Pan-Mode,
+  always show the dB values instead (the bcfview Application does not
+  support the level-meters protocol, so for BCF users it is useful to
+  choose this option).
+\item Use keyboard modifier: The Behringer BCF does not have 
+  \option/\control and \alt modifier buttons. When this option is
+  selected, the keyboard modifier can be used instead. The left
+  \alt key substitutes the \alt button, the right \alt key the
+  \option button.
+\item Fake fader touch: The BCF2000 does not have fader touch sensitive
+  faders, so after a fader movement the extension simulates that the
+  fader being touched for an additional 2 seconds.
+\end{itemize}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../mcu_klinke_manual"
+%%% End: 
