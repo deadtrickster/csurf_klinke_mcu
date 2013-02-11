@@ -1,0 +1,62 @@
+\input{style_common}
+
+%the acrobat reader overwrite the frame with the caption background box,
+%even when \although they are not overlapping. captionMarge
+%adds an artificial marge between the box and the frame
+\newcommand{\captionMarge}{0.3pt}
+
+\usepackage[paperwidth=210mm, paperheight=297mm, scale=0.72,
+pdftex,vmarginratio=9:7]{geometry}
+
+\renewcommand{\textfraction}{.15} % vorher: .2
+\renewcommand{\topfraction}{.8}     % vorher: .7
+\renewcommand{\bottomfraction}{.5}  % vorher: .3
+
+\newcommand*\tikzheadOS[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-2.2cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=ECFLightBlue] (0,0) rectangle 
+          (\paperwidth,2.2cm);
+        \node[anchor=west,yshift=2.2cm,xshift=-.035\paperwidth,rectangle,
+              rounded corners=8pt,inner sep=12pt,
+              fill=ECFBlue]
+              {~\quad~\color{ECFBlue}\langTitleUC};           
+        \node[anchor=west,yshift=1.95cm,xshift=-.035\paperwidth,rectangle,
+              rounded corners=8pt,inner sep=12pt,
+              fill=ECFBlue]
+              {~\quad~\color{ECFBlue}\langTitleUC};          
+        \node[anchor=west,yshift=1.7cm,xshift=-.035\paperwidth,rectangle,
+              rounded corners=8pt,inner sep=12pt,
+              fill=ECFBlue]
+              {~\quad~\color{white}\langTitleUC};  
+        \node[anchor=east,yshift=0.7cm,xshift=1.03\paperwidth,rectangle,
+              rounded corners=8pt,inner sep=45pt,
+              fill=ECFBlue]
+              {\color{white}#1};
+       \end{tikzpicture}
+      };  
+    \node[yshift=-29.7cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=ECFLightBlue] (0,0) rectangle
+          (\paperwidth,0.2cm);
+       \end{tikzpicture}
+      };  
+   \end{tikzpicture}}  
+\newcommand*\tikzheadGS[1]{\tikzheadOS{#1}} 
+\newcommand*\tikzheadInhalt[1]{\tikzheadOS{#1}} 
+
+\newcommand*\tikzfootOS[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-29.4cm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \node[xshift=0.5\paperwidth,rectangle,
+              rounded corners=8pt,inner sep=12pt,
+              fill=ECFBlue]
+              {\color{white}#1};               
+       \end{tikzpicture}
+      };
+   \end{tikzpicture}}  
+\newcommand*\tikzfootGS[1]{\tikzfootOS{#1}}  
+
+

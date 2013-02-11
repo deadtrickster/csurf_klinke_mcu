@@ -1,0 +1,56 @@
+\begin{footnotesize}
+\begin{tabular}{@{\extracolsep{\tableColSep}\hspace{\tableColSepHSpace}}ccl}
+\optionHeader
+\rowcolor{TC1}
+Adjust TCP&
+don't adjust&
+don't modify the shown tracks in the TCP\\
+\rowcolor{TC2}
+&
+hide non MCU&
+show only the tracks in the TCP that are also shown on the MCU\\
+\rowcolor{TC1}
+&
+only selected&
+show only the tracks in the TCP that are selected with the MCU\\
+\ts
+\rowcolor{TC2}
+Adjust Mixer&
+don't adjust&
+don't modify the shown tracks in the Mixer\\
+\rowcolor{TC1}
+&
+hide non MCU&
+show only the tracks in the Mixer that are also shown on the MCU\\
+\ts
+\rowcolor{TC2}
+Follow \reaper&
+no&
+The accessible tracks at the MCU can be only changed via the MCU ifself.\\
+\rowcolor{TC1}
+&
+yes&
+When a track in \reaper is selected, that isn't accessible via the MCU\\
+\rowcolor{TC1}
+&
+&
+the accessible tracks are adjusted so that the selected track is one of\\
+\rowcolor{TC1}
+&
+&
+the accessible tracks.\\
+\ts
+\rowcolor{TC2}
+Touch select&
+no&
+don't send an additional action after selecting a track via the MCU\\ 
+\rowcolor{TC1}
+&
+yes&
+send a ``Track: Set first selected track as last touched track" action\\ 
+%\rowcolor{TC1}
+%&
+%&
+%tack" after selecting a track via the MCU\\ 
+\end{tabular}
+\end{footnotesize}

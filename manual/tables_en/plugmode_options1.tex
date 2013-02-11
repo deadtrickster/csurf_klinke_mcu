@@ -1,0 +1,93 @@
+\begin{footnotesize}
+\begin{tabular}{@{\extracolsep{\tableColSep}\hspace{\tableColSepHSpace}}ccl}
+\optionHeader
+\rowcolor{TC1}
+MCU follow&
+off&
+the MCU controlled FX can only be changed via the MCU itself\\
+\rowcolor{TC2}
+&
+same track&
+the default behavior as described above\\
+\rowcolor{TC1}
+&
+always&
+the MCU always keeps in sync with the last selected FX in the
+GUI,\\
+\rowcolor{TC1}
+&
+&
+even if the FX is on a different track or the favorite mode is
+active\\
+\ts
+\rowcolor{TC2}
+GUI follow&
+off&
+\mcu never modifies the \reaper GUI\\
+\rowcolor{TC1}
+&
+if chain open&
+the default behavior as described above\\
+\rowcolor{TC2}
+&
+open chain&
+same as "if chain open", but also opens an FX chain window, if none  exists\footnote{depending on the \reaper properties, this could also close the
+"old" FX chain window}\\
+\rowcolor{TC1}
+&
+open floating&
+opens a floating window of the selected FX \\
+\ts
+\rowcolor{TC1}
+\alt \select&
+open chain&
+when you press a \select button while holding \alt, the FX
+chain\\
+\rowcolor{TC1}
+&
+&
+window will be opened\\
+\rowcolor{TC2}
+&
+-float&
+as above, but also all floating FX windows will be closed\\
+\rowcolor{TC1}
+&
+open float&
+a floating window of the selected FX will be opened\\
+\ts
+\rowcolor{TC2}
+Limit float&
+off&
+don't limit the number of floating FX windows\\
+\rowcolor{TC1}
+&
+only 1 MCU&
+when you open a second floating window using the MCU, the first
+will\\
+\rowcolor{TC1}
+&
+&
+be closed, but you can still open additional floating windows via \reaper\\
+\rowcolor{TC2}
+&
+only selected&
+only the plug-in that is controlled by the MCU can have a
+floating\\ 
+\rowcolor{TC2}
+&
+&
+window, all others will be closed.\footnote{this will automatically set the
+"MCU follow" option to "always"}\\
+\rowcolor{TC1}
+&
+only chain&
+no floating windows can be opened, instead you will always get
+a FX\\ 
+\rowcolor{TC1}
+&
+&
+chain window\\ 
+\tf
+\end{tabular}
+\end{footnotesize}

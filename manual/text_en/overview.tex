@@ -1,0 +1,39 @@
+\section{Overview}\label{overview}
+\pikFigure[0.355][][-3mm]{MCU_Overview}{Overview of the MCU}{}{}
+
+Figure~\ref{F:MCU_Overview} shows the MCU hardware and how its elements are
+partitioned:
+\begin{itemize}
+
+\item The \css is highlighted in blue, it includes the \mfader and the
+  \flip, \gv, \nv and FADER BANKs buttons). This section can be set in
+  different modes, which allows controlling the \reaper mixer
+  (including sends), editing FX parameters and triggering \reaper
+  actions. Details are described in section~\ref{csmodes}.
+ 
+\item The F1-F8 buttons (in the read area) can be used to store and
+  recall Markers, Time Regions (\option) and Loops (\alt). Pressed in
+  combination with the \control modifier, the corresponding element is
+  stored. For details see section~\ref{regions}.
+
+\item The buttons in the Global View (green) area can be used to
+  trigger \reaper actions. Those assignments are independent of the
+  \cs mode.\footnote{Additional actions can be assigned in the
+    \hyperref[actionmode]{Action-Mode} of the \css.} Details are
+  described in section~\ref{globalactions}.
+
+\item The Transport section (yellow area) highlights all controls that
+  can be used to change the \ec, the Loop or the Time Region, and
+  those that start/stop playback and recording. Details are described
+  in the \hyperref[transport]{following section}.
+
+\item The remaining buttons are described in the \hyperref[misc]{Misc}
+  section, apart from the Automation and Utilities buttons which should be
+  self-explanatory.
+
+% e.g. with the \jw, the modifier buttons determine what
+% should be change. Without any modifier it's the \ec, with \shift or \option the
+% Time Region start/end and with \control or \alt the Loop start/end.
+
+
+\end{itemize}

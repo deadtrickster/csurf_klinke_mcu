@@ -1,0 +1,511 @@
+% *********************************************************
+%internal use only
+\newfloat{pikfloat}{hbt!}{pif}
+\newfloat{pikfloatBox}{htb!}{lob}	
+
+
+% *********** ifempty voodoo **********************
+\makeatletter
+\newcommand*{\ifempty}[3]{%
+  \protected@edef\tmp{#1}%
+  \expandafter\@ifmtarg\expandafter{\tmp}{#2}{#3}%
+}
+\makeatother
+
+% *****************  Captions *********************
+
+% in the case that a line break is used on an different
+% position then LaTeX will do it automatically, use
+% \captionNewLine at the position where the line should
+% be broken 
+\newcommand{\captionNewLine}{~}
+
+%internal use only
+\newcommand{\captionStyle}[2]{
+	\renewcommand{\captionNewLine}{\\\hspace{1.42mm}}
+	\vspace{\captionMarge}
+	\figureHead{\textbf{#2: #1}}
+	\renewcommand{\captionNewLine}{~}
+	\linesInHeader{1}
+}
+
+\newcommand{\innerCaptionStyle}[2]{
+	\renewcommand{\captionNewLine}{\\}
+	\vspace{\captionMarge}
+	\innerFigureHead{\textbf{#2: #1}}
+	\renewcommand{\captionNewLine}{~}
+	\linesInHeader{1}
+}
+
+
+\newcommand{\linesInHeader}[1]{
+	\renewcommand{\headerMinimumHeight}{#1*\headerDefaultHeight}
+}
+
+\newcommand{\pikResultTable}[1]{
+ 	\hspace{-3.95cm}\includegraphics{./Tables_mod_res/#1_Tab_Res.pdf}
+ 	\clearpage
+}
+
+% ***************** Source  & Comment *************
+
+%internal use only
+\newlength{\sourceCommentWidth}
+\newcommand{\sourceCommentMarge}{0.3cm}
+\newcommand{\sourceCommentBox}[2]{
+	\ifempty{#1}{%
+		\setlength{\sourceCommentWidth}{\textwidth - \sourceCommentMarge}%
+	}{%
+		\setlength{\sourceCommentWidth}{#1 - \sourceCommentMarge}%
+		\vspace{-3.3mm}%
+	}% 
+	\setlength{\fboxrule}{0pt}% 
+	\setlength{\fboxsep}{0pt}%
+	{\color{ECFBlue}%
+		\begin{center}
+			\begin{boxedminipage}[c]{\sourceCommentWidth}%
+	 			{\color{ECFBlue}%
+ 					#2% 
+				}%
+			\end{boxedminipage}%
+		\end{center}%
+	}%
+}
+
+
+\newcommand{\sourceText}{\langSource:}
+\newcommand{\sourceColon}{.}
+\newcommand{\commentColon}{;}
+\newcommand{\withoutSource}{
+	\renewcommand{\sourceText}{\vspace{-3mm}}
+	\renewcommand{\sourceColon}{}
+	\renewcommand{\commentColon}{}
+}
+\newcommand{\withSource}{
+	\renewcommand{\sourceText}{\langSource:}
+	\renewcommand{\sourceColon}{.}
+	\renewcommand{\commentColon}{;}
+}
+
+%internal use only
+\newcommand{\sourceComment}[3]{
+	\begin{spacing}{0.9}%
+		\begin{footnotesize}%
+		\ifempty{#2}{%
+				{\sourceCommentBox{#3}{\sourceText~#1\sourceColon}}%
+			}{%else
+				{\sourceCommentBox{#3}{{\it #2}\commentColon~\sourceText~#1\sourceColon}}%
+			}%
+		\end{footnotesize}%
+	\end{spacing}%
+}
+
+
+%internal use only
+\newcommand{\vspacePlusOpt}[2]{
+	\vspace{#1}\ifempty{#2}{}{\vspace{#2}}%
+}
+
+% ***************** Graphs ***********************
+%internal use only
+\newcommand{\figCaption}[1]{ 
+	\stepcounter{figure}
+	\captionStyle{#1}{\langFigure \arabic{figure}}%
+	\addcontentsline{lof}{figure}{\textbf{\langFigureShort \arabic{figure}:} #1}
+ }
+ 
+%internal use only
+\newcommand{\innerFigCaption}[1]{ 
+	\stepcounter{figure}
+	\innerCaptionStyle{#1}{\langFigure \arabic{figure}}%
+	\addcontentsline{lof}{figure}{\textbf{\langFigureShort \arabic{figure}:} #1}
+ }
+ 
+ 
+%internal use only
+\long\def\pikFigContentImp[#1][#2][#3][#4]#5#6#7#8{%
+	\createBox{#2}{	
+		\figCaption{#6}%
+		\captionof*{figure}{\label{F:#5}}\vspace{-27 pt}%
+		\vspacePlusOpt{-0.6cm}{#3}%
+		\begin{center}%
+			\ifempty{#1}{%
+				\internalpikgraph{.704}{#5}%
+			}{%else
+				\internalpikgraph{#1}{#5}%
+			}%
+		\end{center}%
+		\vspacePlusOpt{-3mm}{#4}%
+	}%createBox end
+	\vspace{-3.5mm}
+	\sourceComment{#7}{#8}{#2}%
+}
+ 
+%internal use only
+\newcommand{\pikFigContent}{
+	\optparams{\pikFigContentImp}{[][][][]}
+}
+ 
+% only internal, use pikFigure
+\long\def\pikFigureImp[#1][#2][#3][#4]#5#6#7#8{%
+	\twocolumnend%
+		\begin{pikfloat*}%
+			\pikFigContent[#1][#2][#3][#4]{#5}{#6}{#7}{#8}
+			\vspace{-5mm}%
+		\end{pikfloat*}%
+	\twocolumnbegin%
+}
+
+\newcommand{\pikFigure}{
+	\optparams{\pikFigureImp}{[][][][]}
+}
+
+%internal use only
+\long\def\pikInnerFigContentImp[#1][#2][#3][#4]#5#6#7#8{
+\begin{center}
+	\begin{minipage}[c]{13.25cm}%
+		\rule{13.25cm}{0.25mm}%
+		\vspace{2mm}%
+		\innerFigCaption{#6}%
+		\captionof*{figure}{\label{F:#5}}\vspace{-27 pt}%
+		\vspacePlusOpt{-0.6cm}{#2}%
+		\begin{center}%
+			\ifempty{#1}{%
+				\internalpikgraph{.704}{#5}%
+			}{%else
+				\internalpikgraph{#1}{#5}%
+			}%
+		\end{center}%
+		\vspacePlusOpt{-7mm}{#3}%
+		\hspace{2.5mm}\rule{12.75cm}{0.05mm}%
+	\end{minipage}%createBox end
+	\sourceComment{#7}{#8}{12.75cm}%
+\end{center}
+\vspacePlusOpt{-1.38cm}{#4}%
+\rule{13.25cm}{0.25mm}%
+\vspace{2mm}%
+}
+
+%internal use only
+\newcommand{\pikInnerFigContent}{
+	\optparams{\pikInnerFigContentImp}{[][][][]}
+}
+
+% only internal, use pikInnerFigure
+\long\def\pikInnerFigureImp[#1][#2][#3][#4]#5#6#7#8{%
+	\pikInnerFigContent[#1][#2][#3][#4]{#5}{#6}{#7}{#8}
+	\vspace{-5mm}%
+}
+
+\newcommand{\pikInnerFigure}{
+	\optparams{\pikInnerFigureImp}{[][][][]}
+}
+
+
+% only internal, use pikFigure
+\long\def\pikWrapFigureImp[#1][#2][#3][#4]#5#6#7#8{%
+	\twocolumnend%
+		\begin{wrapfigure}{r}{#2}%
+			\vspace{-7mm}
+			\pikFigContent[#1][#2][#3][#4]{#5}{#6}{#7}{#8}
+			\vspace{-7mm}%
+		\end{wrapfigure}%
+	~% this is a hack that solve a problem with sections starting directly behind
+	% figure
+	\twocolumnbegin%
+}
+
+\newcommand{\pikWrapFigure}{
+	\optparams{\pikWrapFigureImp}{[][][][]}
+}
+
+% ************** Tables *****************************
+
+%internal use only
+\newcommand{\tabCaption}[1]{
+	\stepcounter{table}
+	\captionStyle{#1}{\langTable \arabic{table}}%
+	\addcontentsline{lot}{table}{\textbf{\langTable \arabic{table}:} #1}
+}
+
+%internal use only
+\long\def\pikTableContentImp[#1]#2#3#4#5{%
+	\createBox{#1}{%
+	 	\tabCaption{#3}%
+		\captionof*{table}{\label{T:#2}}\vspace{-27 pt}%
+	  \vspace{-8.8mm}%
+		\begin{center}%
+			\internalinputtable{#2}%				
+		\end{center}%
+		\vspace{-3.3mm}%
+	}%
+	\vspace{-4mm}%
+	\sourceComment{#4}{#5}{#1}%
+ }
+ 
+ %internal use only
+ \newcommand{\pikTableContent}{
+	\optparams{\pikTableContentImp}{[]}
+}
+
+%internal use only
+\newcommand{\innerTableCaption}[1]{
+	\stepcounter{table}
+	\innerCaptionStyle{#1}{\langTable \arabic{table}}%
+	\addcontentsline{lot}{table}{\textbf{\langTable \arabic{table}:} #1}
+}
+
+
+%internal use only
+\long\def\pikInnerTableContentImp[#1]#2#3#4#5{
+\begin{center}
+	\begin{minipage}[c]{13.25cm}%
+		\rule{13.25cm}{0.25mm}% 
+		\vspace{2mm}%
+		\innerTableCaption{#3}%
+		\captionof*{figure}{\label{F:#2}}\vspace{-27 pt}%
+	  \vspace{-7mm}%
+		\begin{center}%
+		\internalinputtable{#2}%				
+		\end{center}%
+		\vspace{0.4mm}%
+		\hspace{2.5mm}\rule{12.75cm}{0.05mm}%
+	\end{minipage}%createBox end
+	\sourceComment{#4}{#5}{12.75cm}%
+\end{center}
+\vspacePlusOpt{-1.38cm}{#1}%
+\rule{13.25cm}{0.25mm}%
+\vspace{2mm}%
+}
+
+%internal use only
+\newcommand{\pikInnerTableContent}{
+	\optparams{\pikInnerTableContentImp}{[]}
+}
+
+
+% only internal, use pikInnerFigure
+\long\def\pikInnerTableImp[#1]#2#3#4#5{%
+	\pikInnerTableContent[#1]{#2}{#3}{#4}{#5}
+	\vspace{-5mm}%
+}
+
+\newcommand{\pikInnerTable}{
+	\optparams{\pikInnerTableImp}{[]}
+}
+
+% only internal, use pikTable
+\long\def\pikTableImp[#1]#2#3#4#5{%
+	\twocolumnend%
+	\begin{pikfloat*}%
+		\pikTableContent[#1]{#2}{#3}{#4}{#5}%
+		\vspace{-4mm}%
+	\end{pikfloat*}%
+	\twocolumnbegin%
+}
+
+\newcommand{\pikTable}{
+	\optparams{\pikTableImp}{[]}
+}
+
+% only internal, use pikTable
+\long\def\pikWrapTableImp[#1][#2][#3]#4#5#6#7{%
+	\twocolumnend%
+	\vspacePlusOpt{-4.8mm}{#2}
+	\ifempty{#3}{%
+		\begin{wrapfigure}{i}{#1}%
+			\pikTableContent[#1]{#4}{#5}{#6}{#7}%
+			\vspace{-4mm}%
+		\end{wrapfigure}
+	}{
+		\begin{wrapfigure}{#3}{#1}%
+			\pikTableContent[#1]{#4}{#5}{#6}{#7}%
+			\vspace{-3mm}%
+		\end{wrapfigure}
+	}
+	~% this is a hack that solve a problem with sections starting directly behind
+	%table
+	\twocolumnbegin%
+}
+
+\newcommand{\pikWrapTable}{
+	\optparams{\pikWrapTableImp}{[][][]}
+}
+
+% ************** Boxes ******************************
+
+\newcounter{boxCount}
+%internal use only
+\newcommand{\boxCaption}[1]{
+	\stepcounter{boxCount}
+	\captionStyle{#1}{\langBox \arabic{boxCount}}%
+	\addcontentsline{lob}{pikfloatBox}{\textbf{\langBox \arabic{boxCount}:} #1}
+}
+
+% only internal, use pikBox
+\newlength{\boxContentWidth}
+\newcommand{\boxContentMarge}{1cm}
+
+\newcommand{\boxContent}[4]{
+	\createBox{#1}{%
+	  \boxCaption{#3}%
+	  \captionof*{boxCount}{\label{B:#2}}\vspace{-27 pt}%
+	  \vspace{-5mm}%
+	  \begin{center}
+	  	\parbox{\boxContentWidth}{#4}%
+	  \end{center}%
+	  \vspace{0mm}%
+	}%
+	\vspace{-0.4cm}
+}
+
+\long\def\pikBoxImp[#1]#2#3#4{
+	\ifempty{#1}{%
+		\setlength{\boxContentWidth}{\textwidth - \boxContentMarge}%
+	}{%
+		\setlength{\boxContentWidth}{#1 - \boxContentMarge}%
+	}% 
+	\twocolumnend%
+	\begin{pikfloatBox*}%
+		\boxContent{#1}{#2}{#3}{#4}%
+	\end{pikfloatBox*}%
+	\vspace{2mm}%	
+	\twocolumnbegin
+}
+
+\newcommand{\pikBox}{
+	\optparams{\pikBoxImp}{[]}
+	}
+
+% only internal, use pikFloatBox
+\long\def\pikWrapBoxImp[#1]#2#3#4{
+	\twocolumnend%
+	\ifempty{#1}{%
+		\setlength{\boxContentWidth}{\textwidth - \boxContentMarge}%
+	}{%
+		\setlength{\boxContentWidth}{#1 - \boxContentMarge}%
+	}% 
+	\begin{wrapfigure}{i}{#1}%
+		\vspace{-5mm}%
+		\boxContent{#1}{#2}{#3}{#4}%
+		\vspace{-3mm}%
+	\end{wrapfigure}%
+	~% this is a hack that solve a problem with sections starting directly behind
+	% box
+	\twocolumnbegin%
+}
+
+\newcommand{\pikWrapBox}{
+	\optparams{\pikWrapBoxImp}{[]}
+}
+
+% ******************************************************
+% ***************** Table formats **********************
+
+\newcolumntype{d}[1]{
+	>{\raggedright \hspace{0pt}}m{#1}
+}
+	
+\newcolumntype{v}{
+	>{\raggedleft \hspace{-10pt}}p{4.55mm}
+}
+
+\newcolumntype{f}[1]{
+	D{.}{.}{#1}
+}
+
+\newcolumntype{F}[1]{
+	>{\columncolor{#1}}c
+}
+
+\newcolumntype{G}[2]{
+	>{\columncolor{#1}}#2
+}
+
+\newcolumntype{R}[1]{
+	>{\begin{turn}{90} 
+      	\begin{minipage}{#1}
+   		  \raggedright\hspace{0pt}}l
+  		<{\end{minipage}
+	\end{turn}}
+}
+
+\newcolumntype{I}{
+	!{\vrule width 0pt}
+}
+
+%\newcommand{\tableLineFirst}{\rowcolor{TC2}}
+%\newcommand{\tableLineOdd}{\rowcolor{TC1}}
+%\newcommand{\tableLineEven}{\rowcolor{TC2}}
+
+\newcommand{\inTopHeader}[1]{\multicolumn{1}{F{TCHH}}{#1}}
+\newcommand{\inHeader}[1]{\multicolumn{1}{F{TCH}}{#1}}
+\newcommand{\colorCell}[3]{\multicolumn{1}{>{\columncolor{#1}}#2}{#3}}
+
+\newcommand{\ts}{\\[-3.4mm]}
+\newcommand{\tf}{\\[-6.5mm]}
+
+\newcommand{\optionHeader}{
+\rowcolor{TCH}
+Property&
+Setting&
+Description~\hspace{7.72cm}~\\
+\ts
+}
+
+% ************************************************************
+% ***************** Head & Foot ******************************
+
+\newcommand{\headerBlue}[1][\leftmark]{ 
+\clearscrheadings
+\cehead{\tikzheadGS{#1}} 
+\cohead{\tikzheadOS{#1}}
+\cefoot{\tikzfootGS{-\arabic{page}-}} 
+\cofoot{\tikzfootOS{-\arabic{page}-}}
+} 
+
+\newcommand{\headerTableOfContest}{ 
+\clearscrheadings
+\cehead{\tikzheadInhalt{\leftmark}} 
+\cohead{\tikzheadInhalt{\leftmark}}
+\cefoot{\tikzfootGS{-\Roman{page}-}} 
+\cofoot{\tikzfootOS{-\Roman{page}-}}
+} 
+
+\newcommand{\headerClean}{
+\clearscrheadings
+}
+
+% *****************  Citations *********************
+
+\newcommand{\citeInText}[1]{(\cite{#1})}
+
+% ************************************************************
+% ******************* Others *********************************
+
+\newcommand{\COTWO}{CO$_2$\xspace}
+
+\newcommand{\COTWOe}{CO$_2$e\xspace}
+
+\newcommand{\unit}[1]{\footnotesize #1}
+
+\newcommand{\EUR}{\texteuro}
+
+\newcommand{\todo}[1]{~\textcolor{red}{#1}~}
+%\newcommand{\todo}[1]
+
+\newcommand{\added}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\changed}[1]{\textcolor{green}{#1}}
+
+\newcommand{\boxIndent}{\hspace{5mm}}
+
+\newenvironment{longQuote}%
+{\begin{list}{}{%
+   \setlength{\rightmargin}{\leftmargin}}%
+ \vspace{-5pt}\singlespacing\small\item[]\ignorespaces}
+{\unskip\end{list}}
+
+
+\newcommand{\bemod}{\vspace{-1.5ex}}
+\newcommand{\bebemod}{\vspace{-0.25ex}}
