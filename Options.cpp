@@ -201,7 +201,11 @@ void Options::readOptionFromXml(XmlElement* pOptionNode, tSingleOptionSelection&
 
 
 File Options::getConfigFile() {
+#ifdef EXT_B
+	File configDir = File::getSpecialLocation(File::userDocumentsDirectory).getFullPathName() + JUCE_T("\\Reaper\\MCU_B\\Config\\");
+#else
 	File configDir = File::getSpecialLocation(File::userDocumentsDirectory).getFullPathName() + JUCE_T("\\Reaper\\MCU\\Config\\");
+#endif
 	if (!configDir.exists()) {
 		configDir.createDirectory();
 	}

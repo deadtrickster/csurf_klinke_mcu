@@ -274,17 +274,23 @@ Component** CommandMode::createEditorComponent() {
 	return reinterpret_cast<Component**>(&m_pMainComponent);
 }
 
+#ifdef EXT_B
+#define AM_FILE JUCE_T("\\ActionModeB.xml")
+#else
+#define AM_FILE JUCE_T("\\ActionMode.xml")
+#endif
+
 File CommandMode::getConfigFile(boolean bLookAtProgramDir) {
 	File configDir = File::getSpecialLocation(File::userDocumentsDirectory).getFullPathName() + JUCE_T("\\Reaper\\MCU\\Config\\");
-	if (!configDir.exists() || !File(configDir.getFullPathName() + JUCE_T("\\ActionMode.xml")).exists()) {
+	if (!configDir.exists() || !File(configDir.getFullPathName() + AM_FILE).exists()) {
 		if (bLookAtProgramDir) {
 			File configDirDll = File::getSpecialLocation(File::currentExecutableFile).getParentDirectory().getFullPathName() + JUCE_T("\\Plugins\\MCU\\Config\\");
 			if (configDirDll.exists()) {
-				return File(configDirDll.getFullPathName() + JUCE_T("\\ActionMode.xml")); 
+				return File(configDirDll.getFullPathName() + AM_FILE); 
 			}
 		}
 		configDir.createDirectory();
 	}
-	return File(configDir.getFullPathName() + JUCE_T("\\ActionMode.xml")); 
+	return File(configDir.getFullPathName() + AM_FILE); 
 }
 

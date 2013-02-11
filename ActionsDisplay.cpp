@@ -82,7 +82,11 @@ File ActionsDisplay::getConfigFile(boolean bLookAtProgramDir) {
 // 		}
 		configDir.createDirectory();
 	}
+#ifdef EXT_B
+	return File(configDir.getFullPathName() + JUCE_T("\\GlobalActionsB.xml")); 
+#else
 	return File(configDir.getFullPathName() + JUCE_T("\\GlobalActions.xml")); 
+#endif
 }
 
 #define GA_ACTION JUCE_T("ACTION")
@@ -122,7 +126,7 @@ void ActionsDisplay::writeConfigFile() {
 			pRootElement->addChildElement(pNode);
 		}
 	}
-
+ 
 	pRootElement->writeToFile(getConfigFile(false), "", JUCE_T("UTF-8"));
 
 	delete(pRootElement);

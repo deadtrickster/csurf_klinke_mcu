@@ -6,6 +6,14 @@
 #include "ProjectConfig.h"
 #include "csurf.h"
 
+#ifdef EXT_B
+#define CONFIG_ID "<MCU_B_KLINKE"
+#define CONFIG_ID_JUCE JUCE_T("<MCU_B_KLINKE")
+#else
+#define CONFIG_ID "<MCU_KLINKE"
+#define CONFIG_ID_JUCE JUCE_T("<MCU_KLINKE")
+#endif
+
 
 bool ProcessExtensionLine(const char *line, ProjectStateContext *ctx, bool isUndo, struct project_config_extension_t *reg) // returns BOOL if line (and optionally subsequent lines) processed
 {
@@ -67,15 +75,10 @@ bool ProjectConfig::processExtensionLine(const char *line, ProjectStateContext *
 {
  	bool commentign=false;
 	String buildString;
-	// alle Lines in einen String packen und m_xmlStroage[GetMasterTrack] = new XmlDocument(String), alle leseclients aufrufen
 
 	char linebuf[4096];
-	//while (!String(line).contains(JUCE_T("<MCU_KLINKE"))) {
-	//	if (ctx->GetLine(linebuf,sizeof(linebuf))) break; // EOF
-  //  line = linebuf;
-	//}
 
-	if (String(line).contains(JUCE_T("<MCU_KLINKE"))) {
+	if (String(line).contains(CONFIG_ID_JUCE)) {
 		for (;;)
 		{
 			if (ctx->GetLine(linebuf,sizeof(linebuf))) break;
@@ -113,7 +116,7 @@ void ProjectConfig::saveExtensionConfig(ProjectStateContext *ctx, bool isUndo, s
 // 	xmlDocString.replace(JUCE_T('<'), JUCE_T('@#$'));
 // 	xmlDocString.replace(JUCE_T('>'), JUCE_T('$#@'));
 
-	ctx->AddLine("<MCU_KLINKE");
+	ctx->AddLine(CONFIG_ID);
 // the fucking buffer overwrite in ctx->AddLine took me two days of debugging
 // to avoid it, the xmlDocString must be diveded in single parts
 	int from = 0;

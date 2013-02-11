@@ -16,7 +16,7 @@
 
 bool MultiTrackMode::s_flipmode = false;
 bool MultiTrackMode::s_mcpmode = false;
-
+ 
 MultiTrackMode::MultiTrackMode(CCSManager* pManager) : CCSMode(pManager),
 m_pTrackStatesEditor(NULL),
 m_lastSelectedTrackNr(-1)
