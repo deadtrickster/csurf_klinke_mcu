@@ -21,8 +21,8 @@ MCU=>PC:
   90 2C vv    :   assignment EQ
   90 2D vv    :   assignment instrument
   90 2E vv    :   bank down button (vv: 00=release, 7f=push)
-  90 2F vv    :   channel down button (vv: ..)
-  90 30 vv    :   bank up button (vv:..)
+  90 2F vv    :   bank up button (vv:..)
+  90 30 vv    :   channel down button (vv: ..)
   90 31 vv    :   channel up button (vv:..)
   90 32 vv    :   flip button
   90 33 vv    :   global view button

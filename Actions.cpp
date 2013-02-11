@@ -71,8 +71,8 @@ void Actions::addActions() {
   addKeyAction("VPot Assign EQ", 0x2c);
   addKeyAction("VPot Assign Instrument", 0x2d);
   addKeyAction("Bank down", 0x2e);
-  addKeyAction("Channel down", 0x2f);
-  addKeyAction("Bank up", 0x30);
+  addKeyAction("Bank up", 0x2f);
+  addKeyAction("Channel down", 0x30);
   addKeyAction("Channel up", 0x31);
   addKeyAction("Flip", 0x32);
   addKeyAction("Global View", 0x33);
@@ -140,9 +140,14 @@ void Actions::addKeyAction(const char* description, int buttonId)
 {
   // the description and id literals must created on the heap
   char* _description = new char[200];
-  sprintf(_description, "Mackie Control Klinke: %s (key)", description);
   char* _id = new char[100];
+#ifdef EXT_B
+  sprintf(_description, "Mackie Control Klinke B: %s (key)", description);
+  sprintf(_id, "MCUKLINKE%ikeyB", buttonId);
+#else
+  sprintf(_description, "Mackie Control Klinke: %s (key)", description);
   sprintf(_id, "MCUKLINKE%ikey", buttonId);
+#endif
   m_literals.push_front(_description);
   m_literals.push_front(_id);
   m_actions.push_front(new Actions::Action(_description, _id, buttonId, false));
@@ -154,9 +159,14 @@ void Actions::addButtonAction(const char* description, int buttonId)
 {
   // the description and id literals must created on the heap
   char* _description = new char[200];
-  sprintf(_description, "Mackie Control Klinke: %s (button)", description);
   char* _id = new char[100];
+#ifdef EXT_B
+  sprintf(_description, "Mackie Control Klinke B: %s (button)", description);
+  sprintf(_id, "MCUKLINKE%ibuttonB", buttonId);
+#else
+  sprintf(_description, "Mackie Control Klinke: %s (button)", description);
   sprintf(_id, "MCUKLINKE%ibutton", buttonId);
+#endif
   m_literals.push_front(_description);
   m_literals.push_front(_id);
   m_actions.push_front(new Actions::Action(_description, _id, buttonId, true));
