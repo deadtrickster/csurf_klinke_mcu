@@ -940,7 +940,7 @@ void Tracks::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction act
 }
 
 MediaTrack* Tracks::getMediaTrackForGUID(String guid) {
-	BOOST_FOREACH(MediaTrack*& pMT, *m_pAllTracksNow) {
+	BOOST_FOREACH(MediaTrack* pMT, *m_pAllTracksNow) {
 		if (guid == GUID2String(GetTrackGUID(pMT))) {
 			return pMT;
 		}

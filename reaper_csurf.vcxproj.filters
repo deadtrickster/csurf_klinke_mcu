@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{222c01ba-59ba-46ca-a968-d8102ca354e1}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h">
+      <UniqueIdentifier>{a81ed5e6-dfca-4984-9fce-72d774e2c284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\CommandMode_h">
+      <UniqueIdentifier>{aac88c07-976e-4c10-985a-ecf8c882db1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\PlugMode_h">
+      <UniqueIdentifier>{56ffc2a0-d0b1-4e70-9a03-ce8ec22e78e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h">
+      <UniqueIdentifier>{e622687f-3708-4b66-907c-970b7f996141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\SendMode_h">
+      <UniqueIdentifier>{9ebb0baa-5607-4f99-a5ec-b585100b89a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\Basics_h">
+      <UniqueIdentifier>{c8ecb041-1491-45db-a002-6fa161e7dd20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CCSModes_h\MultiTrackModes_h">
+      <UniqueIdentifier>{7dccac1c-9570-4e0c-a68f-1d71ce7248bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Display_h">
+      <UniqueIdentifier>{75dc9544-a218-4522-bbbf-d5038276963b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d912e118-5050-4573-8459-ecdd2d5fa8db}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src">
+      <UniqueIdentifier>{824bd3f9-500f-4dd9-a96f-ea3ce969a803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\CommandMode_src">
+      <UniqueIdentifier>{3fd83bc7-5a5c-4a80-813b-9b37435c8014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\PlugMode_src">
+      <UniqueIdentifier>{9d91059b-c687-4319-b7fd-c13cf4c8ef44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src">
+      <UniqueIdentifier>{2acf1d19-c04d-491e-aeea-ad1506897268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\SendMode_src">
+      <UniqueIdentifier>{9f3d9a0e-2889-4e7d-8bfc-514eb243ed44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\Basics_src">
+      <UniqueIdentifier>{14bbd6f2-034a-4468-be24-330aa2cb8f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CCSModes_src\MultiTrackModes_src">
+      <UniqueIdentifier>{5fa1e310-a7b8-4f00-8600-978903beb724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Display_src">
+      <UniqueIdentifier>{cbd89adc-da8e-416b-b4d7-6c54ab14a749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE">
+      <UniqueIdentifier>{f0034465-cd18-4720-b0e9-fae23d740c7d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="csurf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="csurf_mcu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mcu_button_defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMoveWatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\reaper_plugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\reaper_plugin_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Region.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="std_helper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UndoEnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VPOT_LED.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandMode.h">
+      <Filter>Header Files\CCSModes_h\CommandMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandModeMainComponent.h">
+      <Filter>Header Files\CCSModes_h\CommandMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandModePageComponent.h">
+      <Filter>Header Files\CCSModes_h\CommandMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandModeVPOTComponent.h">
+      <Filter>Header Files\CCSModes_h\CommandMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugAccess.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginWatcher.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMap.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMapManager.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMode.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMode2ndOptions.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeOptions.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeSelectors.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugPresetManager.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugWindowManager.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugMapSaveDialog.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeBankComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeBankReferenceComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeChannelComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeFaderComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeMapInfoComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModePageComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModePageReferenceComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeParamComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeSingleBankComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeSingleChannelComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeSinglePageComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeVPOTComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PlugModeVPOTTableComponent.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="TabbedComponentWithCallback.h">
+      <Filter>Header Files\CCSModes_h\PlugMode_h\PlugModeEditor_h</Filter>
+    </ClInclude>
+    <ClInclude Include="ReceiveMode.h">
+      <Filter>Header Files\CCSModes_h\SendMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="SendMode.h">
+      <Filter>Header Files\CCSModes_h\SendMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="SendReceiveModeBase.h">
+      <Filter>Header Files\CCSModes_h\SendMode_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CCSManager.h">
+      <Filter>Header Files\CCSModes_h\Basics_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CCSMode.h">
+      <Filter>Header Files\CCSModes_h\Basics_h</Filter>
+    </ClInclude>
+    <ClInclude Include="CCSModesEditor.h">
+      <Filter>Header Files\CCSModes_h\Basics_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Header Files\CCSModes_h\Basics_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Header Files\CCSModes_h\Basics_h</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTrackMode.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTrackOptions.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTrackOptions2.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTrackSelector.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PanMode.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="PerformanceMode.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackStatesEditorComponent.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackStatesTableComponent.h">
+      <Filter>Header Files\CCSModes_h\MultiTrackModes_h</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionsDialogComponent.h">
+      <Filter>Header Files\Display_h</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionsDisplay.h">
+      <Filter>Header Files\Display_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files\Display_h</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayHandler.h">
+      <Filter>Header Files\Display_h</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayTrackMeter.h">
+      <Filter>Header Files\Display_h</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Actions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csurf_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csurf_mcu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMoveWatcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Region.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UndoEnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VPOT_LED.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandMode.cpp">
+      <Filter>Source Files\CCSModes_src\CommandMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandModeMainComponent.cpp">
+      <Filter>Source Files\CCSModes_src\CommandMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandModePageComponent.cpp">
+      <Filter>Source Files\CCSModes_src\CommandMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandModeVPOTComponent.cpp">
+      <Filter>Source Files\CCSModes_src\CommandMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugAccess.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginWatcher.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMap.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMapManager.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMode.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMode2ndOptions.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeOptions.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeSelectors.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugPresetManager.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugWindowManager.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugMapSaveDialog.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeBankComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeBankReferenceComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeChannelComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeFaderComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeMapInfoComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModePageComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModePageReferenceComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeParamComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeSingleBankComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeSingleChannelComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeSinglePageComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeVPOTComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PlugModeVPOTTableComponent.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="TabbedComponentWithCallback.cpp">
+      <Filter>Source Files\CCSModes_src\PlugMode_src\PlugModeEditor_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ReceiveMode.cpp">
+      <Filter>Source Files\CCSModes_src\SendMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="SendMode.cpp">
+      <Filter>Source Files\CCSModes_src\SendMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="SendReceiveModeBase.cpp">
+      <Filter>Source Files\CCSModes_src\SendMode_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CCSManager.cpp">
+      <Filter>Source Files\CCSModes_src\Basics_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CCSMode.cpp">
+      <Filter>Source Files\CCSModes_src\Basics_src</Filter>
+    </ClCompile>
+    <ClCompile Include="CCSModesEditor.cpp">
+      <Filter>Source Files\CCSModes_src\Basics_src</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Source Files\CCSModes_src\Basics_src</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTrackMode.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTrackOptions.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTrackOptions2.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTrackSelector.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PanMode.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="PerformanceMode.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackStatesEditorComponent.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackStatesTableComponent.cpp">
+      <Filter>Source Files\CCSModes_src\MultiTrackModes_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionsDialogComponent.cpp">
+      <Filter>Source Files\Display_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionsDisplay.cpp">
+      <Filter>Source Files\Display_src</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files\Display_src</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayHandler.cpp">
+      <Filter>Source Files\Display_src</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayTrackMeter.cpp">
+      <Filter>Source Files\Display_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\reaper_ninjamloop\projectconfig_example.cpp">
+      <Filter>JUCE</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="juce\JUCE_CodeFragments.txt">
+      <Filter>JUCE</Filter>
+    </None>
+    <None Include="MCU_Klinke_Readme.txt" />
+  </ItemGroup>
+</Project>
