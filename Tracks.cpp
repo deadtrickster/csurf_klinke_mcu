@@ -486,7 +486,11 @@ void Tracks::tracksStatesChanged() {
 		signalTrackRemoved(pMT);
 	}
 
-	swap(m_pAllTracksBefore, m_pAllTracksNow);
+	m_pAllTracksBefore->clear();
+
+	for ( TrackIterator ti; !ti.end(); ++ti) {
+		m_pAllTracksBefore->insert(*ti);
+	}
 
 	buildGraph();
 	if (!m_structure.trackExists(m_pCurrentBaseTrack)) {
@@ -855,7 +859,7 @@ TrackState* Tracks::getTrackStateForMediaTrack( MediaTrack* pMediaTrack )
 	String strGUID = GUID2String(GetTrackGUID(pMediaTrack));
 	BOOST_FOREACH(tTrackStates::value_type& v, m_trackStates) {
 		if (v.second->getGuidAsString() == strGUID) {
-			if (v.second->getMediaTrack() != pMediaTrack) {
+			if (v.second->getMediaTrack() != pMediaTrack && pMediaTrack != NULL) {
 				v.second->setMediaTrack(pMediaTrack);
 			}
 			return v.second;
@@ -920,18 +924,21 @@ void Tracks::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction act
 			m_trackStates.clear();
 			break;
 		case ProjectConfig::READ:
+      tracksStatesChanged();
 			pStatesNode = pXmlElement->getChildByName(TRACKSTATE_NODE_ROOT);
 			if (pStatesNode) {
 				forEachXmlChildElement (*pStatesNode, pChild) {
 					if (pChild->getTagName() == TRACKSTATE_NODE_SINGLE_STATE) {
 						TrackState* pTS = new TrackState();
-						pTS->readTrackStatesFromProjectConfig(pChild);
-						TrackState* pOldTS = getTrackStateForMediaTrack(pTS->getMediaTrack());
-						if (pOldTS) { // overwrite existing track state, so first delete old one
-							delete (m_trackStates[pTS->getGuidAsString()]);
-							m_trackStates.erase(m_trackStates.find(pTS->getGuidAsString()));
-						}
-						m_trackStates[pTS->getGuidAsString()] = pTS;
+            pTS->readTrackStatesFromProjectConfig(pChild);
+            if (pTS->getMediaTrack()) {
+              TrackState* pOldTS = getTrackStateForMediaTrack(pTS->getMediaTrack());
+              if (pOldTS) { // overwrite existing track state, so first delete old one
+                delete (m_trackStates[pTS->getGuidAsString()]);
+                m_trackStates.erase(m_trackStates.find(pTS->getGuidAsString()));
+              }
+              m_trackStates[pTS->getGuidAsString()] = pTS;
+            }
 					}
 				}
 			}
