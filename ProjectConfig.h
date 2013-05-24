@@ -4,11 +4,12 @@
 */
 
 #pragma once
-#include "boost/signals.hpp"
+#include "boost/signals2.hpp"
 #include "reaper_plugin.h"
 #include "juce.h"
 #include <map>
 
+using namespace boost::signals2;
 
 class ProjectConfig
 {
@@ -30,7 +31,7 @@ public:
 		WRITE,
 		FREE
 	}; //  only modes then can be set directly are enumerated here
-	typedef boost::signal<void (XmlElement*, EAction)> tProjectChangedSignal; // XmlElement is NULL in BEGIN_LOAD case 
+	typedef signal<void (XmlElement*, EAction)> tProjectChangedSignal; // XmlElement is NULL in BEGIN_LOAD case 
 	typedef tProjectChangedSignal::slot_type tProjectChangedSignalSlot;
 	int connect2ProjectChangeSignal(const tProjectChangedSignalSlot& slot); // the returned int is the id that must be used for disconnect
 	void disconnectProjectChangeSignal(int connectionId);
@@ -46,7 +47,7 @@ private:
 	tXMLStorage m_xmlStorage;
 
 	tProjectChangedSignal m_signalProjectChanged;
-	std::map<int, boost::signals::connection> m_activeProjectChangedConnections;
+	std::map<int, connection> m_activeProjectChangedConnections;
 	int m_nextConnectionId;
 
 	MediaTrack* m_pLastMaster;

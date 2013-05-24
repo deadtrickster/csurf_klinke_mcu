@@ -4,13 +4,15 @@
 */
 
 #pragma once
-#include "boost/signals.hpp"
+#include "boost/signals2.hpp"
 #include "reaper_plugin.h"
 #include <src/juce_WithoutMacros.h> 
 #include <map>
 
 class MediaTrack;
 class CSurf_MCU;
+
+using namespace boost::signals2;
 
 class PluginWatcher
 {
@@ -21,12 +23,12 @@ public:
 	void setPlugin(MediaTrack* pMediaTrack, int iSlot);
 	void frame(DWORD time);
 
-	typedef boost::signal<void (MediaTrack*, int, int, double, String)> tParamSignal; // Parameters: MediaTrack, Slot, ParameterNummer, Value, ValueString
+	typedef signal<void (MediaTrack*, int, int, double, String)> tParamSignal; // Parameters: MediaTrack, Slot, ParameterNummer, Value, ValueString
 	typedef tParamSignal::slot_type tParamSignalSlot;
 	int connect2ParamChanged(const tParamSignalSlot& slot); // the returned int is the id that must be used for disconnect
 	void disconnectParamChange(int connectionId);
 
-	typedef boost::signal<void (MediaTrack*, int, String)> tNameSignal; // Parameters: MediaTrack, Slot, PlugName
+	typedef signal<void (MediaTrack*, int, String)> tNameSignal; // Parameters: MediaTrack, Slot, PlugName
 	typedef tNameSignal::slot_type tNameSignalSlot;
 	int connect2NameChanged(const tNameSignalSlot& slot); // the returned int is the id that must be used for disconnect
 	void disconnectNameChange(int connectionId);
@@ -37,12 +39,12 @@ protected:
 	bool plugExist();
 	MediaTrack* m_pMediaTrack;
 	int m_iSlot;
-	boost::signals::connection m_signalFrameConnection;
+	connection m_signalFrameConnection;
 
 	tParamSignal m_signalParamChanged;
-	std::map<int, boost::signals::connection> m_activeParamConnections;
+	std::map<int, connection> m_activeParamConnections;
 	tNameSignal m_signalNameChanged;
-	std::map<int, boost::signals::connection> m_activeNameConnections;
+	std::map<int, connection> m_activeNameConnections;
 	int m_nextConnectionId;
 
 	typedef	std::map<int, double> tParamValueCache;

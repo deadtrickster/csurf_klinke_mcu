@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reaper_csurf", "reaper_csurf.vcxproj", "{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reaper_csurf_mcu_klinke", "reaper_csurf.vcxproj", "{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,6 +16,7 @@ Global
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Debug|Win32.ActiveCfg = Debug|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Debug|Win32.Build.0 = Debug|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Debug|x64.ActiveCfg = Debug|x64
+		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Debug|x64.Build.0 = Debug|x64
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release_B|Win32.ActiveCfg = Release_B|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release_B|Win32.Build.0 = Release_B|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release_B|x64.ActiveCfg = Release_B|x64
@@ -23,6 +24,7 @@ Global
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release|Win32.ActiveCfg = Release|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release|Win32.Build.0 = Release|Win32
 		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release|x64.ActiveCfg = Release|x64
+		{B9B6E91D-CB13-40BC-B9BB-DCC3787A0681}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

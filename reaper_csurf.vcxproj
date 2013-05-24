@@ -122,7 +122,7 @@
       </HeaderFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MP -D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(JUCE);$(REAPER_EXTENSION_SDK)\jmde;$(REAPER_EXTENSION_SDK)\WDL;$(BOOST);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;_DEBUG;DEBUG;TIXML_USE_TICPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -145,7 +145,7 @@
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug\reaper_csurf_mcu_klinke.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib\win32;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/reaper_csurf.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Debug/reaper_csurf.lib</ImportLibrary>
@@ -192,7 +192,7 @@
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug\reaper_csurf_mcu_klinke.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/reaper_csurf.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Debug/reaper_csurf.lib</ImportLibrary>
@@ -240,7 +240,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release\reaper_csurf_mcu_klinke.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib\win32;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release/reaper_csurf_mcu_klinke.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -289,7 +289,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release\reaper_csurf_mcu_klinke_x64.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib\x64;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/reaper_csurf.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Release/reaper_csurf.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
@@ -336,7 +336,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release\reaper_csurf_mcu_klinke.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib\win32;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Release/reaper_csurf_mcu_klinke.pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -385,7 +385,7 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;winmm.lib;user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release\reaper_csurf_mcu_klinke_x64.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(BOOST)\lib\x64;$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(JUCE)\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/reaper_csurf.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Release/reaper_csurf.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>

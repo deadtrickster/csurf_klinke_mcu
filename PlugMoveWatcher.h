@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <boost/signals.hpp>
+#include <boost/signals2.hpp>
 #include <boost/tuple/tuple.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 #include <src/juce_WithoutMacros.h> 
@@ -13,6 +13,7 @@
 #include <set>
 #include "csurf.h"
 
+using namespace boost::signals2;
 
 class MediaTrack;
 
@@ -36,8 +37,8 @@ private:
 class PlugMoveWatcher
 {
 public:
-	typedef boost::signal<void (MediaTrack*, int, MediaTrack*, int)> tPlugMoveSignal; // GUID oldPos, slot oldPos, GUID newPos, slot newPos
-	typedef boost::signal<void ()> tPlugMoveFinishedSignal;
+	typedef signal<void (MediaTrack*, int, MediaTrack*, int)> tPlugMoveSignal; // GUID oldPos, slot oldPos, GUID newPos, slot newPos
+	typedef signal<void ()> tPlugMoveFinishedSignal;
 	typedef tPlugMoveSignal::slot_type tPlugMoveSignalSlot;
 	typedef tPlugMoveFinishedSignal::slot_type tPlugMoveFinishedSignalSlot;
 	
@@ -59,7 +60,7 @@ private:
 
 	static PlugMoveWatcher* s_instance;
 
-	std::map<int, boost::signals::connection> m_activePlugMoveConnections;
+	std::map<int, connection> m_activePlugMoveConnections;
 	typedef	boost::tuple<MediaTrack*, int> tPlug;
  	typedef std::map<tPlug, PlugInstanceInfo*> tPlugInstances;
 	tPlugInstances m_plugInstanceInfos;

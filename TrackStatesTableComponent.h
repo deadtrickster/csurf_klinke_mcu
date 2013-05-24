@@ -80,7 +80,7 @@ private:
 	int m_trackAddedConnection;
 	int m_trackRemovedConnection;
 
-	boost::signals::connection m_frameConnection;
+	connection m_frameConnection;
 };
 
 //==============================================================================

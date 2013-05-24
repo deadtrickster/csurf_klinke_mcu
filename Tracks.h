@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "boost/signals.hpp"
+#include "boost/signals2.hpp"
 #include<list>
 #include<set>
 #include<vector>
@@ -17,6 +17,7 @@
 #include "csurf_mcu.h"
 #include "Assert.h"
 
+using namespace boost::signals2;
 
 class MediaTrack;
 class Tracks;
@@ -172,7 +173,7 @@ public:
 class Tracks
 {
 public:
-	typedef boost::signal<void (MediaTrack*)> tTrackSignal;
+	typedef signal<void (MediaTrack*)> tTrackSignal;
 	typedef tTrackSignal::slot_type tTrackSignalSlot;
 
 	static Tracks* instance();
@@ -265,8 +266,8 @@ private:
 	tTrackSignal signalTrackAdded;
 	tTrackSignal signalTrackRemoved;
 
-	std::map<int, boost::signals::connection> m_trackAddedConnections;
-	std::map<int, boost::signals::connection> m_trackRemovedConnections;
+	std::map<int, connection> m_trackAddedConnections;
+	std::map<int, connection> m_trackRemovedConnections;
 	int m_nextConnectionId;
 
 	int m_projectChangedConnectionId;

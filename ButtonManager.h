@@ -30,7 +30,7 @@ private:
   bool m_button_hold_used[NUM_BUTTONS]; // when pressing a button this will send to false and after sending a hold event, this will be set to true
   DWORD m_button_pressed_time[NUM_BUTTONS]; 
 
-  boost::signals::connection m_signalFrameConnection;
+  connection m_signalFrameConnection;
 
   CSurf_MCU* m_pMCU;
 };

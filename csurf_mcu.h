@@ -19,7 +19,9 @@
 #include "mcu_button_defines.h"
 #include "Region.h"
 #include "ccsmanager.h"
-#include "boost/signals.hpp"
+#include "boost/signals2.hpp"
+
+using namespace boost::signals2;
 
 static const GUID GUID_NOT_ACTIVE = 
 { 0x00000000, 0x0000, 0x0000, { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 } };
@@ -303,7 +305,7 @@ private:
 	Component* m_pActionsDialogComponent;
 
 public:
-	typedef boost::signal<void (DWORD)> tFrameSignal;
+	typedef signal<void (DWORD)> tFrameSignal;
 	typedef tFrameSignal::slot_type tFrameSignalSlot;
 
 	static int s_iNumInstances;
@@ -311,7 +313,7 @@ public:
 private:
 	tFrameSignal signalFrame;
 public:
-	boost::signals::connection connect2FrameSignal(const tFrameSignalSlot& slot) {return signalFrame.connect(slot);}
+	connection connect2FrameSignal(const tFrameSignalSlot& slot) {return signalFrame.connect(slot);}
 
 public:
   CSurf_MCU(bool ismcuex, int offset, int size, int indev, int outdev, int cfgflags, int *errStats);
@@ -423,9 +425,9 @@ public:
 	const char* CSurf_MCU::GetDescString()
   {
 #ifdef EXT_B
-    m_descspace.Set("Mackie Control B (Klinke v0.8.9.0)");
+    m_descspace.Set("Mackie Control B (Klinke v0.8.2.2)");
 #else
-    m_descspace.Set("Mackie Control (Klinke v0.8.9.0)");
+    m_descspace.Set("Mackie Control (Klinke v0.8.2.2)");
 #endif
     char tmp[512];
     sprintf(tmp," (dev %d,%d)",m_midi_in_dev,m_midi_out_dev);
