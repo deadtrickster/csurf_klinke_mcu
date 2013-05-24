@@ -211,14 +211,16 @@ void TrackStatesTableComponent::paintRowBackground(Graphics& g, int rowNumber, i
 void TrackStatesTableComponent::frame(DWORD time) {
 	for ( TrackIterator ti; !ti.end(); ++ti) {
 		TrackState* pTS = Tracks::instance()->getTrackStateForMediaTrack(*ti);
-		TableTrackState tts = TableTrackState(*pTS);
-
-		int row = MediaTrackInfo::getTrackNr(*ti) - 1;
-		if (getRowMediaTrack(row) != NULL && !(m_vecTrackStates[row] == tts)) {
-			m_vecTrackStates[row] = *pTS;
-			m_table->flipRowSelection(row);
-			m_table->flipRowSelection(row);
-		}
+    if (pTS && pTS->getMediaTrack() != NULL) {
+      TableTrackState tts = TableTrackState(*pTS);
+      
+      int row = MediaTrackInfo::getTrackNr(*ti) - 1;
+      if (getRowMediaTrack(row) != NULL && !(m_vecTrackStates[row] == tts)) {
+        m_vecTrackStates[row] = *pTS;
+        m_table->flipRowSelection(row);
+        m_table->flipRowSelection(row);
+      }
+    }
 	}}
 
 MediaTrack* TrackStatesTableComponent::getRowMediaTrack( int row )
