@@ -918,10 +918,8 @@ void Tracks::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction act
 			}
 			break;
 		case ProjectConfig::FREE:
-			BOOST_FOREACH(tTrackStates::value_type& v, m_trackStates) {
-				delete(v.second);
-			}
-			m_trackStates.clear();
+			// there is no need to clear the m_trackStates here,
+		  // this is done in trackStatesChanged()
 			break;
 		case ProjectConfig::READ:
       tracksStatesChanged();
