@@ -1,0 +1,46 @@
+\subsection{Button-emulating actions}\label{buttonactions}
+
+The previous section described how \reaper-Actions can be triggered
+by the MCU. But it is also possible to use the \reaper-Action
+system to ``trigger'' the buttons of the MCU. Of course the buttons
+are only pressed virtually, but for the \mcu extension it doesn't make
+any difference if a button is pressed with a finger or a \reaper
+action. But what is the use-case for this feature? For owners of a
+real Mackie MCU I don't see any, but the owners of other hardware like
+the BCF2000 can use this feature to ``extend'' there hardware either
+with keys from their computer keyboard or with other MIDI hardware
+like the Korg nanoPAD.
+
+\pikFigure[0.73][11.4cm][-2.4mm]{Screenshot_Actions_Klinke}{\reaper-Actions
+  added by the extension}{}{}
+
+How does this work? Figure~\ref{F:Screenshot_Actions_Klinke} shows the
+action dialog with the action filter set to ``Klinke''. As you can
+see, all actions begin with the String ``Mackie Control Klinke'',
+followed by the name of a button of the Mackie Control. The action
+descriptions end either with ``(button)'' or ``(key)''. You can assign
+these actions as described in section~\ref{globalactions}, the only
+difference is, that you don't press a button of the Global View
+section, but a button on a different MIDI controller or a key on your
+computer keyboard. 
+
+So what is the difference between the ``(button)'' and ``(key)''
+variants of those actions? As mentioned, an action simulates that
+a MCU buttons is pressed. But a MCU button does also send an event
+when a button is released, so this must be simulated also. But
+e.g. the release of a computer keyboard key isn't recognized by
+actions that are assigned to this key. So the ``(key)'' variant
+automatically send also the release event directly after the press
+event. The ``(button)'' variant waits after the press event till the
+action is triggered again and then sends the release event. Most MIDI
+controllers sends an event when a button on the controller is released,
+in this case they should be assigned to the ``(button)''
+variant. Coputer keyboard keys and MIDI controller buttons that only send an
+event when the button is pressed should be assigned the ``(key)'' variant.
+
+But fore some buttons like the ``Alt modifer'' only the ``(button)''
+variant exists. For those buttons it's important that they are hold
+for a longer time, so that the ``(key)'' variant doesn't help. But you
+can also assign keys to the ``(button)'' variant, in this case the
+button is virtually hold till you press the key for the second time.
+
