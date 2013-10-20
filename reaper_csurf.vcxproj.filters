@@ -448,9 +448,6 @@
     <ClCompile Include="DisplayTrackMeter.cpp">
       <Filter>Source Files\Display_src</Filter>
     </ClCompile>
-    <ClCompile Include="..\reaper_ninjamloop\projectconfig_example.cpp">
-      <Filter>JUCE</Filter>
-    </ClCompile>
     <ClCompile Include="Tracks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
