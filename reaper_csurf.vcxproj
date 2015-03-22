@@ -300,7 +300,7 @@
       <ProgramDatabaseFile>.\Release/reaper_csurf.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Release/reaper_csurf.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <Bscmake>
