@@ -16,18 +16,17 @@
 
 bool ProcessExtensionLine(const char *line, ProjectStateContext *ctx, bool isUndo, struct project_config_extension_t *reg) // returns BOOL if line (and optionally subsequent lines) processed
 {
-  return false;
-  //  return ProjectConfig::instance()->processExtensionLine(line, ctx, isUndo, reg);
+	return ProjectConfig::instance()->processExtensionLine(line, ctx, isUndo, reg);
 }
 
 void SaveExtensionConfig(ProjectStateContext *ctx, bool isUndo, struct project_config_extension_t *reg)
 {
-  //  ProjectConfig::instance()->saveExtensionConfig(ctx, isUndo, reg);
+  ProjectConfig::instance()->saveExtensionConfig(ctx, isUndo, reg);
 }
 
 void BeginLoadProjectState(bool isUndo, struct project_config_extension_t *reg)
 {
-  //  ProjectConfig::instance()->beginLoadProjectState(isUndo, reg);
+  ProjectConfig::instance()->beginLoadProjectState(isUndo, reg);
 }
 
 project_config_extension_t csurf_mcu_pcreg={
