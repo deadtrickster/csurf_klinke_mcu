@@ -54,11 +54,11 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeSingleChannelComponent* getSingleChannelComponent(int iChannel){return static_cast<PlugModeSingleChannelComponent*>(m_tabbedChannels->getTabContentComponent(iChannel));}
-		PlugModeSingleChannelComponent* getSelectedChannelComponent(){return getSingleChannelComponent(m_tabbedChannels->getCurrentTabIndex());}
-		void selectedChannelChanged(int iChannel);
-		void selectedTabHasChanged(){updateEverything();}
-		void updateEverything();
+                PlugModeSingleChannelComponent* getSingleChannelComponent(int iChannel){return static_cast<PlugModeSingleChannelComponent*>(m_tabbedChannels->getTabContentComponent(iChannel));}
+                PlugModeSingleChannelComponent* getSelectedChannelComponent(){return getSingleChannelComponent(m_tabbedChannels->getCurrentTabIndex());}
+                void selectedChannelChanged(int iChannel);
+                void selectedTabHasChanged(){updateEverything();}
+                void updateEverything();
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -70,7 +70,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugModeComponent* m_pMainComponent;
+                PlugModeComponent* m_pMainComponent;
     //[/UserVariables]
 
     //==============================================================================

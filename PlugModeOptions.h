@@ -33,19 +33,19 @@
 #define PMOA_ONLY_CHAIN JUCE_T("only chain")
 
 class PlugModeOptions :
-	public Options
+        public Options
 {
 public:
-	PlugModeOptions(DisplayHandler* pDH);
+        PlugModeOptions(DisplayHandler* pDH);
 public:
-	virtual ~PlugModeOptions(void);
+        virtual ~PlugModeOptions(void);
 
 protected:
-	String getConfigFileName();
+        String getConfigFileName();
 
-	void checkAndModifyOptions();
+        void checkAndModifyOptions();
 
 private:
-	bool m_bMCUFollowModified;
-	int m_iLastMCUFollowOption;
+        bool m_bMCUFollowModified;
+        int m_iLastMCUFollowOption;
 };

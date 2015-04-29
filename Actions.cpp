@@ -36,11 +36,11 @@ Actions::Action::Action(const char* description, const char* id, int buttonId, b
 }
 
 Actions* Actions::instance() {
-	if (s_instance == NULL) {
-		s_instance = new Actions();
+  if (s_instance == NULL) {
+    s_instance = new Actions();
     s_instance->addActions();
-	}
-	return s_instance;
+  }
+  return s_instance;
 }
 
 Actions::~Actions(){

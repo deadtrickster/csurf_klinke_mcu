@@ -16,5 +16,5 @@ TabbedComponentWithCallback::~TabbedComponentWithCallback(void)
 }
 
 void TabbedComponentWithCallback::currentTabChanged(const int newCurrentTabIndex, const String& newTabName) {
-	m_pCallback->selectedTabHasChanged();
+  m_pCallback->selectedTabHasChanged();
 }

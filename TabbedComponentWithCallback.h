@@ -9,16 +9,16 @@
 
 class TabbedCallback {
 public:
-	virtual void selectedTabHasChanged() = 0;
+        virtual void selectedTabHasChanged() = 0;
 };
 
 class TabbedComponentWithCallback :
-	public juce::TabbedComponent
+        public juce::TabbedComponent
 {
 public:
-	TabbedComponentWithCallback(const TabbedButtonBar::Orientation orientation, TabbedCallback* pCB);
-	~TabbedComponentWithCallback(void);
+        TabbedComponentWithCallback(const TabbedButtonBar::Orientation orientation, TabbedCallback* pCB);
+        ~TabbedComponentWithCallback(void);
 private:
-	TabbedCallback* m_pCallback;
-	void currentTabChanged (const int newCurrentTabIndex, const String& newTabName);
+        TabbedCallback* m_pCallback;
+        void currentTabChanged (const int newCurrentTabIndex, const String& newTabName);
 };

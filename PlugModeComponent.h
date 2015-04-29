@@ -54,21 +54,21 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void selectedBankChanged(int iBank);
-		void selectedPageChanged(int iPage);
-		void selectedChannelChanged(int iChannel, bool fader);
-		void updateEverything();
-		void updateLearnStatus();
-		PlugAccess* getPlugAccess(){return m_pPlugAccess;}
-		bool isUseParamName(){return m_useParamName->getToggleState();}
+                void selectedBankChanged(int iBank);
+                void selectedPageChanged(int iPage);
+                void selectedChannelChanged(int iChannel, bool fader);
+                void updateEverything();
+                void updateLearnStatus();
+                PlugAccess* getPlugAccess(){return m_pPlugAccess;}
+                bool isUseParamName(){return m_useParamName->getToggleState();}
 
-		void selectedPluginChanged(MediaTrack* pMediaTrack, int iSlot);
+                void selectedPluginChanged(MediaTrack* pMediaTrack, int iSlot);
 
-		void watchedPluginParameterChanged(MediaTrack* pMediaTrack, int iSlot, int iParameter, double dValue, String strValue);
+                void watchedPluginParameterChanged(MediaTrack* pMediaTrack, int iSlot, int iParameter, double dValue, String strValue);
 
-		void paramComponentPressed(PlugModeParamComponent* pPC);
+                void paramComponentPressed(PlugModeParamComponent* pPC);
 
-		PMVPot::tSteps* getStepTableClipBoard(){return &m_stepTableClipBoard;}
+                PMVPot::tSteps* getStepTableClipBoard(){return &m_stepTableClipBoard;}
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -81,11 +81,11 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugModeSingleBankComponent* getBankComponent(int iBank){return m_bankComponent->getSingleBankComponent(iBank);}
-		PlugAccess* m_pPlugAccess;
-		bool m_learnFader;
-		int m_paramChangedConnectionId;
-		PMVPot::tSteps m_stepTableClipBoard;
+                PlugModeSingleBankComponent* getBankComponent(int iBank){return m_bankComponent->getSingleBankComponent(iBank);}
+                PlugAccess* m_pPlugAccess;
+                bool m_learnFader;
+                int m_paramChangedConnectionId;
+                PMVPot::tSteps m_stepTableClipBoard;
     //[/UserVariables]
 
     //==============================================================================

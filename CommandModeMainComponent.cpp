@@ -54,8 +54,8 @@ CommandModeMainComponent::CommandModeMainComponent (CommandMode* pCommandMode)
 
 
     //[UserPreSize]
-		m_pCommandMode = pCommandMode;
-		updateTabNames();
+    m_pCommandMode = pCommandMode;
+    updateTabNames();
     //[/UserPreSize]
 
     setSize (810, 380);
@@ -67,7 +67,7 @@ CommandModeMainComponent::CommandModeMainComponent (CommandMode* pCommandMode)
 CommandModeMainComponent::~CommandModeMainComponent()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
-		m_pCommandMode->writeConfigFile();
+    m_pCommandMode->writeConfigFile();
     //[/Destructor_pre]
 
     deleteAndZero (tabbedPages);
@@ -105,9 +105,9 @@ void CommandModeMainComponent::focusLost (FocusChangeType cause)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void CommandModeMainComponent::updateTabNames() {
-	for (int i = 0; i < 8; i++) {
-		tabbedPages->setTabName(i, m_pCommandMode->getPage(i)->m_strPageName);
-	}
+  for (int i = 0; i < 8; i++) {
+    tabbedPages->setTabName(i, m_pCommandMode->getPage(i)->m_strPageName);
+  }
 }
 //[/MiscUserCode]
 

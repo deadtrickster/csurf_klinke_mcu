@@ -70,9 +70,9 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		CommandMode::Page* m_pPage;
-		int m_shift;
-		int m_channel;
+                CommandMode::Page* m_pPage;
+                int m_shift;
+                int m_channel;
     //[/UserVariables]
 
     //==============================================================================

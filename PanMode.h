@@ -9,17 +9,17 @@
 #include "MultiTrackSelector.h"
 
 class PanMode :
-	public MultiTrackMode
+        public MultiTrackMode
 {
 public:
-	PanMode(CCSManager* pManager);
+        PanMode(CCSManager* pManager);
 public:
-	virtual ~PanMode(void);
+        virtual ~PanMode(void);
 
-	bool vpotMoved(int channel, int numSteps); // numSteps are negativ for left rotation
+        bool vpotMoved(int channel, int numSteps); // numSteps are negativ for left rotation
 
-	bool faderTouched(int channel, bool touched);
-	void updateDisplay();
+        bool faderTouched(int channel, bool touched);
+        void updateDisplay();
 
-	Selector* getSelector(){return m_pSelector;}
+        Selector* getSelector(){return m_pSelector;}
 };

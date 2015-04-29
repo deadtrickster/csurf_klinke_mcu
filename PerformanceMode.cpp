@@ -12,15 +12,15 @@
 
 PerformanceMode::PerformanceMode(CCSManager* pManager) : CCSMode(pManager)
 {
-	m_pDisplay = new Display(pManager->getDisplayHandler(), 2);
-	m_pDisplay->changeText(0,0, "Performance Mode", 55);
+  m_pDisplay = new Display(pManager->getDisplayHandler(), 2);
+  m_pDisplay->changeText(0,0, "Performance Mode", 55);
 } 
 
 PerformanceMode::~PerformanceMode(void)
 {  
-	safe_delete(m_pDisplay);
+  safe_delete(m_pDisplay);
 }
 
 void PerformanceMode::updateDisplay() {
-	m_pCCSManager->getDisplayHandler()->switchTo(m_pDisplay);
+  m_pCCSManager->getDisplayHandler()->switchTo(m_pDisplay);
 }

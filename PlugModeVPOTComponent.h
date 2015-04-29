@@ -55,9 +55,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void updateEverything();
-		PlugModeParamComponent* getParamComponent(){return m_params;}
-		void changeParamId(int paramId, double value, String paramName);
+                void updateEverything();
+                PlugModeParamComponent* getParamComponent(){return m_params;}
+                void changeParamId(int paramId, double value, String paramName);
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -70,8 +70,8 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugModeComponent* m_pMainComponent;
-		PMVPot* m_pVPot;
+                PlugModeComponent* m_pMainComponent;
+                PMVPot* m_pVPot;
     //[/UserVariables]
 
     //==============================================================================

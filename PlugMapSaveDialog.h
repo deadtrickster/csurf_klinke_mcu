@@ -35,20 +35,20 @@
 #define SAVEMAP_CANCEL 12
 
 class SaveDialogWindow :
-	public DialogWindow
+        public DialogWindow
 {
 public:
-	SaveDialogWindow(const String& name,
-		const Colour& backgroundColour,
-		const bool escapeKeyTriggersCloseButton,
-		const bool addToDesktop) : DialogWindow(name, backgroundColour, escapeKeyTriggersCloseButton, addToDesktop){};
+        SaveDialogWindow(const String& name,
+                const Colour& backgroundColour,
+                const bool escapeKeyTriggersCloseButton,
+                const bool addToDesktop) : DialogWindow(name, backgroundColour, escapeKeyTriggersCloseButton, addToDesktop){};
 
-	~SaveDialogWindow() {
-	}
+        ~SaveDialogWindow() {
+        }
 
-	void closeButtonPressed() {
-		setVisible(false);
-	}
+        void closeButtonPressed() {
+                setVisible(false);
+        }
 };
 
 class PlugMapManager;
@@ -88,7 +88,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugMapManager* m_pPMM;
+                PlugMapManager* m_pPMM;
     //[/UserVariables]
 
     //==============================================================================

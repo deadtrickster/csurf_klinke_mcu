@@ -52,9 +52,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeVPOTComponent* getVPOT() {return m_vpot;}
-		PlugModeFaderComponent* getFader() {return m_fader;}
-		void updateEverything();
+                PlugModeVPOTComponent* getVPOT() {return m_vpot;}
+                PlugModeFaderComponent* getFader() {return m_fader;}
+                void updateEverything();
     //[/UserMethods]
 
     void paint (Graphics& g);

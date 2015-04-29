@@ -78,8 +78,8 @@ PlugModeVPOTComponent::PlugModeVPOTComponent (PlugModeComponent* pMC, PMVPot* pV
     setSize (600, 200);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pVPot = pVPot;
-		m_pMainComponent = pMC;
+    m_pVPot = pVPot;
+    m_pMainComponent = pMC;
     //[/Constructor]
 }
 
@@ -131,22 +131,22 @@ void PlugModeVPOTComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == m_copyButton)
     {
         //[UserButtonCode_m_copyButton] -- add your button handler code here..
-			*(m_pMainComponent->getStepTableClipBoard()) = *(m_pVPot->getStepsMap());
-			updateEverything();
+      *(m_pMainComponent->getStepTableClipBoard()) = *(m_pVPot->getStepsMap());
+      updateEverything();
         //[/UserButtonCode_m_copyButton]
     }
     else if (buttonThatWasClicked == m_pasteButton)
     {
         //[UserButtonCode_m_pasteButton] -- add your button handler code here..
-			 *(m_pVPot->getStepsMap()) = *(m_pMainComponent->getStepTableClipBoard());
-			 updateEverything();
+       *(m_pVPot->getStepsMap()) = *(m_pMainComponent->getStepTableClipBoard());
+       updateEverything();
         //[/UserButtonCode_m_pasteButton]
     }
     else if (buttonThatWasClicked == m_clearButton)
     {
         //[UserButtonCode_m_clearButton] -- add your button handler code here..
-			m_pVPot->getStepsMap()->clear();
-			updateEverything();
+      m_pVPot->getStepsMap()->clear();
+      updateEverything();
         //[/UserButtonCode_m_clearButton]
     }
 
@@ -158,26 +158,26 @@ void PlugModeVPOTComponent::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeVPOTComponent::changeParamId(int paramId, double value, String paramName) {
-	m_params->changeParamId(paramId);
-	PMVPot::tSteps* pSteps = m_pVPot->getStepsMap();
+  m_params->changeParamId(paramId);
+  PMVPot::tSteps* pSteps = m_pVPot->getStepsMap();
 
-	(*pSteps)[value] = boost::tuple<String, String>(PlugAccess::shortNameFromCString(paramName), PlugAccess::longNameFromCString(paramName));
+  (*pSteps)[value] = boost::tuple<String, String>(PlugAccess::shortNameFromCString(paramName), PlugAccess::longNameFromCString(paramName));
 
-	int pos = findIndexFromKeyInMap(value, pSteps);
-	m_tableComponent->setLastChangedRow(0);
-	m_tableComponent->updateEverything();
-	m_tableComponent->setLastChangedRow(pos);
+  int pos = findIndexFromKeyInMap(value, pSteps);
+  m_tableComponent->setLastChangedRow(0);
+  m_tableComponent->updateEverything();
+  m_tableComponent->setLastChangedRow(pos);
 
-	updateEverything();
+  updateEverything();
 }
 
 void PlugModeVPOTComponent::updateEverything() {
-	m_params->updateEverything();
-	m_tableComponent->updateEverything();
+  m_params->updateEverything();
+  m_tableComponent->updateEverything();
 
-	m_pasteButton->setEnabled(m_pMainComponent->getStepTableClipBoard()->size() > 0);
-	m_clearButton->setEnabled(m_pVPot->getStepsMap()->size() > 0);
-	m_copyButton->setEnabled(m_pVPot->getStepsMap()->size() > 0);
+  m_pasteButton->setEnabled(m_pMainComponent->getStepTableClipBoard()->size() > 0);
+  m_clearButton->setEnabled(m_pVPot->getStepsMap()->size() > 0);
+  m_copyButton->setEnabled(m_pVPot->getStepsMap()->size() > 0);
 }
 //[/MiscUserCode]
 

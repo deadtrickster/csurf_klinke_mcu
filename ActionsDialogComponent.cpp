@@ -50,11 +50,11 @@ m_pActionDisplay (pAD)
 
 ActionsDialogComponent::~ActionsDialogComponent()
 {
-	for (int i = 0; i < 8; i++) {
-		deleteAndZero (m_labelAction[i]);
-	}
+  for (int i = 0; i < 8; i++) {
+    deleteAndZero (m_labelAction[i]);
+  }
 
-	deleteAndZero (m_shift);
+  deleteAndZero (m_shift);
   deleteAndZero (m_option);
   deleteAndZero (m_control);
   deleteAndZero (m_alt);
@@ -73,34 +73,34 @@ void ActionsDialogComponent::resized()
   m_control->setBounds (200, 8, 70, 24);
   m_alt->setBounds (290, 8, 70, 24);
 
-	for (int i = 0; i < 8; i++) {
-		m_labelAction[i]->setBounds (16 + (i % 4) * 125, i < 4 ? 42 : 76, 126, 24);
-	}
+  for (int i = 0; i < 8; i++) {
+    m_labelAction[i]->setBounds (16 + (i % 4) * 125, i < 4 ? 42 : 76, 126, 24);
+  }
 }
 
 void ActionsDialogComponent::labelTextChanged (Label* labelThatHasChanged)
 {
-	int modifier = (m_alt->getToggleState() << 3) + (m_control->getToggleState() << 2) + (m_option->getToggleState() << 1) + m_shift->getToggleState();
-	for (int i = 0; i < 8; i++) {
+  int modifier = (m_alt->getToggleState() << 3) + (m_control->getToggleState() << 2) + (m_option->getToggleState() << 1) + m_shift->getToggleState();
+  for (int i = 0; i < 8; i++) {
     if (labelThatHasChanged == m_labelAction[i])
     {
-			String newText =  m_labelAction[i]->getText().substring(0, 13);
-			m_labelAction[i]->setText(newText, false);
-			m_pActionDisplay->setLabel(modifier, i, newText);
+      String newText =  m_labelAction[i]->getText().substring(0, 13);
+      m_labelAction[i]->setText(newText, false);
+      m_pActionDisplay->setLabel(modifier, i, newText);
     }
-	}
-	m_pActionDisplay->writeConfigFile();
+  }
+  m_pActionDisplay->writeConfigFile();
 }
 
 void ActionsDialogComponent::buttonClicked (Button* buttonThatWasClicked)
 {
-	fillActionLabels();
+  fillActionLabels();
 }
 
 void ActionsDialogComponent::fillActionLabels()
 {
-	int modifier = (m_alt->getToggleState() << 3) + (m_control->getToggleState() << 2) + (m_option->getToggleState() << 1) + m_shift->getToggleState();
-	for (int i = 0; i < 8; i++) {
-		m_labelAction[i]->setText(m_pActionDisplay->getLabel(modifier, i), false);
-	}
+  int modifier = (m_alt->getToggleState() << 3) + (m_control->getToggleState() << 2) + (m_option->getToggleState() << 1) + m_shift->getToggleState();
+  for (int i = 0; i < 8; i++) {
+    m_labelAction[i]->setText(m_pActionDisplay->getLabel(modifier, i), false);
+  }
 }

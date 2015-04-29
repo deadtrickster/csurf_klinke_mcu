@@ -51,8 +51,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void updateEverything(){m_params->updateEverything();}
-		PlugModeParamComponent* getParamComponent(){return m_params;}
+                void updateEverything(){m_params->updateEverything();}
+                PlugModeParamComponent* getParamComponent(){return m_params;}
     //[/UserMethods]
 
     void paint (Graphics& g);

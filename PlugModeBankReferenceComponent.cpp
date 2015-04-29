@@ -120,8 +120,8 @@ PlugModeBankReferenceComponent::PlugModeBankReferenceComponent (PlugModeBankComp
     setSize (600, 50);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pBank = pBank;
-		m_pPlugModeBankComponent = pPMBC;
+    m_pBank = pBank;
+    m_pPlugModeBankComponent = pPMBC;
     //[/Constructor]
 }
 
@@ -175,26 +175,26 @@ void PlugModeBankReferenceComponent::labelTextChanged (Label* labelThatHasChange
     if (labelThatHasChanged == m_nameShort)
     {
         //[UserLabelCode_m_nameShort] -- add your label text handling code here..
-				bool setLongAlso = (m_pBank->getNameShort() == m_pBank->getNameLong());
-				m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
-				if (setLongAlso)
-					m_nameLong->setText(m_nameShort->getText(), true);
+        bool setLongAlso = (m_pBank->getNameShort() == m_pBank->getNameLong());
+        m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
+        if (setLongAlso)
+          m_nameLong->setText(m_nameShort->getText(), true);
 
-				m_pBank->setNameShort(m_nameShort->getText());
-				m_pPlugModeBankComponent->updateBankNames();
+        m_pBank->setNameShort(m_nameShort->getText());
+        m_pPlugModeBankComponent->updateBankNames();
         //[/UserLabelCode_m_nameShort]
     }
     else if (labelThatHasChanged == m_nameLong)
     {
         //[UserLabelCode_m_nameLong] -- add your label text handling code here..
-				m_nameLong->setText(m_nameLong->getText().substring(0, 17), false);
-				m_pBank->setNameLong(m_nameLong->getText());
+        m_nameLong->setText(m_nameLong->getText().substring(0, 17), false);
+        m_pBank->setNameLong(m_nameLong->getText());
         //[/UserLabelCode_m_nameLong]
     }
     else if (labelThatHasChanged == m_offset)
     {
         //[UserLabelCode_m_offset] -- add your label text handling code here..
-				m_pBank->setParamIDOffset(m_offset->getText().getIntValue());
+        m_pBank->setParamIDOffset(m_offset->getText().getIntValue());
         //[/UserLabelCode_m_offset]
     }
 
@@ -210,8 +210,8 @@ void PlugModeBankReferenceComponent::comboBoxChanged (ComboBox* comboBoxThatHasC
     if (comboBoxThatHasChanged == m_referenceTo)
     {
         //[UserComboBoxCode_m_referenceTo] -- add your combo box handling code here..
-			m_pBank->setReferTo(m_referenceTo->getSelectedItemIndex());
-			updateEverything();
+      m_pBank->setReferTo(m_referenceTo->getSelectedItemIndex());
+      updateEverything();
         //[/UserComboBoxCode_m_referenceTo]
     }
 
@@ -223,22 +223,22 @@ void PlugModeBankReferenceComponent::comboBoxChanged (ComboBox* comboBoxThatHasC
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeBankReferenceComponent::updateEverything() {
-	m_nameShort->setText(m_pBank->getNameShort(), false);
-	m_nameLong->setText(m_pBank->getNameLong(), false);
+  m_nameShort->setText(m_pBank->getNameShort(), false);
+  m_nameLong->setText(m_pBank->getNameLong(), false);
 
-	int referTo = m_pBank->referTo();
-	if (m_pBank->doesRefer()) {
-		m_referenceTo->setSelectedItemIndex(m_pBank->referTo(), false);
-		m_offset->setVisible(true);
-		m_offsetLabel->setVisible(true);
-		m_pPlugModeBankComponent->setTabVisible(false);
-		m_offset->setText(String::formatted(T("%d"), m_pBank->getParamIDOffset()), false);
-	} else {
-		m_referenceTo->setSelectedItemIndex(m_pBank->getId(), false);
-		m_offset->setVisible(false);
-		m_offsetLabel->setVisible(false);
-		m_pPlugModeBankComponent->setTabVisible(true);
-	}
+  int referTo = m_pBank->referTo();
+  if (m_pBank->doesRefer()) {
+    m_referenceTo->setSelectedItemIndex(m_pBank->referTo(), false);
+    m_offset->setVisible(true);
+    m_offsetLabel->setVisible(true);
+    m_pPlugModeBankComponent->setTabVisible(false);
+    m_offset->setText(String::formatted(T("%d"), m_pBank->getParamIDOffset()), false);
+  } else {
+    m_referenceTo->setSelectedItemIndex(m_pBank->getId(), false);
+    m_offset->setVisible(false);
+    m_offsetLabel->setVisible(false);
+    m_pPlugModeBankComponent->setTabVisible(true);
+  }
 }
 //[/MiscUserCode]
 

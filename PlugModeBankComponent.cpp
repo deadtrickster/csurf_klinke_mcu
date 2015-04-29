@@ -49,21 +49,21 @@ PlugModeBankComponent::PlugModeBankComponent (PlugMap* pMap, PlugModeComponent* 
 
 
     //[UserPreSize]
-		for (int i = 0; i < 8; i++) {
-			String tabName = pMap->getBank(i)->getNameShort();
-			if (tabName.isEmpty()) {
-				tabName = String::formatted(T("Bank %d"), i + 1);
-			}
-			m_tabbedBanks->addTab (tabName, Colours::white, new PlugModeSingleBankComponent (pMC, this, pMap->getBank(i)), true);
-		}
-		m_tabbedBanks->addTab(JUCE_T("Map Info"), Colours::white, new PlugModeMapInfoComponent(pMC, pMap), true);
+    for (int i = 0; i < 8; i++) {
+      String tabName = pMap->getBank(i)->getNameShort();
+      if (tabName.isEmpty()) {
+        tabName = String::formatted(T("Bank %d"), i + 1);
+      }
+      m_tabbedBanks->addTab (tabName, Colours::white, new PlugModeSingleBankComponent (pMC, this, pMap->getBank(i)), true);
+    }
+    m_tabbedBanks->addTab(JUCE_T("Map Info"), Colours::white, new PlugModeMapInfoComponent(pMC, pMap), true);
     //[/UserPreSize]
 
     setSize (618, 453);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pMap = pMap;
-		m_pMainComponent = pMC;
+    m_pMap = pMap;
+    m_pMainComponent = pMC;
     //[/Constructor]
 }
 
@@ -101,41 +101,41 @@ void PlugModeBankComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeBankComponent::updateBankNames() {
-	if (m_pMap) {
-		for (int i = 0; i < 8; i++) {
-			m_tabbedBanks->setTabName(i, m_pMap->getBank(i)->getNameShort());
-		}
-	}
+  if (m_pMap) {
+    for (int i = 0; i < 8; i++) {
+      m_tabbedBanks->setTabName(i, m_pMap->getBank(i)->getNameShort());
+    }
+  }
 }
 
 void PlugModeBankComponent::updateEverything() {
-	updateBankNames();
-	safe_call(getSelectedBankComponent(),updateEverything());
-	safe_call(static_cast<PlugModeMapInfoComponent*>(m_tabbedBanks->getTabContentComponent(8)),updateEverything())
+  updateBankNames();
+  safe_call(getSelectedBankComponent(),updateEverything());
+  safe_call(static_cast<PlugModeMapInfoComponent*>(m_tabbedBanks->getTabContentComponent(8)),updateEverything())
 }
 
 void PlugModeBankComponent::selectedTabHasChanged() {
-	updateEverything();
+  updateEverything();
 
-	if (m_pMainComponent && m_tabbedBanks->getCurrentTabIndex() < 8) {
-		safe_call(m_pMainComponent->getPlugAccess(),setSelectedBank(m_tabbedBanks->getCurrentTabIndex()))
-		safe_call(m_pMainComponent, updateLearnStatus())
-	}
+  if (m_pMainComponent && m_tabbedBanks->getCurrentTabIndex() < 8) {
+    safe_call(m_pMainComponent->getPlugAccess(),setSelectedBank(m_tabbedBanks->getCurrentTabIndex()))
+    safe_call(m_pMainComponent, updateLearnStatus())
+  }
 }
 
 PlugModeSingleBankComponent* PlugModeBankComponent::getSingleBankComponent(int iBank) {
-	return static_cast<PlugModeSingleBankComponent*>(m_tabbedBanks->getTabContentComponent(iBank));
+  return static_cast<PlugModeSingleBankComponent*>(m_tabbedBanks->getTabContentComponent(iBank));
 }
 
 void PlugModeBankComponent::setTabVisible(bool shouldBeVisible) {
-	safe_call(getSelectedBankComponent(), makePageComponentVisible(shouldBeVisible))
+  safe_call(getSelectedBankComponent(), makePageComponentVisible(shouldBeVisible))
 }
 
 PlugModeSingleBankComponent* PlugModeBankComponent::getSelectedBankComponent() {
-	if (m_tabbedBanks->getCurrentTabIndex() < 8)
-		return getSingleBankComponent(m_tabbedBanks->getCurrentTabIndex());
+  if (m_tabbedBanks->getCurrentTabIndex() < 8)
+    return getSingleBankComponent(m_tabbedBanks->getCurrentTabIndex());
 
-	return NULL;
+  return NULL;
 }
 //[/MiscUserCode]
 

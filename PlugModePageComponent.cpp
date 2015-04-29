@@ -47,20 +47,20 @@ PlugModePageComponent::PlugModePageComponent (PlugModeComponent* pMC, PMBank* pB
 
 
     //[UserPreSize]
-		for (int i = 0; i < 8; i++) {
-			String tabName = pBank->getPage(i)->getNameShort();
-			if (tabName.isEmpty()) {
-				tabName = String::formatted(T("Page %d"), i + 1);
-			}
-			m_tabbedPages->addTab (tabName, Colours::white, new PlugModeSinglePageComponent (pMC, this, pBank->getPage(i)), true);
-		}
+    for (int i = 0; i < 8; i++) {
+      String tabName = pBank->getPage(i)->getNameShort();
+      if (tabName.isEmpty()) {
+        tabName = String::formatted(T("Page %d"), i + 1);
+      }
+      m_tabbedPages->addTab (tabName, Colours::white, new PlugModeSinglePageComponent (pMC, this, pBank->getPage(i)), true);
+    }
     //[/UserPreSize]
 
     setSize (610, 368);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pBank = pBank;
-		m_pMainComponent = pMC;
+    m_pBank = pBank;
+    m_pMainComponent = pMC;
     //[/Constructor]
 }
 
@@ -98,31 +98,31 @@ void PlugModePageComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModePageComponent::updatePageNames() {
-	if (m_pBank) {
-		for (int i = 0; i < 8; i++) {
-			if (m_pBank->getPage(i)) {
-				m_tabbedPages->setTabName(i, m_pBank->getPage(i)->getNameShort());
-			}
-		}
-	}
+  if (m_pBank) {
+    for (int i = 0; i < 8; i++) {
+      if (m_pBank->getPage(i)) {
+        m_tabbedPages->setTabName(i, m_pBank->getPage(i)->getNameShort());
+      }
+    }
+  }
 }
 
 void PlugModePageComponent::updateEverything() {
-	updatePageNames();
-	safe_call(getSelectedPageComponent(),updateEverything())
+  updatePageNames();
+  safe_call(getSelectedPageComponent(),updateEverything())
 }
 
 void PlugModePageComponent::selectedTabHasChanged() {
-	updateEverything();
+  updateEverything();
 
-	if (m_pMainComponent) {
-		safe_call(m_pMainComponent->getPlugAccess(),setSelectedPageInSelectedBank(m_tabbedPages->getCurrentTabIndex()))
-		safe_call(m_pMainComponent, updateLearnStatus())
-	}
+  if (m_pMainComponent) {
+    safe_call(m_pMainComponent->getPlugAccess(),setSelectedPageInSelectedBank(m_tabbedPages->getCurrentTabIndex()))
+    safe_call(m_pMainComponent, updateLearnStatus())
+  }
 }
 
 void PlugModePageComponent::setTabVisible(bool shouldBeVisible) {
-	safe_call(getSelectedPageComponent(), makeChannelComponentVisible(shouldBeVisible))
+  safe_call(getSelectedPageComponent(), makeChannelComponentVisible(shouldBeVisible))
 }
 //[/MiscUserCode]
 

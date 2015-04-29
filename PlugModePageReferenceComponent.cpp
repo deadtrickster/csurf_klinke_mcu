@@ -122,8 +122,8 @@ PlugModePageReferenceComponent::PlugModePageReferenceComponent (PlugModePageComp
     setSize (600, 50);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pPage = pPage;
-		m_pPlugModePageComponent = pPMPC;
+    m_pPage = pPage;
+    m_pPlugModePageComponent = pPMPC;
     //[/Constructor]
 }
 
@@ -177,26 +177,26 @@ void PlugModePageReferenceComponent::labelTextChanged (Label* labelThatHasChange
     if (labelThatHasChanged == m_nameShort)
     {
       //[UserLabelCode_m_nameShort] -- add your label text handling code here..
-			bool setLongAlso = (m_pPage->getNameShort() == m_pPage->getNameLong());
-			m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
-			if (setLongAlso)
-				m_nameLong->setText(m_nameShort->getText(), true);
+      bool setLongAlso = (m_pPage->getNameShort() == m_pPage->getNameLong());
+      m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
+      if (setLongAlso)
+        m_nameLong->setText(m_nameShort->getText(), true);
 
-			m_pPage->setNameShort(m_nameShort->getText());
-			m_pPlugModePageComponent->updatePageNames();
+      m_pPage->setNameShort(m_nameShort->getText());
+      m_pPlugModePageComponent->updatePageNames();
       //[/UserLabelCode_m_nameShort]
     }
     else if (labelThatHasChanged == m_nameLong)
     {
       //[UserLabelCode_m_nameLong] -- add your label text handling code here..
-			m_nameLong->setText(m_nameLong->getText().substring(0, 17), false);
-			m_pPage->setNameLong(m_nameLong->getText());
+      m_nameLong->setText(m_nameLong->getText().substring(0, 17), false);
+      m_pPage->setNameLong(m_nameLong->getText());
       //[/UserLabelCode_m_nameLong]
     }
     else if (labelThatHasChanged == m_offset)
     {
       //[UserLabelCode_m_offset] -- add your label text handling code here..
-			m_pPage->setParamIDOffset(m_offset->getText().getIntValue());
+      m_pPage->setParamIDOffset(m_offset->getText().getIntValue());
       //[/UserLabelCode_m_offset]
     }
 
@@ -212,8 +212,8 @@ void PlugModePageReferenceComponent::comboBoxChanged (ComboBox* comboBoxThatHasC
     if (comboBoxThatHasChanged == m_referenceTo)
     {
         //[UserComboBoxCode_m_referenceTo] -- add your combo box handling code here..
-				m_pPage->setReferTo(m_referenceTo->getSelectedItemIndex());
-				updateEverything();
+        m_pPage->setReferTo(m_referenceTo->getSelectedItemIndex());
+        updateEverything();
         //[/UserComboBoxCode_m_referenceTo]
     }
 
@@ -225,22 +225,22 @@ void PlugModePageReferenceComponent::comboBoxChanged (ComboBox* comboBoxThatHasC
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModePageReferenceComponent::updateEverything() {
-	m_nameShort->setText(m_pPage->getNameShort(), false);
-	m_nameLong->setText(m_pPage->getNameLong(), false);
+  m_nameShort->setText(m_pPage->getNameShort(), false);
+  m_nameLong->setText(m_pPage->getNameLong(), false);
 
-	int referTo = m_pPage->referTo();
-	if (m_pPage->doesRefer()) {
-		m_referenceTo->setSelectedItemIndex(m_pPage->referTo(), false);
-		m_offset->setVisible(true);
-		m_offsetLabel->setVisible(true);
-		m_pPlugModePageComponent->setTabVisible(false);
-		m_offset->setText(String::formatted(T("%d"), m_pPage->getParamIDOffset()), false);
-	} else {
-		m_referenceTo->setSelectedItemIndex(m_pPage->getId(), false);
-		m_offset->setVisible(false);
-		m_offsetLabel->setVisible(false);
-		m_pPlugModePageComponent->setTabVisible(true);
-	}
+  int referTo = m_pPage->referTo();
+  if (m_pPage->doesRefer()) {
+    m_referenceTo->setSelectedItemIndex(m_pPage->referTo(), false);
+    m_offset->setVisible(true);
+    m_offsetLabel->setVisible(true);
+    m_pPlugModePageComponent->setTabVisible(false);
+    m_offset->setText(String::formatted(T("%d"), m_pPage->getParamIDOffset()), false);
+  } else {
+    m_referenceTo->setSelectedItemIndex(m_pPage->getId(), false);
+    m_offset->setVisible(false);
+    m_offsetLabel->setVisible(false);
+    m_pPlugModePageComponent->setTabVisible(true);
+  }
 }
 //[/MiscUserCode]
 

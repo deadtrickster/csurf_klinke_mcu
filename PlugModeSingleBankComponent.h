@@ -53,12 +53,12 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeBankReferenceComponent* getReferenceComponent(){return m_nameAndReference;}
-		PlugModeSinglePageComponent* getPageComponent(int iPage){return m_pageComponent->getSinglePageComponent(iPage);}
-		PlugModeSinglePageComponent* getSelectedPageComponent(){return m_pageComponent->getSelectedPageComponent();}
-		PlugModePageComponent* getPageComponent(){return m_pageComponent;}
-		void updateEverything();
-		void makePageComponentVisible(bool shouldBeVisible);
+                PlugModeBankReferenceComponent* getReferenceComponent(){return m_nameAndReference;}
+                PlugModeSinglePageComponent* getPageComponent(int iPage){return m_pageComponent->getSinglePageComponent(iPage);}
+                PlugModeSinglePageComponent* getSelectedPageComponent(){return m_pageComponent->getSelectedPageComponent();}
+                PlugModePageComponent* getPageComponent(){return m_pageComponent;}
+                void updateEverything();
+                void makePageComponentVisible(bool shouldBeVisible);
     //[/UserMethods]
 
     void paint (Graphics& g);

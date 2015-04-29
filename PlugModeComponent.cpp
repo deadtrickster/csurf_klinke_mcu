@@ -112,18 +112,18 @@ PlugModeComponent::PlugModeComponent (PlugAccess* pPA)
     setSize (620, 524);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pPlugAccess = pPA;
-		updateEverything();
-		m_learnFader = true;
-		m_useParamName->setToggleState(true, false);
+    m_pPlugAccess = pPA;
+    updateEverything();
+    m_learnFader = true;
+    m_useParamName->setToggleState(true, false);
     //[/Constructor]
 }
 
 PlugModeComponent::~PlugModeComponent()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
-		if (m_paramChangedConnectionId)
-			m_pPlugAccess->getPlugWatcher()->disconnectParamChange(m_paramChangedConnectionId);
+    if (m_paramChangedConnectionId)
+      m_pPlugAccess->getPlugWatcher()->disconnectParamChange(m_paramChangedConnectionId);
     //[/Destructor_pre]
 
     deleteAndZero (m_groupFile);
@@ -177,41 +177,41 @@ void PlugModeComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == m_save)
     {
         //[UserButtonCode_m_save] -- add your button handler code here..
-				m_pPlugAccess->getMapManager()->rewriteMapFile();
+        m_pPlugAccess->getMapManager()->rewriteMapFile();
         //[/UserButtonCode_m_save]
     }
     else if (buttonThatWasClicked == m_autosave)
     {
         //[UserButtonCode_m_autosave] -- add your button handler code here..
-				m_pPlugAccess->getMapManager()->setAutoSave(m_autosave->getToggleState());
+        m_pPlugAccess->getMapManager()->setAutoSave(m_autosave->getToggleState());
         //[/UserButtonCode_m_autosave]
     }
     else if (buttonThatWasClicked == m_learn)
     {
         //[UserButtonCode_m_learn] -- add your button handler code here..
-			if (m_learn->getToggleState()) {
-				m_paramChangedConnectionId = m_pPlugAccess->getPlugWatcher()->connect2ParamChanged(boost::bind(&PlugModeComponent::watchedPluginParameterChanged, this, _1, _2, _3, _4, _5));
-			} else {
-				m_pPlugAccess->getPlugWatcher()->disconnectParamChange(m_paramChangedConnectionId);
-				m_paramChangedConnectionId = NULL;
-			}
-			updateLearnStatus();
+      if (m_learn->getToggleState()) {
+        m_paramChangedConnectionId = m_pPlugAccess->getPlugWatcher()->connect2ParamChanged(boost::bind(&PlugModeComponent::watchedPluginParameterChanged, this, _1, _2, _3, _4, _5));
+      } else {
+        m_pPlugAccess->getPlugWatcher()->disconnectParamChange(m_paramChangedConnectionId);
+        m_paramChangedConnectionId = NULL;
+      }
+      updateLearnStatus();
         //[/UserButtonCode_m_learn]
     }
     else if (buttonThatWasClicked == m_saveAs)
     {
         //[UserButtonCode_m_saveAs] -- add your button handler code here..
-				PlugMapManager* pMM = m_pPlugAccess->getMapManager();
+        PlugMapManager* pMM = m_pPlugAccess->getMapManager();
 
-				DialogWindow* pDialog = new SaveDialogWindow("Save Map", Colours::white, true, true);
-				pMM->rescanDirs();
-				pDialog->setContentComponent(new PlugMapSaveDialog(pMM), false, true);
-				pDialog->setVisible(true);
- 				pDialog->setAlwaysOnTop(true);
-				pDialog->runModalLoop();
-				delete pDialog;
+        DialogWindow* pDialog = new SaveDialogWindow("Save Map", Colours::white, true, true);
+        pMM->rescanDirs();
+        pDialog->setContentComponent(new PlugMapSaveDialog(pMM), false, true);
+        pDialog->setVisible(true);
+        pDialog->setAlwaysOnTop(true);
+        pDialog->runModalLoop();
+        delete pDialog;
 
-				updateEverything();
+        updateEverything();
         //[/UserButtonCode_m_saveAs]
     }
     else if (buttonThatWasClicked == m_useParamName)
@@ -222,15 +222,15 @@ void PlugModeComponent::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == m_clear)
     {
         //[UserButtonCode_m_clear] -- add your button handler code here..
-			m_pPlugAccess->getMapManager()->initMap();
-			updateEverything();
+      m_pPlugAccess->getMapManager()->initMap();
+      updateEverything();
         //[/UserButtonCode_m_clear]
     }
     else if (buttonThatWasClicked == m_local)
     {
         //[UserButtonCode_m_local] -- add your button handler code here..
-			m_pPlugAccess->getMapManager()->setLocalMap(m_local->getToggleState());
-			updateEverything();
+      m_pPlugAccess->getMapManager()->setLocalMap(m_local->getToggleState());
+      updateEverything();
         //[/UserButtonCode_m_local]
     }
 
@@ -242,99 +242,99 @@ void PlugModeComponent::buttonClicked (Button* buttonThatWasClicked)
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeComponent::updateEverything() {
-	selectedBankChanged(m_pPlugAccess->getSelectedBank());
-	selectedPageChanged(m_pPlugAccess->getSelectedPageInSelectedBank());
+  selectedBankChanged(m_pPlugAccess->getSelectedBank());
+  selectedPageChanged(m_pPlugAccess->getSelectedPageInSelectedBank());
 
-	m_bankComponent->updateEverything();
+  m_bankComponent->updateEverything();
 
-	PlugMapManager::eMapType mapType = m_pPlugAccess->getMapManager()->getMapType();
+  PlugMapManager::eMapType mapType = m_pPlugAccess->getMapManager()->getMapType();
 
-	if (m_pPlugAccess->getMapManager()->getMapName().isEmpty() && mapType != PlugMapManager::LOCAL_MAP) {
-		m_mappingFile->setText(T("no mapping file"), false);
-	} else {
-		if (mapType == PlugMapManager::USER_MAP)
-			m_mappingFile->setText(m_pPlugAccess->getMapManager()->getMapName(), false);
-		else if (mapType == PlugMapManager::INSTALLED_MAP)
-			m_mappingFile->setText(m_pPlugAccess->getMapManager()->getMapName() + JUCE_T(" (factory)"), false);
-		else 
-			m_mappingFile->setText(JUCE_T(""), false);
-	}
+  if (m_pPlugAccess->getMapManager()->getMapName().isEmpty() && mapType != PlugMapManager::LOCAL_MAP) {
+    m_mappingFile->setText(T("no mapping file"), false);
+  } else {
+    if (mapType == PlugMapManager::USER_MAP)
+      m_mappingFile->setText(m_pPlugAccess->getMapManager()->getMapName(), false);
+    else if (mapType == PlugMapManager::INSTALLED_MAP)
+      m_mappingFile->setText(m_pPlugAccess->getMapManager()->getMapName() + JUCE_T(" (factory)"), false);
+    else 
+      m_mappingFile->setText(JUCE_T(""), false);
+  }
 
-	m_save->setEnabled(mapType == PlugMapManager::USER_MAP);
+  m_save->setEnabled(mapType == PlugMapManager::USER_MAP);
 
-	m_saveAs->setEnabled(mapType != PlugMapManager::LOCAL_MAP);
-	m_autosave->setEnabled(mapType != PlugMapManager::LOCAL_MAP);
+  m_saveAs->setEnabled(mapType != PlugMapManager::LOCAL_MAP);
+  m_autosave->setEnabled(mapType != PlugMapManager::LOCAL_MAP);
 
-	m_local->setToggleState(m_pPlugAccess->getMapManager()->getMapType() == PlugMapManager::LOCAL_MAP, false);
+  m_local->setToggleState(m_pPlugAccess->getMapManager()->getMapType() == PlugMapManager::LOCAL_MAP, false);
 
-	m_autosave->setToggleState(m_pPlugAccess->getMapManager()->getAutoSave(), false);
+  m_autosave->setToggleState(m_pPlugAccess->getMapManager()->getAutoSave(), false);
 
-	updateLearnStatus();
+  updateLearnStatus();
 }
 
 void PlugModeComponent::selectedBankChanged(int iBank) {
-	m_bankComponent->selectedBankChanged(iBank);
-	selectedPageChanged(m_pPlugAccess->getSelectedPageInSelectedBank());
+  m_bankComponent->selectedBankChanged(iBank);
+  selectedPageChanged(m_pPlugAccess->getSelectedPageInSelectedBank());
 
-	updateLearnStatus();
+  updateLearnStatus();
 }
 
 void PlugModeComponent::selectedPageChanged(int iPage) {
-	safe_call(m_bankComponent->getSelectedBankComponent(), getPageComponent()->selectedPageChanged(iPage))
+  safe_call(m_bankComponent->getSelectedBankComponent(), getPageComponent()->selectedPageChanged(iPage))
 
-	updateLearnStatus();
+  updateLearnStatus();
 }
 
 
 void PlugModeComponent::selectedChannelChanged(int iChannel, bool fader) {
-	if (m_bankComponent->getSelectedBankComponent() && m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent() &&
-			m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getChannelComponent()) {
-		m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getChannelComponent()->selectedChannelChanged(iChannel);
-	}
+  if (m_bankComponent->getSelectedBankComponent() && m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent() &&
+      m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getChannelComponent()) {
+    m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getChannelComponent()->selectedChannelChanged(iChannel);
+  }
 
-	m_learnFader = fader;
+  m_learnFader = fader;
 
-	updateLearnStatus();
+  updateLearnStatus();
 }
 
 void PlugModeComponent::selectedPluginChanged(MediaTrack* pMediaTrack, int iSlot) {
-	updateEverything();
+  updateEverything();
 }
 
 void PlugModeComponent::watchedPluginParameterChanged(MediaTrack* pMediaTrack, int iSlot, int iParameter, double dValue, String strValue) {
-	if (m_learn->getToggleState() && m_bankComponent->getSelectedBankComponent()) {
-		PlugModeSingleChannelComponent* pChannel = m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getSelectedChannelComponent();
-		if (m_learnFader) {
-			pChannel->getFader()->getParamComponent()->changeParamId(iParameter);
-		} else {
-			pChannel->getVPOT()->changeParamId(iParameter, dValue, strValue);
-		}
-	}
+  if (m_learn->getToggleState() && m_bankComponent->getSelectedBankComponent()) {
+    PlugModeSingleChannelComponent* pChannel = m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getSelectedChannelComponent();
+    if (m_learnFader) {
+      pChannel->getFader()->getParamComponent()->changeParamId(iParameter);
+    } else {
+      pChannel->getVPOT()->changeParamId(iParameter, dValue, strValue);
+    }
+  }
 }
 
 void PlugModeComponent::updateLearnStatus() {
-	if (m_bankComponent) {
-		PlugModeSingleBankComponent* bank =  m_bankComponent->getSelectedBankComponent();
-		if (bank) {
-			PlugModeSinglePageComponent* page = bank->getSelectedPageComponent();
-			if (page) {
-				PlugModeSingleChannelComponent* pChannel = page->getSelectedChannelComponent();
-				if (pChannel) {
-					pChannel->getFader()->getParamComponent()->setLearn(m_learn->getToggleState() && m_learnFader);
-					pChannel->getVPOT()->getParamComponent()->setLearn(m_learn->getToggleState() && !m_learnFader);
-				}
-			}
-		}
-	}
+  if (m_bankComponent) {
+    PlugModeSingleBankComponent* bank =  m_bankComponent->getSelectedBankComponent();
+    if (bank) {
+      PlugModeSinglePageComponent* page = bank->getSelectedPageComponent();
+      if (page) {
+        PlugModeSingleChannelComponent* pChannel = page->getSelectedChannelComponent();
+        if (pChannel) {
+          pChannel->getFader()->getParamComponent()->setLearn(m_learn->getToggleState() && m_learnFader);
+          pChannel->getVPOT()->getParamComponent()->setLearn(m_learn->getToggleState() && !m_learnFader);
+        }
+      }
+    }
+  }
 }
 
 void PlugModeComponent::paramComponentPressed(PlugModeParamComponent* pPC) {
-	PlugModeSingleChannelComponent* pChannel = m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getSelectedChannelComponent();
-	if (pChannel) {
-		m_learnFader = (pChannel->getFader()->getParamComponent() == pPC);
+  PlugModeSingleChannelComponent* pChannel = m_bankComponent->getSelectedBankComponent()->getSelectedPageComponent()->getSelectedChannelComponent();
+  if (pChannel) {
+    m_learnFader = (pChannel->getFader()->getParamComponent() == pPC);
 
-		updateLearnStatus();
-	}
+    updateLearnStatus();
+  }
 }
 //[/MiscUserCode]
 

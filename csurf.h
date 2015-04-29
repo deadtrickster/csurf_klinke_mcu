@@ -150,7 +150,7 @@ extern bool (*DeleteProjectMarker)(void* proj, int markrgnindexnumber, bool isrg
 ** REAPER command message defines
 */
 
-#define ID_TOGGLE_MASTER_MUTE		   14
+#define ID_TOGGLE_MASTER_MUTE              14
 #define IDC_REPEAT                       1068
 #define ID_FILE_SAVEAS                  40022
 #define ID_FILE_NEWPROJECT              40023
@@ -158,9 +158,9 @@ extern bool (*DeleteProjectMarker)(void* proj, int markrgnindexnumber, bool isrg
 #define ID_FILE_SAVEPROJECT             40026
 #define IDC_EDIT_UNDO                   40029
 #define IDC_EDIT_REDO                   40030
-#define ID_GOTO_PROJECT_END		40043
-#define ID_RECORD_MODE_TIME		40076
-#define ID_TOGGLE_SHOW_MIXER	        40078
+#define ID_GOTO_PROJECT_END             40043
+#define ID_RECORD_MODE_TIME             40076
+#define ID_TOGGLE_SHOW_MIXER            40078
 #define ID_TOGGLE_TRACK_ZOOM_MAX_HEIGHT 40113
 #define ID_MARKER_PREV                  40172
 #define ID_MARKER_NEXT                  40173
@@ -169,17 +169,17 @@ extern bool (*DeleteProjectMarker)(void* proj, int markrgnindexnumber, bool isrg
 #define ID_GOTO_MARKER1                 40161
 #define ID_LOOP_SETSTART                40222
 #define ID_LOOP_SETEND                  40223
-#define ID_RECORD_MODE_NORMAL		40252
-#define ID_RECORD_MODE_ITEM 		40253
-#define ID_VIEW_FX_CHAIN		40291
-#define ID_ZOOM_OUT_PROJECT		40295
+#define ID_RECORD_MODE_NORMAL           40252
+#define ID_RECORD_MODE_ITEM             40253
+#define ID_VIEW_FX_CHAIN                40291
+#define ID_ZOOM_OUT_PROJECT             40295
 #define ID_METRONOME                    40364
 #define ID_TOGGLE_SHOW_MASTER_RIGHT     40389
-#define ID_TOGGLE_SHOW_SEND		40557
+#define ID_TOGGLE_SHOW_SEND             40557
 #define ID_SET_MARKER1                  40657
-#define ID_STOP_AND_SAVE_MEDIA	        40667
-#define ID_STOP_AND_DELETE_MEDIA	40668
-#define ID_TOUCH_SELECTED_TRACK		40914
+#define ID_STOP_AND_SAVE_MEDIA          40667
+#define ID_STOP_AND_DELETE_MEDIA        40668
+#define ID_TOUCH_SELECTED_TRACK         40914
 #define ID_TOGGLE_MASTER_TRACK_TCP      41050
 
 // Reaper track automation modes

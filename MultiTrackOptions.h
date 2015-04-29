@@ -24,16 +24,16 @@
 #define MTOA_ANCHORS_YES JUCE_T("yes")
 
 class MultiTrackOptions :
-	public Options
+        public Options
 {
 public:
-	MultiTrackOptions(DisplayHandler* pDH);
+        MultiTrackOptions(DisplayHandler* pDH);
 public:
-	virtual ~MultiTrackOptions(void);
+        virtual ~MultiTrackOptions(void);
 
 protected:
-	String getConfigFileName();
-	void checkAndModifyOptions();// when the reflect_folder option change, the track graph must be rebuild
+        String getConfigFileName();
+        void checkAndModifyOptions();// when the reflect_folder option change, the track graph must be rebuild
 
-	int m_iReflect; 
+        int m_iReflect; 
 };

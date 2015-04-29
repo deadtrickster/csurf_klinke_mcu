@@ -86,12 +86,12 @@ void PlugModeSinglePageComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeSinglePageComponent::updateEverything() {
-	m_channelComponent->updateEverything();
-	m_nameAndReference->updateEverything();
+  m_channelComponent->updateEverything();
+  m_nameAndReference->updateEverything();
 }
 
 void PlugModeSinglePageComponent::makeChannelComponentVisible(bool shouldBeVisible) {
-	m_channelComponent->setVisible(shouldBeVisible);
+  m_channelComponent->setVisible(shouldBeVisible);
 }
 //[/MiscUserCode]
 

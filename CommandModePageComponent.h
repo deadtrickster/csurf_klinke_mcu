@@ -67,9 +67,9 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		CommandModeVPOTComponent* vpotComponent[2][8];
-		CommandMode::Page* m_pPage;
-		CommandModeMainComponent* m_pMain;
+                CommandModeVPOTComponent* vpotComponent[2][8];
+                CommandMode::Page* m_pPage;
+                CommandModeMainComponent* m_pMain;
     //[/UserVariables]
 
     //==============================================================================

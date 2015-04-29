@@ -250,45 +250,45 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
   
   IMPAPI(GetTrackGUID)
 
-	// needed for additional MCU support (Klinke)
-	IMPAPI(GetSetTrackSendInfo)
-	IMPAPI(GetSetMediaTrackInfo)
-	IMPAPI(EnumProjectMarkers)
-	IMPAPI(GetSet_LoopTimeRange)
-	IMPAPI(SetEditCurPos)
-	IMPAPI(Undo_OnStateChangeEx)
-	IMPAPI(Undo_BeginBlock)
-	IMPAPI(Undo_EndBlock)
+  // needed for additional MCU support (Klinke)
+  IMPAPI(GetSetTrackSendInfo)
+  IMPAPI(GetSetMediaTrackInfo)
+  IMPAPI(EnumProjectMarkers)
+  IMPAPI(GetSet_LoopTimeRange)
+  IMPAPI(SetEditCurPos)
+  IMPAPI(Undo_OnStateChangeEx)
+  IMPAPI(Undo_BeginBlock)
+  IMPAPI(Undo_EndBlock)
 
-	IMPAPI(TimeMap_timeToQN)
-	IMPAPI(TimeMap_QNToTime)
-	IMPAPI(GetProjectTimeSignature)
-	IMPAPI(TrackList_AdjustWindows) 
+  IMPAPI(TimeMap_timeToQN)
+  IMPAPI(TimeMap_QNToTime)
+  IMPAPI(GetProjectTimeSignature)
+  IMPAPI(TrackList_AdjustWindows) 
 
   IMPAPI(get_config_var);
   IMPAPI(projectconfig_var_getoffs);
   IMPAPI(projectconfig_var_addr);
 
-	IMPAPI(guidToString);
-	IMPAPI(stringToGuid);
+  IMPAPI(guidToString);
+  IMPAPI(stringToGuid);
 
-	IMPAPI(GetSetObjectState);
-	IMPAPI(FreeHeapPtr);
+  IMPAPI(GetSetObjectState);
+  IMPAPI(FreeHeapPtr);
 
-	IMPAPI(GetNumTracks);
-	// returns index of effect visible in chain, or -1 for chain hidden, or -2 for chain visible but no effect selected
-	IMPAPI(TrackFX_GetChainVisible)
-	// returns HWND of floating window for effect index, if any
-	IMPAPI(TrackFX_GetFloatingWindow)
-	// showflag=0 for hidechain, =1 for show chain(index valid), =2 for hide floating window(index valid), =3 for show floating window (index valid)
-	IMPAPI(TrackFX_Show)
+  IMPAPI(GetNumTracks);
+  // returns index of effect visible in chain, or -1 for chain hidden, or -2 for chain visible but no effect selected
+  IMPAPI(TrackFX_GetChainVisible)
+  // returns HWND of floating window for effect index, if any
+  IMPAPI(TrackFX_GetFloatingWindow)
+  // showflag=0 for hidechain, =1 for show chain(index valid), =2 for hide floating window(index valid), =3 for show floating window (index valid)
+  IMPAPI(TrackFX_Show)
 
-	IMPAPI(TrackFX_GetFXGUID)
+  IMPAPI(TrackFX_GetFXGUID)
 
-	IMPAPI(GetMasterTrack)
+  IMPAPI(GetMasterTrack)
 
-	IMPAPI(AddProjectMarker)
-	IMPAPI(DeleteProjectMarker)
+  IMPAPI(AddProjectMarker)
+  IMPAPI(DeleteProjectMarker)
 
   if (errcnt) return 0;
 
@@ -306,9 +306,9 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
   if (errcnt) return 0;
 
-	rec->Register("csurf",&csurf_mcu_modified_reg);
+  rec->Register("csurf",&csurf_mcu_modified_reg);
 //  rec->Register("csurf",&csurf_mcuex_modified_reg);
-	rec->Register("projectconfig",ProjectConfig::instance()->getRegisterInfo());
+  rec->Register("projectconfig",ProjectConfig::instance()->getRegisterInfo());
 
   return 1;
 }

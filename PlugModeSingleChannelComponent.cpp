@@ -87,8 +87,8 @@ void PlugModeSingleChannelComponent::resized()
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeSingleChannelComponent::updateEverything()
 {
-	m_vpot->updateEverything();
-	m_fader->updateEverything();
+  m_vpot->updateEverything();
+  m_fader->updateEverything();
 }
 //[/MiscUserCode]
 

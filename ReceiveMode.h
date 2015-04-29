@@ -8,22 +8,22 @@
 #include "sendreceivemodebase.h"
 
 class ReceiveMode :
-	public SendReceiveModeBase
+        public SendReceiveModeBase
 {
 public:
-	ReceiveMode(CCSManager* pManager);
-	virtual ~ReceiveMode(void);
+        ReceiveMode(CCSManager* pManager);
+        virtual ~ReceiveMode(void);
 
-	void activate();
+        void activate();
 
-	bool buttonSelect(int channel, bool pressed);
+        bool buttonSelect(int channel, bool pressed);
 
-	void updateAssignmentDisplay();
+        void updateAssignmentDisplay();
 
 protected:
-	void getSendInfos(std::vector<void*>* pResult, ESendInfo sendInfo);
-	void* getSendInfo(ESendInfo sendInfo, int iTrack);
-	void setSendInfo(ESendInfo sendInfo, int iTrack, void* pValue, int wait);
+        void getSendInfos(std::vector<void*>* pResult, ESendInfo sendInfo);
+        void* getSendInfo(ESendInfo sendInfo, int iTrack);
+        void setSendInfo(ESendInfo sendInfo, int iTrack, void* pValue, int wait);
 
-	const char* stringForESendInfo(ESendInfo sendInfo);
+        const char* stringForESendInfo(ESendInfo sendInfo);
 };

@@ -54,15 +54,15 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeSingleBankComponent* getSingleBankComponent(int iBank);
-		PlugModeSingleBankComponent* getSelectedBankComponent(); // can return NULL if Map Info is selected
+                PlugModeSingleBankComponent* getSingleBankComponent(int iBank);
+                PlugModeSingleBankComponent* getSelectedBankComponent(); // can return NULL if Map Info is selected
 
-		void selectedBankChanged(int iBank){m_tabbedBanks->setCurrentTabIndex(iBank);}
-		void updateBankNames();
-		void updateEverything();
-		void selectedTabHasChanged();
+                void selectedBankChanged(int iBank){m_tabbedBanks->setCurrentTabIndex(iBank);}
+                void updateBankNames();
+                void updateEverything();
+                void selectedTabHasChanged();
 
-		void setTabVisible(bool shouldBeVisible);
+                void setTabVisible(bool shouldBeVisible);
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -74,8 +74,8 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugMap* m_pMap;
-		PlugModeComponent* m_pMainComponent;
+                PlugMap* m_pMap;
+                PlugModeComponent* m_pMainComponent;
     //[/UserVariables]
 
     //==============================================================================

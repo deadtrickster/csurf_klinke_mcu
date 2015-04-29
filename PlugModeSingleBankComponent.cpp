@@ -88,12 +88,12 @@ void PlugModeSingleBankComponent::resized()
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeSingleBankComponent::updateEverything()
 {
-	m_nameAndReference->updateEverything();
-	m_pageComponent->updateEverything();
+  m_nameAndReference->updateEverything();
+  m_pageComponent->updateEverything();
 }
 
 void PlugModeSingleBankComponent::makePageComponentVisible(bool shouldBeVisible) {
-	m_pageComponent->setVisible(shouldBeVisible);
+  m_pageComponent->setVisible(shouldBeVisible);
 }
 //[/MiscUserCode]
 

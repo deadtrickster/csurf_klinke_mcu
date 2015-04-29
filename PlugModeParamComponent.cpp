@@ -84,8 +84,8 @@ PlugModeParamComponent::PlugModeParamComponent (PlugModeComponent* pMC, PMParam*
     setSize (468, 28);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pParam = pParam;
-		m_pMainComponent = pMC;
+    m_pParam = pParam;
+    m_pMainComponent = pMC;
     //[/Constructor]
 }
 
@@ -131,19 +131,19 @@ void PlugModeParamComponent::labelTextChanged (Label* labelThatHasChanged)
     if (labelThatHasChanged == m_nameShort)
     {
         //[UserLabelCode_m_nameShort] -- add your label text handling code here..
-			bool setLongAlso = (m_pParam->getNameShort() == m_pParam->getNameLong());
-				m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
-				if (setLongAlso)
-					m_nameLong->setText(m_nameShort->getText(), true);
+      bool setLongAlso = (m_pParam->getNameShort() == m_pParam->getNameLong());
+        m_nameShort->setText(m_nameShort->getText().substring(0, 6), false);
+        if (setLongAlso)
+          m_nameLong->setText(m_nameShort->getText(), true);
 
-				m_pParam->setNameShort(m_nameShort->getText());
+        m_pParam->setNameShort(m_nameShort->getText());
         //[/UserLabelCode_m_nameShort]
     }
     else if (labelThatHasChanged == m_nameLong)
     {
         //[UserLabelCode_m_nameLong] -- add your label text handling code here..
-				m_nameLong->setText(m_nameLong->getText().substring(0,17), false);
-				m_pParam->setNameLong(m_nameLong->getText());
+        m_nameLong->setText(m_nameLong->getText().substring(0,17), false);
+        m_pParam->setNameLong(m_nameLong->getText());
         //[/UserLabelCode_m_nameLong]
     }
 
@@ -159,7 +159,7 @@ void PlugModeParamComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == m_parameter)
     {
         //[UserComboBoxCode_m_parameter] -- add your combo box handling code here..
-			changeParamId(m_parameter->getSelectedId() - PARAM_COMP_ID_OFFSET);
+      changeParamId(m_parameter->getSelectedId() - PARAM_COMP_ID_OFFSET);
 
         //[/UserComboBoxCode_m_parameter]
     }
@@ -171,7 +171,7 @@ void PlugModeParamComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 void PlugModeParamComponent::mouseDown (const MouseEvent& e)
 {
     //[UserCode_mouseDown] -- Add your code here...
-	m_pMainComponent->paramComponentPressed(this);
+  m_pMainComponent->paramComponentPressed(this);
     //[/UserCode_mouseDown]
 }
 
@@ -180,66 +180,66 @@ void PlugModeParamComponent::mouseDown (const MouseEvent& e)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeParamComponent::updateEverything()
 {
-	updateParameterList();
+  updateParameterList();
 
-	m_nameShort->setText(m_pParam->getNameShort(), false);
-	m_nameLong->setText(m_pParam->getNameLong(), false);
+  m_nameShort->setText(m_pParam->getNameShort(), false);
+  m_nameLong->setText(m_pParam->getNameLong(), false);
 
-	m_pMainComponent->updateLearnStatus();
+  m_pMainComponent->updateLearnStatus();
 }
 
 void PlugModeParamComponent::updateParameterList() {
-	m_parameter->clear();
-	m_parameter->addItem(T("No Parameter selected"), NOT_ASSIGNED + PARAM_COMP_ID_OFFSET);
-	PlugAccess* pPA = m_pMainComponent->getPlugAccess();
-	if (pPA == NULL) return;
-	int numParams = pPA->getNumParams();
-	for (int i = 0 ; i < numParams; i++) {
-		char paramName[80];
-		bool valid = TrackFX_GetParamName(pPA->getPlugTrack(), pPA->getPlugSlot(), i, paramName, 79);
-		if (valid && (strnlen(paramName, 80) > 0)) {
-			m_parameter->addItem(String::formatted(T("%04d: "), i + 1) + paramName, i + PARAM_COMP_ID_OFFSET);
-		} else {
-			m_parameter->addItem(String::formatted(T("%04d"), i + 1), i + PARAM_COMP_ID_OFFSET);
-		}
-	}   
+  m_parameter->clear();
+  m_parameter->addItem(T("No Parameter selected"), NOT_ASSIGNED + PARAM_COMP_ID_OFFSET);
+  PlugAccess* pPA = m_pMainComponent->getPlugAccess();
+  if (pPA == NULL) return;
+  int numParams = pPA->getNumParams();
+  for (int i = 0 ; i < numParams; i++) {
+    char paramName[80];
+    bool valid = TrackFX_GetParamName(pPA->getPlugTrack(), pPA->getPlugSlot(), i, paramName, 79);
+    if (valid && (strnlen(paramName, 80) > 0)) {
+      m_parameter->addItem(String::formatted(T("%04d: "), i + 1) + paramName, i + PARAM_COMP_ID_OFFSET);
+    } else {
+      m_parameter->addItem(String::formatted(T("%04d"), i + 1), i + PARAM_COMP_ID_OFFSET);
+    }
+  }   
 
-	m_parameter->setSelectedId(m_pParam->getParamID() + PARAM_COMP_ID_OFFSET);
+  m_parameter->setSelectedId(m_pParam->getParamID() + PARAM_COMP_ID_OFFSET);
 }
 
 void PlugModeParamComponent::changeParamId(int paramId){
-	if (paramId == m_pParam->getParamID())
-		return;
+  if (paramId == m_pParam->getParamID())
+    return;
 
-	m_pParam->setParamID(paramId);
-	m_parameter->setSelectedId(paramId + PARAM_COMP_ID_OFFSET, true);
-	if (m_pMainComponent->isUseParamName()) {
-		if (paramId == NOT_ASSIGNED) {
-			m_pParam->setNameShort(String::empty);
-			m_pParam->setNameLong(String::empty);
-			updateEverything();
-		} else {
-			PlugAccess* pPA = m_pMainComponent->getPlugAccess();
-			if (pPA) {
-				char paramName[80];
-				bool valid = TrackFX_GetParamName(pPA->getPlugTrack(), pPA->getPlugSlot(), m_pParam->getParamID(), paramName, 79);
-				if (valid) {
-					m_pParam->setNameShort(PlugAccess::shortNameFromCString(paramName));
-					m_pParam->setNameLong(PlugAccess::longNameFromCString(paramName));
-					updateEverything();
-				}
-			}
-		}
-	}
+  m_pParam->setParamID(paramId);
+  m_parameter->setSelectedId(paramId + PARAM_COMP_ID_OFFSET, true);
+  if (m_pMainComponent->isUseParamName()) {
+    if (paramId == NOT_ASSIGNED) {
+      m_pParam->setNameShort(String::empty);
+      m_pParam->setNameLong(String::empty);
+      updateEverything();
+    } else {
+      PlugAccess* pPA = m_pMainComponent->getPlugAccess();
+      if (pPA) {
+        char paramName[80];
+        bool valid = TrackFX_GetParamName(pPA->getPlugTrack(), pPA->getPlugSlot(), m_pParam->getParamID(), paramName, 79);
+        if (valid) {
+          m_pParam->setNameShort(PlugAccess::shortNameFromCString(paramName));
+          m_pParam->setNameLong(PlugAccess::longNameFromCString(paramName));
+          updateEverything();
+        }
+      }
+    }
+  }
 
-	if (dynamic_cast<PMVPot*>(m_pParam)) {
-		dynamic_cast<PMVPot*>(m_pParam)->getStepsMap()->clear();
-		m_pMainComponent->updateEverything();
-	}
+  if (dynamic_cast<PMVPot*>(m_pParam)) {
+    dynamic_cast<PMVPot*>(m_pParam)->getStepsMap()->clear();
+    m_pMainComponent->updateEverything();
+  }
 }
 
 void PlugModeParamComponent::setLearn(bool learn) {
-	m_parameter->setColour(ComboBox::backgroundColourId, learn ? Colour(255, 0, 0) : Colour(255, 255, 255));
+  m_parameter->setColour(ComboBox::backgroundColourId, learn ? Colour(255, 0, 0) : Colour(255, 255, 255));
 
 }
 //[/MiscUserCode]

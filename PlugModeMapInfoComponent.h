@@ -54,12 +54,12 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void updateEverything();
-		/** TextEditorListener callbacks */
-		void textEditorTextChanged (TextEditor& editor);
-		void textEditorReturnKeyPressed (TextEditor& editor){};
-		void textEditorEscapeKeyPressed (TextEditor& editor){};
-		void textEditorFocusLost (TextEditor& editor){};
+                void updateEverything();
+                /** TextEditorListener callbacks */
+                void textEditorTextChanged (TextEditor& editor);
+                void textEditorReturnKeyPressed (TextEditor& editor){};
+                void textEditorEscapeKeyPressed (TextEditor& editor){};
+                void textEditorFocusLost (TextEditor& editor){};
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -71,7 +71,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PlugMap* m_pPlugMap;
+                PlugMap* m_pPlugMap;
     //[/UserVariables]
 
     //==============================================================================

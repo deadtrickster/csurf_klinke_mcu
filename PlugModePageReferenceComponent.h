@@ -54,7 +54,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void updateEverything();
+                void updateEverything();
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -68,8 +68,8 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PMPage* m_pPage;
-		PlugModePageComponent* m_pPlugModePageComponent;
+                PMPage* m_pPage;
+                PlugModePageComponent* m_pPlugModePageComponent;
     //[/UserVariables]
 
     //==============================================================================

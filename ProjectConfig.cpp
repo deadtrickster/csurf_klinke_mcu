@@ -16,7 +16,7 @@
 
 bool ProcessExtensionLine(const char *line, ProjectStateContext *ctx, bool isUndo, struct project_config_extension_t *reg) // returns BOOL if line (and optionally subsequent lines) processed
 {
-	return ProjectConfig::instance()->processExtensionLine(line, ctx, isUndo, reg);
+  return ProjectConfig::instance()->processExtensionLine(line, ctx, isUndo, reg);
 }
 
 void SaveExtensionConfig(ProjectStateContext *ctx, bool isUndo, struct project_config_extension_t *reg)

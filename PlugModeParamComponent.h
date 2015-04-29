@@ -54,9 +54,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		void updateEverything();
-		void changeParamId(int paramId);
-		void setLearn(bool learn);
+                void updateEverything();
+                void changeParamId(int paramId);
+                void setLearn(bool learn);
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -71,11 +71,11 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		void updateParameterList();
+                void updateParameterList();
 
-		PMParam* m_pParam;
+                PMParam* m_pParam;
 
-		PlugModeComponent* m_pMainComponent;
+                PlugModeComponent* m_pMainComponent;
     //[/UserVariables]
 
     //==============================================================================

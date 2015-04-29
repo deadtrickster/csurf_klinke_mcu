@@ -84,15 +84,15 @@ PlugModeMapInfoComponent::PlugModeMapInfoComponent (PlugModeComponent* pMC, Plug
 
 
     //[UserPreSize]
-		m_textCreator->addListener(this);
-		m_textNotes->addListener(this);
+    m_textCreator->addListener(this);
+    m_textNotes->addListener(this);
     //[/UserPreSize]
 
     setSize (616, 424);
 
     //[Constructor] You can add your own custom stuff here..
-		m_pPlugMap = pMap;
-		updateEverything();
+    m_pPlugMap = pMap;
+    updateEverything();
     //[/Constructor]
 }
 
@@ -136,16 +136,16 @@ void PlugModeMapInfoComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeMapInfoComponent::textEditorTextChanged(TextEditor& editor) {
-	if (&editor == m_textNotes) {
-		m_pPlugMap->setInfo(editor.getText());
-	} else if (&editor == m_textCreator) {
-		m_pPlugMap->setCreator(editor.getText());
-	}
+  if (&editor == m_textNotes) {
+    m_pPlugMap->setInfo(editor.getText());
+  } else if (&editor == m_textCreator) {
+    m_pPlugMap->setCreator(editor.getText());
+  }
 }
 
 void PlugModeMapInfoComponent::updateEverything() {
-	m_textCreator->setText(m_pPlugMap->getCreator());
-	m_textNotes->setText(m_pPlugMap->getInfo());
+  m_textCreator->setText(m_pPlugMap->getCreator());
+  m_textNotes->setText(m_pPlugMap->getInfo());
 }
 //[/MiscUserCode]
 

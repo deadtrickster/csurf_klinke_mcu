@@ -46,9 +46,9 @@ PlugModeChannelComponent::PlugModeChannelComponent (PlugModeComponent* pMC, PMPa
 
 
     //[UserPreSize]
-		for (int i = 0; i < 8; i++) {
-			m_tabbedChannels->addTab ( String::formatted(T("Channel %d"), i + 1), Colours::white, new PlugModeSingleChannelComponent (pMC, pPage->getFader(i), pPage->getVPot(i)), true);
-		}
+    for (int i = 0; i < 8; i++) {
+      m_tabbedChannels->addTab ( String::formatted(T("Channel %d"), i + 1), Colours::white, new PlugModeSingleChannelComponent (pMC, pPage->getFader(i), pPage->getVPot(i)), true);
+    }
     //[/UserPreSize]
 
     setSize (604, 284);
@@ -91,16 +91,16 @@ void PlugModeChannelComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void PlugModeChannelComponent::updateEverything() {
-	getSelectedChannelComponent()->updateEverything();
+  getSelectedChannelComponent()->updateEverything();
 }
 
 void PlugModeChannelComponent::selectedChannelChanged(int iChannel) {
-	if (iChannel != m_tabbedChannels->getCurrentTabIndex()) {
-		m_tabbedChannels->setCurrentTabIndex(iChannel);
-		getSelectedChannelComponent()->updateEverything();
-	}
+  if (iChannel != m_tabbedChannels->getCurrentTabIndex()) {
+    m_tabbedChannels->setCurrentTabIndex(iChannel);
+    getSelectedChannelComponent()->updateEverything();
+  }
 
-	safe_call(m_pMainComponent, updateLearnStatus())
+  safe_call(m_pMainComponent, updateLearnStatus())
 }
 //[/MiscUserCode]
 

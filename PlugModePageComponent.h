@@ -53,14 +53,14 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeSinglePageComponent* getSinglePageComponent(int iBank){return static_cast<PlugModeSinglePageComponent*>(m_tabbedPages->getTabContentComponent(iBank));}
-		PlugModeSinglePageComponent* getSelectedPageComponent(){return getSinglePageComponent(m_tabbedPages->getCurrentTabIndex());}
-		void selectedPageChanged(int iPage){m_tabbedPages->setCurrentTabIndex(iPage);}
-		void selectedTabHasChanged();
-		void updatePageNames();
-		void updateEverything();
+                PlugModeSinglePageComponent* getSinglePageComponent(int iBank){return static_cast<PlugModeSinglePageComponent*>(m_tabbedPages->getTabContentComponent(iBank));}
+                PlugModeSinglePageComponent* getSelectedPageComponent(){return getSinglePageComponent(m_tabbedPages->getCurrentTabIndex());}
+                void selectedPageChanged(int iPage){m_tabbedPages->setCurrentTabIndex(iPage);}
+                void selectedTabHasChanged();
+                void updatePageNames();
+                void updateEverything();
 
-		void setTabVisible(bool shouldBeVisible);
+                void setTabVisible(bool shouldBeVisible);
     //[/UserMethods]
 
     void paint (Graphics& g);
@@ -72,8 +72,8 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-		PMBank* m_pBank;
-		PlugModeComponent* m_pMainComponent;
+                PMBank* m_pBank;
+                PlugModeComponent* m_pMainComponent;
     //[/UserVariables]
 
     //==============================================================================

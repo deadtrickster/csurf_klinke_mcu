@@ -86,18 +86,18 @@ CommandModeVPOTComponent::CommandModeVPOTComponent (CommandMode::Page* pPage, in
 
 
     //[UserPreSize]
-		m_pPage = pPage;
-		m_shift = shift;
-		m_channel = channel;
-		groupComponent->setText((shift ? T("Shift ") : String::empty) + String::formatted(T("%d"), channel + 1));
-		actionLabel->setText(m_pPage->getCommandName(shift, channel), false);
-		relativeButton->setToggleState(m_pPage->m_bRelative[shift][channel], false);
-		normalSpeedSlider->setEnabled(m_pPage->m_bRelative[shift][channel]);
-		normalSpeedSlider->setValue(m_pPage->m_iNormalSpeed[shift][channel],false);
-		pressedSpeedSlider->setEnabled(m_pPage->m_bRelative[shift][channel]);
-		pressedSpeedSlider->setValue(m_pPage->m_iPressedSpeed[shift][channel],false);
+    m_pPage = pPage;
+    m_shift = shift;
+    m_channel = channel;
+    groupComponent->setText((shift ? T("Shift ") : String::empty) + String::formatted(T("%d"), channel + 1));
+    actionLabel->setText(m_pPage->getCommandName(shift, channel), false);
+    relativeButton->setToggleState(m_pPage->m_bRelative[shift][channel], false);
+    normalSpeedSlider->setEnabled(m_pPage->m_bRelative[shift][channel]);
+    normalSpeedSlider->setValue(m_pPage->m_iNormalSpeed[shift][channel],false);
+    pressedSpeedSlider->setEnabled(m_pPage->m_bRelative[shift][channel]);
+    pressedSpeedSlider->setValue(m_pPage->m_iPressedSpeed[shift][channel],false);
 
-		//actionLabel->setMinimumHorizontalScale(0.98);
+    //actionLabel->setMinimumHorizontalScale(0.98);
     //[/UserPreSize]
 
     setSize (80, 150);
@@ -152,8 +152,8 @@ void CommandModeVPOTComponent::labelTextChanged (Label* labelThatHasChanged)
     if (labelThatHasChanged == actionLabel)
     {
         //[UserLabelCode_actionLabel] -- add your label text handling code here..
-			actionLabel->setText(actionLabel->getText().substring(0, 6), false);
-			m_pPage->setCommandName(m_shift, m_channel, actionLabel->getText());
+      actionLabel->setText(actionLabel->getText().substring(0, 6), false);
+      m_pPage->setCommandName(m_shift, m_channel, actionLabel->getText());
         //[/UserLabelCode_actionLabel]
     }
 
@@ -169,9 +169,9 @@ void CommandModeVPOTComponent::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == relativeButton)
     {
         //[UserButtonCode_relativeButton] -- add your button handler code here..
-			m_pPage->m_bRelative[m_shift][m_channel] = relativeButton->getToggleState();
-			normalSpeedSlider->setEnabled(relativeButton->getToggleState());
-			pressedSpeedSlider->setEnabled(relativeButton->getToggleState());
+      m_pPage->m_bRelative[m_shift][m_channel] = relativeButton->getToggleState();
+      normalSpeedSlider->setEnabled(relativeButton->getToggleState());
+      pressedSpeedSlider->setEnabled(relativeButton->getToggleState());
         //[/UserButtonCode_relativeButton]
     }
 
@@ -187,13 +187,13 @@ void CommandModeVPOTComponent::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == normalSpeedSlider)
     {
         //[UserSliderCode_normalSpeedSlider] -- add your slider handling code here..
-			m_pPage->m_iNormalSpeed[m_shift][m_channel] = (int) (normalSpeedSlider->getValue() + 0.5);
+      m_pPage->m_iNormalSpeed[m_shift][m_channel] = (int) (normalSpeedSlider->getValue() + 0.5);
         //[/UserSliderCode_normalSpeedSlider]
     }
     else if (sliderThatWasMoved == pressedSpeedSlider)
     {
         //[UserSliderCode_pressedSpeedSlider] -- add your slider handling code here..
-			m_pPage->m_iPressedSpeed[m_shift][m_channel] = (int) (pressedSpeedSlider->getValue() + 0.5);
+      m_pPage->m_iPressedSpeed[m_shift][m_channel] = (int) (pressedSpeedSlider->getValue() + 0.5);
         //[/UserSliderCode_pressedSpeedSlider]
     }
 

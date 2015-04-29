@@ -16,12 +16,12 @@
 #define PMO2A_ON JUCE_T("on")
 
 class PlugMode2ndOptions :
-	public Options
+        public Options
 {
 public:
-	PlugMode2ndOptions(DisplayHandler* pDH);
+        PlugMode2ndOptions(DisplayHandler* pDH);
 public:
-	virtual ~PlugMode2ndOptions(void);
+        virtual ~PlugMode2ndOptions(void);
 
-	String getConfigFileName();
+        String getConfigFileName();
 };

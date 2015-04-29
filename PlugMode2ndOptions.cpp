@@ -7,28 +7,28 @@
 
 PlugMode2ndOptions::PlugMode2ndOptions(DisplayHandler* pDH) : Options(pDH)
 {
-	addOption(PMO2_MODE_CHANGE);
-	addAttribute(PMO2_MODE_CHANGE, PMO2A_NOTHING, true);
-	addAttribute(PMO2_MODE_CHANGE, PMO2A_OPEN_CLOSE);
-	addAttribute(PMO2_MODE_CHANGE, PMO2A_OPEN_CLOSE_MIXER);
+  addOption(PMO2_MODE_CHANGE);
+  addAttribute(PMO2_MODE_CHANGE, PMO2A_NOTHING, true);
+  addAttribute(PMO2_MODE_CHANGE, PMO2A_OPEN_CLOSE);
+  addAttribute(PMO2_MODE_CHANGE, PMO2A_OPEN_CLOSE_MIXER);
 
-// 	addOption(PMO2_KEEP_IN_FRONT);
-// 	addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_OFF, true);
-// 	addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_ON);
-//	addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_MOVE);
-	addOption(PMO2_MOVE);
-	addAttribute(PMO2_MOVE, PMO2A_OFF, true);
-	addAttribute(PMO2_MOVE, PMO2A_ON);
+//  addOption(PMO2_KEEP_IN_FRONT);
+//  addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_OFF, true);
+//  addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_ON);
+//  addAttribute(PMO2_KEEP_IN_FRONT, PMO2A_MOVE);
+  addOption(PMO2_MOVE);
+  addAttribute(PMO2_MOVE, PMO2A_OFF, true);
+  addAttribute(PMO2_MOVE, PMO2A_ON);
 
-	readConfigFile();
+  readConfigFile();
 }
 
 PlugMode2ndOptions::~PlugMode2ndOptions(void)
 {
-	writeConfigFile();
+  writeConfigFile();
 }
 
 String PlugMode2ndOptions::getConfigFileName()
 {
-	return String("PlugModeOptions2");
+  return String("PlugModeOptions2");
 }

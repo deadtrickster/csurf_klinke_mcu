@@ -56,12 +56,12 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-		PlugModeChannelComponent* getChannelComponent(){return m_channelComponent;}
-		PlugModeSingleChannelComponent* getSelectedChannelComponent(){return m_channelComponent->getSelectedChannelComponent();}
-		PlugModeFaderComponent* getFaderComponent(int iFader){return m_channelComponent->getSingleChannelComponent(iFader)->getFader();}
-		PlugModeVPOTComponent* getVPOTComponent(int iFader){return m_channelComponent->getSingleChannelComponent(iFader)->getVPOT();}
-		void updateEverything();
-		void makeChannelComponentVisible(bool shouldBeVisible);
+                PlugModeChannelComponent* getChannelComponent(){return m_channelComponent;}
+                PlugModeSingleChannelComponent* getSelectedChannelComponent(){return m_channelComponent->getSelectedChannelComponent();}
+                PlugModeFaderComponent* getFaderComponent(int iFader){return m_channelComponent->getSingleChannelComponent(iFader)->getFader();}
+                PlugModeVPOTComponent* getVPOTComponent(int iFader){return m_channelComponent->getSingleChannelComponent(iFader)->getVPOT();}
+                void updateEverything();
+                void makeChannelComponentVisible(bool shouldBeVisible);
     //[/UserMethods]
 
     void paint (Graphics& g);

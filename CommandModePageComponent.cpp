@@ -52,16 +52,16 @@ CommandModePageComponent::CommandModePageComponent (CommandMode::Page* pPage, Co
 
 
     //[UserPreSize]
-		m_pPage = pPage;
-		m_pMain = pMain;
+    m_pPage = pPage;
+    m_pMain = pMain;
 
-		for (int channel = 0; channel < 8; channel++) {
-			addAndMakeVisible (vpotComponent[0][channel] = new CommandModeVPOTComponent(pPage, 0, channel));
-			addAndMakeVisible (vpotComponent[1][channel] = new CommandModeVPOTComponent(pPage, 1, channel));
-			vpotComponent[0][channel]->setExplicitFocusOrder (channel * 2 + 10);
-			vpotComponent[1][channel]->setExplicitFocusOrder (channel * 2 + 11);
-		}
-		pageNameLabel->setText(m_pPage->m_strPageName, false);
+    for (int channel = 0; channel < 8; channel++) {
+      addAndMakeVisible (vpotComponent[0][channel] = new CommandModeVPOTComponent(pPage, 0, channel));
+      addAndMakeVisible (vpotComponent[1][channel] = new CommandModeVPOTComponent(pPage, 1, channel));
+      vpotComponent[0][channel]->setExplicitFocusOrder (channel * 2 + 10);
+      vpotComponent[1][channel]->setExplicitFocusOrder (channel * 2 + 11);
+    }
+    pageNameLabel->setText(m_pPage->m_strPageName, false);
     //[/UserPreSize]
 
     setSize (810, 380);
@@ -78,10 +78,10 @@ CommandModePageComponent::~CommandModePageComponent()
     deleteAndZero (pageNameLabel);
 
     //[Destructor]. You can add your own custom destruction code here..
-		for (int channel = 0; channel < 8; channel++) {
-			deleteAndZero (vpotComponent[0][channel]);
-			deleteAndZero (vpotComponent[1][channel]);
-		}
+    for (int channel = 0; channel < 8; channel++) {
+      deleteAndZero (vpotComponent[0][channel]);
+      deleteAndZero (vpotComponent[1][channel]);
+    }
     //[/Destructor]
 }
 
@@ -149,10 +149,10 @@ void CommandModePageComponent::resized()
 {
     pageNameLabel->setBounds (396, 10, 60, 24);
     //[UserResized] Add your own custom resize handling here..
-		for (int channel = 0; channel < 8; channel++) {
-			vpotComponent[0][channel]->setBounds (146 + 80 * channel, 39, 80, 150);
-			vpotComponent[1][channel]->setBounds (146 + 80 * channel, 189, 80, 150);
-		}
+    for (int channel = 0; channel < 8; channel++) {
+      vpotComponent[0][channel]->setBounds (146 + 80 * channel, 39, 80, 150);
+      vpotComponent[1][channel]->setBounds (146 + 80 * channel, 189, 80, 150);
+    }
     //[/UserResized]
 }
 
@@ -164,9 +164,9 @@ void CommandModePageComponent::labelTextChanged (Label* labelThatHasChanged)
     if (labelThatHasChanged == pageNameLabel)
     {
         //[UserLabelCode_pageNameLabel] -- add your label text handling code here..
-			pageNameLabel->setText(pageNameLabel->getText().substring(0, 6), false);
-			m_pPage->m_strPageName = pageNameLabel->getText();
-			m_pMain->updateTabNames();
+      pageNameLabel->setText(pageNameLabel->getText().substring(0, 6), false);
+      m_pPage->m_strPageName = pageNameLabel->getText();
+      m_pMain->updateTabNames();
         //[/UserLabelCode_pageNameLabel]
     }
 

@@ -62,16 +62,16 @@ public:
     juce_UseDebuggingNewOperator
 
 private:
-		void fillActionLabels(); 
+                void fillActionLabels(); 
 
     //==============================================================================
     ToggleButton* m_shift;
     ToggleButton* m_option;
     ToggleButton* m_control;
     ToggleButton* m_alt;
-		Label* m_labelAction[8];
+                Label* m_labelAction[8];
 
-		ActionsDisplay* m_pActionDisplay;
+                ActionsDisplay* m_pActionDisplay;
 
     //==============================================================================
     // (prevent copy constructor and operator= being generated..)

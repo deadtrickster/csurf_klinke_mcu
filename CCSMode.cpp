@@ -8,84 +8,84 @@
 #include "tracks.h"
 
 CCSMode::CCSMode(CCSManager* pManager) {
-	m_pCCSManager = pManager;
+  m_pCCSManager = pManager;
 }
 
 CCSMode::~CCSMode(void) {
 }
 
 void CCSMode::activate() {
-	updateEverything();
+  updateEverything();
 }
 
 
 void CCSMode::updateRecLEDs() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->setRecLED(this, i, false);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->setRecLED(this, i, false);
+  }
 }
 
 void CCSMode::updateSelectLEDs() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->setSelectLED(this, i, false);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->setSelectLED(this, i, false);
+  }
 }
 
 void CCSMode::updateSoloLEDs() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->setSoloLED(this, i, false);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->setSoloLED(this, i, false);
+  }
 }
 
 void CCSMode::updateMuteLEDs() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->setMuteLED(this, i, false);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->setMuteLED(this, i, false);
+  }
 }
 
 void CCSMode::updateFlipLED() {
-	m_pCCSManager->setFlipLED(this, false);
+  m_pCCSManager->setFlipLED(this, false);
 }
 
 void CCSMode::updateGlobalViewLED() {
-	m_pCCSManager->setGlobalViewLED(this, false);
+  m_pCCSManager->setGlobalViewLED(this, false);
 }
 
 void CCSMode::updateAssignmentDisplay() {
-	m_pCCSManager->setAssignmentDisplay(this, "  ");
+  m_pCCSManager->setAssignmentDisplay(this, "  ");
 }
 
 bool CCSMode::isModifierPressed(int modifier) {
-	return m_pCCSManager->getMCU()->IsModifierPressed(modifier); 
+  return m_pCCSManager->getMCU()->IsModifierPressed(modifier); 
 }
 
 void CCSMode::updateEverything() {
-	updateFaders();
-	updateFlipLED();
-	updateGlobalViewLED();
-	updateMuteLEDs();
-	updateRecLEDs();
-	updateSelectLEDs();
-	updateSoloLEDs();
-	updateVPOTs();
-	updateAssignmentDisplay();
-	updateDisplay();
+  updateFaders();
+  updateFlipLED();
+  updateGlobalViewLED();
+  updateMuteLEDs();
+  updateRecLEDs();
+  updateSelectLEDs();
+  updateSoloLEDs();
+  updateVPOTs();
+  updateAssignmentDisplay();
+  updateDisplay();
 }
 
 void CCSMode::updateFaders() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->setFader(this, i, 0);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->setFader(this, i, 0);
+  }
 }
 
 void CCSMode::updateVPOTs() {
-	for (int i = 1; i < 9; i++) {
-		m_pCCSManager->getVPOT(i)->setMode(VPOT_LED::FROM_LEFT);
-		m_pCCSManager->getVPOT(i)->setValue(0);
-		m_pCCSManager->getVPOT(i)->setBottom(false);
-	}
+  for (int i = 1; i < 9; i++) {
+    m_pCCSManager->getVPOT(i)->setMode(VPOT_LED::FROM_LEFT);
+    m_pCCSManager->getVPOT(i)->setValue(0);
+    m_pCCSManager->getVPOT(i)->setBottom(false);
+  }
 }
 
 MediaTrack* CCSMode::selectedTrack() {
-	return Tracks::instance()->getSelectedSingleTrack();
+  return Tracks::instance()->getSelectedSingleTrack();
 }
