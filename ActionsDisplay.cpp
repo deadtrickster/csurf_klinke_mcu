@@ -44,12 +44,10 @@ void ActionsDisplay::switchTo( int nr )
 }
 
 void ActionsDisplay::updateDisplay() {
-  m_pDisplayHandler->waitForMoreChanges(true);
   for (int i = 0; i < 4; i++) {
     changeText(0, i * 14, m_strLabel[m_shownModifier][i], 13);
     changeText(1, i * 14, m_strLabel[m_shownModifier][i+4], 13);
   }
-  m_pDisplayHandler->waitForMoreChanges(false);
 }
 
 String ActionsDisplay::getLabel( int modifiers, int nr )

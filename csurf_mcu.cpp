@@ -901,8 +901,8 @@ void CSurf_MCU::Run()
 
     ProjectConfig::instance()->checkReaProjectChange();
 
-		if (Tracks::instance()->tracksStatesChanged())
-			m_pCCSManager->trackListChange();
+	if (Tracks::instance()->tracksStatesChanged())			
+	  m_pCCSManager->trackListChange();
 
     PlugMoveWatcher::instance()->checkMovement();
 
@@ -1069,7 +1069,8 @@ void CSurf_MCU::Run()
 
       m_pCCSManager->frameUpdate(now);
 
-      m_pCCSManager->getDisplayHandler()->waitForMoreChanges(false);
+	  m_pCCSManager->getDisplayHandler()->getDisplay()->resendAllRows();
+	  m_pCCSManager->getDisplayHandler()->waitForMoreChanges(true);
     }
   }
 
@@ -1141,7 +1142,11 @@ void CSurf_MCU::SetTrackListChange()
 
 void CSurf_MCU::SetSurfaceVolume(MediaTrack *trackid, double volume) 
 { 
+  if (Tracks::instance()->tracksStatesChanged())		
+	m_pCCSManager->trackListChange();
+
   m_surface_volume[trackid] = volume;
+  m_pCCSManager->updateFader();
 }
 
 void CSurf_MCU::SetSurfacePan(MediaTrack *trackid, double pan) 

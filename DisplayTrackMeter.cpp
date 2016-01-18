@@ -75,8 +75,8 @@ void DisplayTrackMeter::updateTrackMeter(DWORD now)
 void DisplayTrackMeter::changeText(int row, int pos, const char *text, int pad, bool updateDisplay) {
   ASSERT(row < m_numRows);
 
-  if (updateDisplay)
-    m_pDisplayHandler->updateDisplay(this, row, pos, text, pad);
+//  if (updateDisplay)
+//    m_pDisplayHandler->updateDisplay(this, row, pos, text, pad);
 
   writeToBuffer(row, pos, text, pad);
 

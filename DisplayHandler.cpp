@@ -51,11 +51,10 @@ void DisplayHandler::updateDisplay( Display* pDisplay, int row, int pos, const c
   if (pDisplay != m_pActualDisplay)
     return;
 
-  if (m_pHardwareState->bufferIsEqualTo(row, pos, text, pad) && !forceUpdate)
+  if (m_pHardwareState->bufferIsEqualTo(row, pos, text, pad))// && !forceUpdate)
     return;
-
-  if (m_wait)
-    return;
+//  if (m_wait)
+//    return;
 
   m_pHardwareState->changeText(row, pos, text, pad);
 
@@ -166,6 +165,5 @@ void DisplayHandler::waitForMoreChanges(bool block) {
   } else {
     m_wait = false;
     safe_call(m_pActualDisplay, resendAllRows());
-//    m_pActualDisplay->resendAllRows();
   }
 }

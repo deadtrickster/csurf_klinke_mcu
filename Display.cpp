@@ -38,7 +38,7 @@ Display::~Display()
 
 void Display::changeText( int row, int pos, const char *text, int pad, bool updateDisplay, bool centered) {
   ASSERT(row < m_numRows);
-
+  
   char* pCenteredText = new char[pad + 1];
   int textlen = min(pad, (int) strnlen(text, DISPLAY_ROW_LENGTH));
   memset(pCenteredText, ' ', pad + 1);
@@ -53,9 +53,6 @@ void Display::changeText( int row, int pos, const char *text, int pad, bool upda
     ASSERT(textlen + ((pad - textlen) / 2) < (pad + 1));
     pCenteredText[textlen + ((pad - textlen) / 2)] = 0;
   } 
-
-  if (!m_wait && updateDisplay)
-    m_pDisplayHandler->updateDisplay(this, row, pos, pCenteredText, pad);
 
   writeToBuffer(row, pos, pCenteredText, pad);
 
@@ -154,6 +151,3 @@ bool Display::bufferIsEqualTo( int row, int pos, const char* text, int pad ) {
   return true;
 }
 
-void Display::resendField(int row, int field) {
-  m_pDisplayHandler->updateDisplay(this, row, 0, &m_ppText[row][(field-1) * 7], 6, true);
-}

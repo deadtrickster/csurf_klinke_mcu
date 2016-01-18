@@ -702,11 +702,9 @@ void CCSManager::setMode(EMode mode) {
 
 void CCSManager::changeMode(CCSMode* pNewMode) {
   if (pNewMode && pNewMode != m_pActualMode) {
-    getDisplayHandler()->waitForMoreChanges(true);
     m_pActualMode->deactivate();
     m_pActualMode = pNewMode;
     m_pActualMode->activate();
-    getDisplayHandler()->waitForMoreChanges(false);
   }
 }
 

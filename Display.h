@@ -38,7 +38,6 @@ public:
 
         virtual void resendRow(int iRow);
         virtual void resendAllRows();
-        virtual void resendField(int row, int field);
 
         virtual void forwardRowTo(int sourceRow, Display* pDisplay, int targetRow);
 //      virtual static const char* getName() = 0;
