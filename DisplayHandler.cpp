@@ -41,22 +41,34 @@ DisplayHandler::DisplayHandler(CSurf_MCU* pMCU, EnumMCUType mcuType)
 DisplayHandler::~DisplayHandler() {
   safe_delete(m_pHardwareState);
 }
-// void DisplayHandler::init(){ 
-//  updateDisplay(m_pActualDisplay, 0, 0, "", DISPLAY_ROW_LENGTH);
-//  updateDisplay(m_pActualDisplay, 0, 0, "", DISPLAY_ROW_LENGTH);
-// }
 
-void DisplayHandler::updateDisplay( Display* pDisplay, int row, int pos, const char *text, int pad, bool forceUpdate )
-{
+void DisplayHandler::sendDifferences(Display* pDisplay, int row, const char* text) {
   if (pDisplay != m_pActualDisplay)
     return;
 
-  if (m_pHardwareState->bufferIsEqualTo(row, pos, text, pad))// && !forceUpdate)
-    return;
-//  if (m_wait)
-//    return;
+  int diffStart = -1;
+  char* cpos = m_pHardwareState->getText()[row];
+  const char* org = text;
 
-  m_pHardwareState->changeText(row, pos, text, pad);
+  for (int i = 0; i < DISPLAY_ROW_LENGTH; i++) {
+    if (*cpos != *text && diffStart == -1) {
+      diffStart = i;
+    }
+    if (*cpos == *text && diffStart != -1) {
+      sendToHardware(row, diffStart, org + diffStart, i - diffStart);
+      diffStart = -1;    
+    }
+    *cpos++;
+    *text++;
+  }
+  if (diffStart != -1)
+    sendToHardware(row, diffStart, org + diffStart, DISPLAY_ROW_LENGTH - diffStart);
+}
+
+
+void DisplayHandler::sendToHardware(int row, int pos, char const* text, int len)
+{
+  m_pHardwareState->changeText(row, pos, text, len);
 
   ASSERT(row < 2); // support for C4 is missing at the moment
   if (row == 1)
@@ -71,21 +83,17 @@ void DisplayHandler::updateDisplay( Display* pDisplay, int row, int pos, const c
 
   mm.evt.midi_message[mm.evt.size++]=0x12;
   mm.evt.midi_message[mm.evt.size++]=pos;
-  int l=strnlen(text, 55);
-  if (pad<l)l=pad;
-  if (l > 200)l=200;
 
   int cnt=0;
-  while (cnt < l)
+  while (cnt < len)
   {
     mm.evt.midi_message[mm.evt.size++]=*text++;
     cnt++;
   }
-  while (cnt++<pad)  mm.evt.midi_message[mm.evt.size++]=' ';
   mm.evt.midi_message[mm.evt.size++]=0xF7;
   m_pMCU->SendMsg(&mm.evt,-1);
-//  Sleep(5);
 }
+
 
 void DisplayHandler::switchTo( Display* pDisplay )
 {
@@ -93,6 +101,10 @@ void DisplayHandler::switchTo( Display* pDisplay )
     return;
 
   enableMeter(pDisplay->hasMeter());
+
+  if (!pDisplay->hasMeter()) {
+    memset(m_pHardwareState->getText()[1], 1, DISPLAY_ROW_LENGTH);
+  }
 
   if (m_mcuType == MCU_EX && !pDisplay->onlyOnMainUnit() || m_mcuType != MCU_EX) {
     m_pActualDisplay = pDisplay;

@@ -29,9 +29,9 @@ void PlugModeSelector::writeTrackPlugTopLine() {
 void PlugModeSelector::writePlugBankPageTopLine() {
   PlugAccess* pPA = m_pPlugMode->getPlugAccess();
   if (pPA->plugExist()) {
-    m_pDisplay->changeText(0, 0, pPA->getPlugNameLong(), 17, true, true);
-    m_pDisplay->changeText(0, 19, pPA->getBankNameLong(pPA->getSelectedBank()), 17, true, true);
-    m_pDisplay->changeText(0, 38, pPA->getPageNameLongInSelectedBank(pPA->getSelectedPageInSelectedBank()), 17, true, true);
+    m_pDisplay->changeText(0, 0, pPA->getPlugNameLong(), 17, true);
+    m_pDisplay->changeText(0, 19, pPA->getBankNameLong(pPA->getSelectedBank()), 17, true);
+    m_pDisplay->changeText(0, 38, pPA->getPageNameLongInSelectedBank(pPA->getSelectedPageInSelectedBank()), 17, true);
   }
 }
 
@@ -52,7 +52,7 @@ void PlugSelector::fillPlugNames() {
     m_pDisplay->changeField(1, i+2, m_pPlugMode->getPlugNameShort(i + m_startWith));
 
   if (m_pPlugMode->getNumPlugsInSelectedTrack() == 0)
-    m_pDisplay->changeTextFullLine(1, "No FX exist in selected track.", true, true);
+    m_pDisplay->changeTextFullLine(1, "No FX exist in selected track.", true);
 }
 
 bool PlugSelector::select(int index) {
@@ -117,7 +117,7 @@ void BankPagePlugSelector::updateDisplay() {
       writePlugBankPageTopLine();
       for (int i = 0; i < 8; i++) {
         if (pPA->isBankUsed(i))
-          m_pDisplay->changeField(1, i + 1, pPA->getBankNameShort(i), false, true);
+          m_pDisplay->changeField(1, i + 1, pPA->getBankNameShort(i), true);
       }
       m_pDisplay->resendRow(1);
       break;
@@ -125,7 +125,7 @@ void BankPagePlugSelector::updateDisplay() {
       writePlugBankPageTopLine();
       for (int i = 0; i < 8; i++) {
         if (pPA->isPageUsedInSelectedBank(i))
-          m_pDisplay->changeField(1, i + 1, pPA->getPageNameShortInSelectedBank(i), false, true);
+          m_pDisplay->changeField(1, i + 1, pPA->getPageNameShortInSelectedBank(i), true);
       }
       m_pDisplay->resendRow(1);
       break;    

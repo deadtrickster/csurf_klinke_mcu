@@ -40,7 +40,7 @@ void Options::addAttribute(String optionName, String attribute, bool defaultAtt)
 void Options::activateSelector() {
   m_pDisplay->clear();
   for (unsigned int i = 0; i < 4 && i < m_optionList.size(); ++i) 
-    m_pDisplay->changeText(0, i * 14, m_optionList[i].first, 13, true, true);
+    m_pDisplay->changeText(0, i * 14, m_optionList[i].first, 13, true);
 
   displaySelectedOptions();
   m_pDisplayHandler->switchTo(m_pDisplay);  
@@ -131,7 +131,7 @@ void Options::displaySelectedOptions() {
   checkAndModifyOptions();
 
   for (unsigned int i = 0; i < 4 && i < m_optionList.size(); ++i) { 
-    m_pDisplay->changeText(1, i * 14, getSelectedOptionAsString(i), 13, true, true);
+    m_pDisplay->changeText(1, i * 14, getSelectedOptionAsString(i), 13, true);
   }
 }
 

@@ -36,7 +36,7 @@ Display::~Display()
   delete[] m_pForwardToRow;
 }
 
-void Display::changeText( int row, int pos, const char *text, int pad, bool updateDisplay, bool centered) {
+void Display::changeText( int row, int pos, const char *text, int pad, bool centered) {
   ASSERT(row < m_numRows);
   
   char* pCenteredText = new char[pad + 1];
@@ -67,7 +67,7 @@ void Display::activate() {
 }
 
 void Display::resendRow(int iRow) {
-  m_pDisplayHandler->updateDisplay(this, iRow, 0, m_ppText[iRow], DISPLAY_ROW_LENGTH, true);
+  m_pDisplayHandler->sendDifferences(this, iRow, m_ppText[iRow]);
 }
 
 void Display::resendAllRows() {
@@ -80,20 +80,20 @@ void Display::clear() {
     changeTextFullLine(iRow, "");
 }
 
-void Display::changeTextFullLine(int row, const char* text, bool update, bool centered) {
-  changeText(row, 0, text, DISPLAY_ROW_LENGTH, update, centered);
+void Display::changeTextFullLine(int row, const char* text, bool centered) {
+  changeText(row, 0, text, DISPLAY_ROW_LENGTH, centered);
 }
 
 
-void Display::changeTextAutoPad(int row, int pos, const char* text, bool update, bool centered) {
-  changeText(row, pos, text, strnlen(text, DISPLAY_ROW_LENGTH), update, centered);
+void Display::changeTextAutoPad(int row, int pos, const char* text, bool centered) {
+  changeText(row, pos, text, strnlen(text, DISPLAY_ROW_LENGTH), centered);
 }
 
 void Display::clearLine(int row) {
   changeTextFullLine(row, "");
 }
 
-void Display::changeField(int row, int field, const char* text, bool update, bool centered) {
+void Display::changeField(int row, int field, const char* text, bool centered) {
   ASSERT(field > 0 && field < 9);
   changeText(row, (field-1) * 7, text, 6);
 }
@@ -124,30 +124,4 @@ void Display::writeToBuffer( int row, int pos, const char* text, int pad ) {
     *cpos++ = ' '; 
 }
 
-bool Display::bufferIsEqualTo( int row, int pos, const char* text, int pad ) {
-  if (pad + pos > DISPLAY_ROW_LENGTH)
-    pad=DISPLAY_ROW_LENGTH - pos;
-
-  int l=strnlen(text, DISPLAY_ROW_LENGTH);
-  if (pad<l)
-    l=pad;
-
-  int cnt=0;
-  char* cpos = m_ppText[row] + pos;
-  while (cnt < l)
-  {
-    if (*cpos != *text)
-      return false;
-    *cpos++;
-    *text++;
-    cnt++;
-  }
-  while (cnt++<pad) {
-    if (*cpos != ' ')
-      return false;
-    *cpos++;
-  }
-
-  return true;
-}
 

@@ -43,6 +43,8 @@ public:
         CSurf_MCU* getMCU() const { return m_pMCU; }
 
         void waitForMoreChanges(bool block);
+        void sendDifferences(Display* pDisplay, int row, const char* text);
+        void sendToHardware(int row, int pos, char const* text, int len);
 };
 
 #endif

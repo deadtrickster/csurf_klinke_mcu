@@ -26,13 +26,15 @@ public:
         Display(DisplayHandler* pDisplayHandler, int numRows);
         virtual ~Display();
 
-        virtual void changeText(int row, int pos, const char *text, int pad, bool updateDisplay = true, bool centered = false);
+        virtual void changeText(int row, int pos, const char *text, int pad, bool centered = false);
 
-        virtual void changeTextFullLine(int row, const char *text, bool updateDisplay = true, bool centered = false);
-        virtual void changeTextAutoPad(int row, int pos, const char *text, bool updateDisplay = true, bool centered = false);
+        virtual void changeTextFullLine(int row, const char *text, bool centered = false);
+        virtual void changeTextAutoPad(int row, int pos, const char *text, bool centered = false);
         virtual void clearLine(int row);
-        virtual void changeField(int row, int field, const char* text, bool updateDisplay = true, bool centered = false);
+        virtual void changeField(int row, int field, const char* text, bool centered = false);
 
+        char** getText() { return m_ppText; }
+        
         virtual void activate();
         virtual void clear();
 
@@ -44,8 +46,6 @@ public:
 
         virtual bool hasMeter() {return false; };
         virtual bool onlyOnMainUnit() {return true; };
-
-        bool bufferIsEqualTo( int row, int pos, const char* text, int pad );
 
 protected:
         void writeToBuffer( int row, int pos, const char* text, int pad );

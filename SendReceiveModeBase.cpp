@@ -112,7 +112,7 @@ void SendReceiveModeBase::writeTrackName(int startPos) {
 
 void SendReceiveModeBase::updateDisplay() {
   if (selectedTrack() == NULL) {
-    m_pDisplay->changeTextFullLine(0, "You must select a single track.", true, true);
+    m_pDisplay->changeTextFullLine(0, "You must select a single track.", true);
     m_pDisplay->clearLine(1);
   } else {
     m_pDisplay->changeText(0, 0, m_pSendOrReceiveText, strlen(m_pSendOrReceiveText));

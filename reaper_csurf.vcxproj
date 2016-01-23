@@ -162,7 +162,7 @@
       <OutputFile>.\Debug/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Debug\reaper_csurf_mcu_klinke.dll "C:\Users\Steffen\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke.dll" </Command>
+      <Command>copy .\Debug\reaper_csurf_mcu_klinke.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke.dll" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -210,7 +210,7 @@
       <OutputFile>.\Debug/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Debug\reaper_csurf_mcu_klinke_x64.dll "C:\Users\Steffen\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_x64.dll" </Command>
+      <Command>copy .\Debug\reaper_csurf_mcu_klinke_x64.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_x64.dll" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -259,7 +259,7 @@
       <OutputFile>.\Release/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Release\reaper_csurf_mcu_klinke.dll "C:\Users\Steffen\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke.dll"</Command>
+      <Command>copy .\Release\reaper_csurf_mcu_klinke.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -308,7 +308,7 @@
       <OutputFile>.\Release/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Release\reaper_csurf_mcu_klinke_x64.dll "C:\Users\Steffen\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_x64.dll"</Command>
+      <Command>copy .\Release\reaper_csurf_mcu_klinke_x64.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_x64.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_B|Win32'">
@@ -357,7 +357,7 @@
       <OutputFile>.\Release/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Release_B\reaper_csurf_mcu_klinke_b.dll "C:\Users\Steffen\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_b.dll"</Command>
+      <Command>copy .\Release_B\reaper_csurf_mcu_klinke_b.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_b.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_B|x64'">
@@ -404,7 +404,7 @@
       <OutputFile>.\Release/reaper_csurf.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>copy .\Release_B\reaper_csurf_mcu_klinke_b_x64.dll "C:\Program Files (x86)\REAPER\Plugins\reaper_csurf_mcu_klinke_b_x64.dll"</Command>
+      <Command>copy .\Release_B\reaper_csurf_mcu_klinke_b_x64.dll "C:\Users\Klinke\Documents\Reaper\Plugins\reaper_csurf_mcu_klinke_b_x64.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -42,16 +42,16 @@ m_lastTimePlugWasSelected(0)
   m_pValueDisplay = new Display(pManager->getDisplayHandler(), 2);
 
   m_pSingleTrackMessage = new Display(pManager->getDisplayHandler(), 2);
-  m_pSingleTrackMessage->changeTextFullLine(0, "You must select a single track.", true, true);
+  m_pSingleTrackMessage->changeTextFullLine(0, "You must select a single track.", true);
   m_pSingleTrackMessage->clearLine(1);
 
   m_pNoPlugMessage = new Display(pManager->getDisplayHandler(), 2);
   m_pNoPlugMessage->clearLine(0);
-  m_pNoPlugMessage->changeTextFullLine(1, "No FX exist in selected track.", true, true);
+  m_pNoPlugMessage->changeTextFullLine(1, "No FX exist in selected track.", true);
 
   m_pNoPlugSelectedMessage = new Display(pManager->getDisplayHandler(), 2);
   m_pNoPlugSelectedMessage->clearLine(0);
-  m_pNoPlugSelectedMessage->changeTextFullLine(1, "You must select a FX.", true, true);
+  m_pNoPlugSelectedMessage->changeTextFullLine(1, "You must select a FX.", true);
 
 
   m_pPlugSelector = new PlugSelector(pManager->getDisplayHandler(), this);
@@ -486,12 +486,12 @@ void PlugMode::updateTouchedDisplay() {
   if (m_pAccess->plugExist()) {
     PlugAccess::ElementDesc::eType element = (m_iSingleFaderTouched > 0) ? PlugAccess::ElementDesc::FADER : PlugAccess::ElementDesc::VPOT;
     int iChannel = (m_iSingleFaderTouched > 0) ? m_iSingleFaderTouched : m_iSingleVPotTouched;
-    m_pTouchedDisplay->changeText(0, 0, m_pAccess->getBankNameLong(m_pAccess->getSelectedBank()), 17, true, true);
-    m_pTouchedDisplay->changeText(0, 19, m_pAccess->getPageNameLongInSelectedBank(m_pAccess->getSelectedPageInSelectedBank()), 17, true, true);
-    m_pTouchedDisplay->changeText(0, 38, m_pAccess->getParamNameLong(element, iChannel - 1), 17, true, true);
-    m_pTouchedDisplay->changeText(1, 0, m_pCCSManager->getMCU()->GetTrackName(m_pAccess->getPlugTrack()), 17, true, true);
-    m_pTouchedDisplay->changeText(1, 19, m_pAccess->getPlugNameLong(), 17, true, true);
-    m_pTouchedDisplay->changeText(1, 38, m_pAccess->getParamValueLong(element, iChannel - 1), 17, true, true);
+    m_pTouchedDisplay->changeText(0, 0, m_pAccess->getBankNameLong(m_pAccess->getSelectedBank()), 17, true);
+    m_pTouchedDisplay->changeText(0, 19, m_pAccess->getPageNameLongInSelectedBank(m_pAccess->getSelectedPageInSelectedBank()), 17, true);
+    m_pTouchedDisplay->changeText(0, 38, m_pAccess->getParamNameLong(element, iChannel - 1), 17, true);
+    m_pTouchedDisplay->changeText(1, 0, m_pCCSManager->getMCU()->GetTrackName(m_pAccess->getPlugTrack()), 17, true);
+    m_pTouchedDisplay->changeText(1, 19, m_pAccess->getPlugNameLong(), 17, true);
+    m_pTouchedDisplay->changeText(1, 38, m_pAccess->getParamValueLong(element, iChannel - 1), 17, true);
   }
 }
 

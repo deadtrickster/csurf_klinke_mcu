@@ -72,11 +72,8 @@ void DisplayTrackMeter::updateTrackMeter(DWORD now)
   }
 }
 
-void DisplayTrackMeter::changeText(int row, int pos, const char *text, int pad, bool updateDisplay) {
+void DisplayTrackMeter::changeText(int row, int pos, const char *text, int pad) {
   ASSERT(row < m_numRows);
-
-//  if (updateDisplay)
-//    m_pDisplayHandler->updateDisplay(this, row, pos, text, pad);
 
   writeToBuffer(row, pos, text, pad);
 
@@ -91,5 +88,5 @@ void DisplayTrackMeter::changeField(int row, int field, const char* pText) {
   memset(pShortText, ' ', 7);
   strncpy(pShortText, pText, 6);
 
-  changeText(row, (field-1) * 7, pShortText, 7, !m_pDisplayHandler->getMetersEnabled(field) || row == 0);
+  changeText(row, (field-1) * 7, pShortText, 7);
 }
