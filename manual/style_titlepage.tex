@@ -12,23 +12,6 @@ pdftex,vmarginratio=9:7]{geometry}
 \renewcommand{\topfraction}{.8}     % vorher: .7
 \renewcommand{\bottomfraction}{.5}  % vorher: .3
 
-\newcommand*\tikzheadRect{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[yshift=-2.2cm] at (current page.north west)
-      {\begin{tikzpicture}[remember picture, overlay]
-        \draw[fill=ECFLightBlue] (0,0) rectangle 
-          (\paperwidth,2.2cm);
-       \end{tikzpicture}
-      };  
-    \node[yshift=-29.7cm] at (current page.north west)
-      {\begin{tikzpicture}[remember picture, overlay]
-        \draw[fill=ECFLightBlue] (0,0) rectangle
-          (\paperwidth,0.2cm);
-       \end{tikzpicture}
-      };  
-   \end{tikzpicture}}  
-
-
 \newcommand*\tikzheadOS[1]{%
   \begin{tikzpicture}[remember picture,overlay]
     \node[yshift=-2.2cm] at (current page.north west)

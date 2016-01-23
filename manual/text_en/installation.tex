@@ -1,26 +1,28 @@
 \section{Installation}\label{installation} 
 
-To install the extension download \url{http://tinyurl.com/6664hym}
-and unpack the zip--archiv in the
-plugin directory of \reaper. Afterwards the folder with the original
-{\tt reaper\_csurf.dll} file should also contain the file {\tt
-  reaper\_csurf\_mcu\_klinke.dll}, this manual and a new folder named
-{\tt MCU}. This {\tt MCU} folder contains default configuration files
-and FX maps. Do not modify them. Your own configuration files and FX
-maps are stored in the folder {\tt My Documents\textbackslash MCU}
-that is created when you start the
+The current version of the extension can be downloaded from
+\url{https://bitbucket.org/Klinkenstecker/csurf\_klinke\_mcu/downloads}.
+
+To install the extension download unpack the zip--archiv in the plugin
+directory of \reaper. Afterwards the folder with the original {\tt
+  reaper\_csurf.dll} file should also contains four new {\tt
+  reaper\_csurf\_mcu\_klinke} dll-files, this manual and a new folder
+named {\tt MCU}. This {\tt MCU} folder contains default configuration
+files and FX maps. Do not modify them. Your own configuration files
+and FX maps are stored in the folder {\tt My Documents\textbackslash
+  MCU} that is created when you start the
 \mcu surface for the first time.\\
 
 \noindent
-To activate the plugin you need to follow these steps:
+To activate the extension you need to follow these steps:
 \begin{compactitem}
 \item open the \reaper preferences
 \item scroll down and select ``Control Surfaces'' 
 \item if the original ``Mackie Control Universal'' surface was added, remove it
-\item add the ``Mackie Control Universal (Klinke)'' surface
-% \item optional: increase the ``Control surface display
-% update frequency'' in the Control surfaces preferences of \reaper to something between
-% 30 and 50 Hz.  
+\item add the ``Mackie Control (Klinke)'' surface
+\item in the case that the controller is connected via USB: increase
+  the ``Control surface display update frequency'' in the Control
+  surfaces preferences of \reaper to 30 Hz.  
 \end{compactitem}
 
 %If you have extenders:
@@ -83,6 +85,27 @@ BCF2000 and maybe other controllers as well):
 \end{itemize}
 
 
+\subsection{2nd controller (Mackie Control B)}\label{secondcontroller}
+If you try to add a second controller using the ``Mackie Control
+(Klinke)'' entry in the Control Surfaces dialog, you will get an
+error message that tells you that a second instance of the extension
+can not be added.
+
+As a workaround I built a ``B'' extension which runs completly
+independent, e.g. the settings in the
+\hyperref[F:Screenshot_Track_Mode]{Track Settings Editor} are not
+shared. The only ``communication'' between both extensions are happen
+through \reaper, e.g. if you select a track with one controll surface,
+\reaper will tell the other one that a new track was selected. But
+it's important to keep in mind that an extension can also modify the
+tracks that are shown in the \reaper mixer (see \ref{panOptions} for
+details). If both extensions try this at the same time, this can cause
+a chaotic behaviour, so you must enable this options for only one of
+the extensions.
+
+To activate a second extender you need to follow the steps described
+aboved for the first extender, the only difference is that the
+``Mackie Control B (Klinke)'' surface must be selected.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "../mcu_klinke_manual"
