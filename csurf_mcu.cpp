@@ -901,6 +901,9 @@ void CSurf_MCU::Run()
 
     ProjectConfig::instance()->checkReaProjectChange();
 
+		if (Tracks::instance()->tracksStatesChanged())
+			m_pCCSManager->trackListChange();
+
     PlugMoveWatcher::instance()->checkMovement();
 
     signalFrame(now);
@@ -1131,9 +1134,9 @@ void CSurf_MCU::SetLED(int button_nr, int led_state) {
 
 void CSurf_MCU::SetTrackListChange() 
 { 
-  ProjectConfig::instance()->checkReaProjectChange();
-  Tracks::instance()->tracksStatesChanged();
-  m_pCCSManager->trackListChange();
+//  ProjectConfig::instance()->checkReaProjectChange();
+//  Tracks::instance()->tracksStatesChanged();
+//  m_pCCSManager->trackListChange();
 }
 
 void CSurf_MCU::SetSurfaceVolume(MediaTrack *trackid, double volume) 

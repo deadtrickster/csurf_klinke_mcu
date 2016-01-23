@@ -458,7 +458,8 @@ void Tracks::moveSelectedTrack2MCU() {
   }
 }
 
-void Tracks::tracksStatesChanged() {
+bool Tracks::tracksStatesChanged() {
+	bool somethingHasChanged = false;
   m_pAllTracksNow->clear();
 
   for ( TrackIterator ti; !ti.end(); ++ti) {
@@ -479,6 +480,7 @@ void Tracks::tracksStatesChanged() {
       m_trackStates[GUID2String(GetTrackGUID(pMT))] = new TrackState(pMT);
     }
     signalTrackAdded(pMT);
+		somethingHasChanged = true;
   }
 
   // old - new: tracks removed
@@ -493,6 +495,7 @@ void Tracks::tracksStatesChanged() {
       m_trackStates.erase(m_trackStates.find(guid));
     }
     signalTrackRemoved(pMT);
+		somethingHasChanged = true;
   }
 
   m_pAllTracksBefore->clear();
@@ -505,6 +508,8 @@ void Tracks::tracksStatesChanged() {
   if (!m_structure.trackExists(m_pCurrentBaseTrack)) {
     m_pCurrentBaseTrack = NULL;
   }
+
+	return somethingHasChanged;
 }
 
 MediaTrack* Tracks::getSelectedSingleTrack() { // returns null if more then one track is selected     
