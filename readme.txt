@@ -7,9 +7,10 @@ protocol).
 
 Beside the Reaper SDK the code also depends on the JUCE and BOOST
 libraries. So you will need to indicate three SDK locations via
-environment variables.
+environment variables. Sometimes the JUCE library is not backward
+compatible, therefore you need v1.50 or v1.52!
 
-Example: The juce SDK (v1.5 or above) is installed in C:\juce and the
+Example: The juce SDK (v1.50 or v1.52) is installed in C:\juce and the
 header file is found in C:\juce\juce.h
 
 Set the environment variable in 
@@ -39,7 +40,6 @@ Example: C:\boost
 Variable Name = BOOST
 Variable Value = C:\boost
 
-Most parts of the Boost Library are header-only based, but
-boost::signals needs to include it's corresponding lib. Please check
-the boost homepage for instructions how to generate the libs.
+All used parts of the Boost Library are header-only based, so there is
+no need to compile anything from the Boost.
 
