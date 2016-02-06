@@ -471,14 +471,14 @@ void PlugMode::switchDisplay() {
 void PlugMode::updateParamsDisplay() {
   for (int iChannel = 0; iChannel < 8; iChannel++) {
     if (m_pCCSManager->getVPotTouched(iChannel + 1) || m_buttonNameValuePressed)
-      m_pParamsDisplay->changeField(0, iChannel + 1, m_pAccess->getParamValueShort(PlugAccess::ElementDesc::VPOT, iChannel));
+      m_pParamsDisplay->changeField(0, iChannel + 1, m_pAccess->getParamValueShort(PlugAccess::ElementDesc::VPOT, iChannel).toCString());
     else
-      m_pParamsDisplay->changeField(0, iChannel + 1, m_pAccess->getParamNameShort(PlugAccess::ElementDesc::VPOT, iChannel));
+      m_pParamsDisplay->changeField(0, iChannel + 1, m_pAccess->getParamNameShort(PlugAccess::ElementDesc::VPOT, iChannel).toCString());
 
     if (m_pCCSManager->getFaderTouched(iChannel + 1) || m_buttonNameValuePressed)
-      m_pParamsDisplay->changeField(1, iChannel + 1, m_pAccess->getParamValueShort(PlugAccess::ElementDesc::FADER, iChannel));
+      m_pParamsDisplay->changeField(1, iChannel + 1, m_pAccess->getParamValueShort(PlugAccess::ElementDesc::FADER, iChannel).toCString());
     else
-      m_pParamsDisplay->changeField(1, iChannel + 1, m_pAccess->getParamNameShort(PlugAccess::ElementDesc::FADER, iChannel));
+      m_pParamsDisplay->changeField(1, iChannel + 1, m_pAccess->getParamNameShort(PlugAccess::ElementDesc::FADER, iChannel).toCString());
   }
 }
 
@@ -486,12 +486,12 @@ void PlugMode::updateTouchedDisplay() {
   if (m_pAccess->plugExist()) {
     PlugAccess::ElementDesc::eType element = (m_iSingleFaderTouched > 0) ? PlugAccess::ElementDesc::FADER : PlugAccess::ElementDesc::VPOT;
     int iChannel = (m_iSingleFaderTouched > 0) ? m_iSingleFaderTouched : m_iSingleVPotTouched;
-    m_pTouchedDisplay->changeText(0, 0, m_pAccess->getBankNameLong(m_pAccess->getSelectedBank()), 17, true);
-    m_pTouchedDisplay->changeText(0, 19, m_pAccess->getPageNameLongInSelectedBank(m_pAccess->getSelectedPageInSelectedBank()), 17, true);
-    m_pTouchedDisplay->changeText(0, 38, m_pAccess->getParamNameLong(element, iChannel - 1), 17, true);
+    m_pTouchedDisplay->changeText(0, 0, m_pAccess->getBankNameLong(m_pAccess->getSelectedBank()).toCString(), 17, true);
+    m_pTouchedDisplay->changeText(0, 19, m_pAccess->getPageNameLongInSelectedBank(m_pAccess->getSelectedPageInSelectedBank()).toCString(), 17, true);
+    m_pTouchedDisplay->changeText(0, 38, m_pAccess->getParamNameLong(element, iChannel - 1).toCString(), 17, true);
     m_pTouchedDisplay->changeText(1, 0, m_pCCSManager->getMCU()->GetTrackName(m_pAccess->getPlugTrack()), 17, true);
-    m_pTouchedDisplay->changeText(1, 19, m_pAccess->getPlugNameLong(), 17, true);
-    m_pTouchedDisplay->changeText(1, 38, m_pAccess->getParamValueLong(element, iChannel - 1), 17, true);
+    m_pTouchedDisplay->changeText(1, 19, m_pAccess->getPlugNameLong().toCString(), 17, true);
+    m_pTouchedDisplay->changeText(1, 38, m_pAccess->getParamValueLong(element, iChannel - 1).toCString(), 17, true);
   }
 }
 

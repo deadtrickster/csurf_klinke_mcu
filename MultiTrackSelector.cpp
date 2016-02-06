@@ -24,7 +24,7 @@ void MultiTrackSelector::activateSelector()
   m_pDisplay->clear();
   for (int i = 0; i < 8; i++) {
     if (m_quickJumps[i]) {
-      m_pDisplay->changeField(asRoot(m_quickJumps[i]) ? 0 : 1, i + 1, m_quickJumps[i]->showQuickNameInDisplay());
+      m_pDisplay->changeField(asRoot(m_quickJumps[i]) ? 0 : 1, i + 1, m_quickJumps[i]->showQuickNameInDisplay().toCString());
     }
   }
   m_pDisplayHandler->switchTo(m_pDisplay);  

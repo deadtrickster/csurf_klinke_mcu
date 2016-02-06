@@ -134,7 +134,7 @@ void PlugMapManager::rewriteMapFile() {
 void PlugMapManager::scanDir(const File& dirToScan, tFiles& addFoundMaps) {
   addFoundMaps.clear();
 
-  OwnedArray<File> results;
+  Array<File> results;
 
   FileSearchPath search;
 
@@ -143,7 +143,7 @@ void PlugMapManager::scanDir(const File& dirToScan, tFiles& addFoundMaps) {
   search.findChildFiles(results, File::findFiles, false, JUCE_T("*.xml"));
 
   for (int i = 0; i < results.size(); i++)
-    addFoundMaps.push_front(*results[i]);
+    addFoundMaps.push_front(results[i]);
 }
 
 bool PlugMapManager::loadMapForPlug( MediaTrack* pMediaTrack, int iSlot )

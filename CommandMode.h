@@ -102,7 +102,7 @@ public:
 
         void activateSelector() {
                 for (int i = 0; i < 8; i++) 
-                        m_pDisplay->changeField(1, i+1, m_pCommandMode->m_pPage[i]->m_strPageName);
+                        m_pDisplay->changeField(1, i+1, m_pCommandMode->m_pPage[i]->m_strPageName.toCString());
                 
                 m_pCommandMode->m_pCCSManager->getDisplayHandler()->switchTo(m_pDisplay);       
                 m_pCommandMode->m_pCCSManager->getDisplayHandler()->enableMeter(false);

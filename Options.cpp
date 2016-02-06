@@ -40,7 +40,7 @@ void Options::addAttribute(String optionName, String attribute, bool defaultAtt)
 void Options::activateSelector() {
   m_pDisplay->clear();
   for (unsigned int i = 0; i < 4 && i < m_optionList.size(); ++i) 
-    m_pDisplay->changeText(0, i * 14, m_optionList[i].first, 13, true);
+    m_pDisplay->changeText(0, i * 14, m_optionList[i].first.toCString(), 13, true);
 
   displaySelectedOptions();
   m_pDisplayHandler->switchTo(m_pDisplay);  
@@ -91,7 +91,7 @@ String Options::getSelectedOptionAsString(int option) {
   return m_optionList[option].second.first[m_optionList[option].second.second];
 }
 
-String Options::getSelectedOptionAsString(String& optionName) {
+String Options::getSelectedOptionAsString(const String& optionName) {
   for (unsigned int i = 0; i < 4 && i < m_optionList.size(); ++i) { 
     if (m_optionList[i].first == optionName) {
       return getSelectedOptionAsString(i);
@@ -110,7 +110,7 @@ int Options::getSelectedOption(wchar_t* optionName) {
   return -1;
 }
 
-bool Options::isOptionSetTo(wchar_t* optionName, wchar_t* attribute) {
+bool Options::isOptionSetTo(const wchar_t* optionName, const wchar_t* attribute) {
   return getSelectedOptionAsString(String(optionName)) == String(attribute);
 }
 
@@ -131,7 +131,7 @@ void Options::displaySelectedOptions() {
   checkAndModifyOptions();
 
   for (unsigned int i = 0; i < 4 && i < m_optionList.size(); ++i) { 
-    m_pDisplay->changeText(1, i * 14, getSelectedOptionAsString(i), 13, true);
+    m_pDisplay->changeText(1, i * 14, getSelectedOptionAsString(i).toCString(), 13, true);
   }
 }
 

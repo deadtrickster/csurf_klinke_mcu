@@ -161,7 +161,7 @@ void PlugModeVPOTComponent::changeParamId(int paramId, double value, String para
   m_params->changeParamId(paramId);
   PMVPot::tSteps* pSteps = m_pVPot->getStepsMap();
 
-  (*pSteps)[value] = boost::tuple<String, String>(PlugAccess::shortNameFromCString(paramName), PlugAccess::longNameFromCString(paramName));
+  (*pSteps)[value] = boost::tuple<String, String>(PlugAccess::shortNameFromCString(paramName.toCString()), PlugAccess::longNameFromCString(paramName.toCString()));
 
   int pos = findIndexFromKeyInMap(value, pSteps);
   m_tableComponent->setLastChangedRow(0);

@@ -253,7 +253,7 @@ void CommandMode::updateDisplay() {
     {
       TrackState* pTS = Tracks::instance()->getTrackStateForMediaTrack(tr);
       if (pTS) {
-        m_pDisplay->changeField(0, x, pTS->showInDisplay());
+        m_pDisplay->changeField(0, x, pTS->showInDisplay().toCString());
       }
     }
     else {
@@ -264,7 +264,7 @@ void CommandMode::updateDisplay() {
   int shift = m_pCCSManager->getMCU()->IsModifierPressed(VK_SHIFT) ? 1 : 0;
 
   for (int i = 0; i < 8; i++) 
-    m_pDisplay->changeField(1, i+1, m_pActivePage->getCommandName(shift,i));
+    m_pDisplay->changeField(1, i+1, m_pActivePage->getCommandName(shift,i).toCString());
 }
 
 Component** CommandMode::createEditorComponent() {

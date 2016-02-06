@@ -20,7 +20,7 @@ public:
         // called when the VPOT was moved, steps can be negativ, no wrap around
         virtual void move(unsigned int numOpt, int steps);
 
-        bool isOptionSetTo(wchar_t* optionName, wchar_t* attribute);
+        bool isOptionSetTo(const wchar_t* optionName, const wchar_t* attribute);
 
 
 protected:
@@ -32,7 +32,7 @@ protected:
         void addOption(String optionName); // must be done before activated
         void addAttribute(String optionName, String attribute, bool defaultAtt = false); // one attribute must be added before activation
 
-        String getSelectedOptionAsString(String& optionName);
+        String getSelectedOptionAsString(const String& optionName);
         String getSelectedOptionAsString(int option);
         int getSelectedOption(wchar_t* optionName);
         void setOptionTo(wchar_t* optionName, int attributeId);

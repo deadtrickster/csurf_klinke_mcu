@@ -23,9 +23,9 @@ m_pStepMap(pStepMap)
   m_table->setColour (ListBox::outlineColourId, Colours::grey);
   m_table->setOutlineThickness (2);
 
-  m_table->getHeader()->addColumn(JUCE_T("Value"), VPOT_COLUMN_VALUE, 100, 100, 100, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Short Name"), VPOT_COLUMN_SHORTNAME, 118, 118, 118, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Long Name"), VPOT_COLUMN_LONGNAME, 271, 271, 271, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Value"), VPOT_COLUMN_VALUE, 100, 100, 100, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Short Name"), VPOT_COLUMN_SHORTNAME, 118, 118, 118, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Long Name"), VPOT_COLUMN_LONGNAME, 271, 271, 271, TableHeaderComponent::notResizableOrSortable);
 
 
   // un-comment this line to have a go of stretch-to-fit mode
