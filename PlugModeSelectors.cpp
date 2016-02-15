@@ -21,17 +21,17 @@ void PlugModeSelector::writeTrackPlugTopLine() {
   if (m_pPlugMode->getPlugAccess()->plugExist()) {
     m_pDisplay->changeText(0, 0, "Track ", 6);
     m_pDisplay->changeText(0, 6, m_pPlugMode->getCCSManager()->getMCU()->GetTrackName(m_pPlugMode->getPlugAccess()->getPlugTrack()), 17);
-    m_pDisplay->changeText(0, 28, String::formatted(JUCE_T("FX%2d "), m_pPlugMode->getPlugAccess()->getPlugSlot() + 1), 10);
-    m_pDisplay->changeText(0, 33, m_pPlugMode->getPlugAccess()->getPlugNameLong(), 17); 
+    m_pDisplay->changeText(0, 28, String::formatted(JUCE_T("FX%2d "), m_pPlugMode->getPlugAccess()->getPlugSlot() + 1).toCString(), 10);
+    m_pDisplay->changeText(0, 33, m_pPlugMode->getPlugAccess()->getPlugNameLong().toCString(), 17);
   }
 }
 
 void PlugModeSelector::writePlugBankPageTopLine() {
   PlugAccess* pPA = m_pPlugMode->getPlugAccess();
   if (pPA->plugExist()) {
-    m_pDisplay->changeText(0, 0, pPA->getPlugNameLong(), 17, true);
-    m_pDisplay->changeText(0, 19, pPA->getBankNameLong(pPA->getSelectedBank()), 17, true);
-    m_pDisplay->changeText(0, 38, pPA->getPageNameLongInSelectedBank(pPA->getSelectedPageInSelectedBank()), 17, true);
+    m_pDisplay->changeText(0, 0, pPA->getPlugNameLong().toCString(), 17, true);
+    m_pDisplay->changeText(0, 19, pPA->getBankNameLong(pPA->getSelectedBank()).toCString(), 17, true);
+    m_pDisplay->changeText(0, 38, pPA->getPageNameLongInSelectedBank(pPA->getSelectedPageInSelectedBank()).toCString(), 17, true);
   }
 }
 
@@ -49,7 +49,7 @@ void PlugSelector::fillPlugNames() {
     m_pDisplay->changeField(1, 8, "");
 
   for (int i = 0; i < 6; i++)
-    m_pDisplay->changeField(1, i+2, m_pPlugMode->getPlugNameShort(i + m_startWith));
+    m_pDisplay->changeField(1, i+2, m_pPlugMode->getPlugNameShort(i + m_startWith).toCString());
 
   if (m_pPlugMode->getNumPlugsInSelectedTrack() == 0)
     m_pDisplay->changeTextFullLine(1, "No FX exist in selected track.", true);
@@ -117,7 +117,7 @@ void BankPagePlugSelector::updateDisplay() {
       writePlugBankPageTopLine();
       for (int i = 0; i < 8; i++) {
         if (pPA->isBankUsed(i))
-          m_pDisplay->changeField(1, i + 1, pPA->getBankNameShort(i), true);
+          m_pDisplay->changeField(1, i + 1, pPA->getBankNameShort(i).toCString(), true);
       }
       m_pDisplay->resendRow(1);
       break;
@@ -125,7 +125,7 @@ void BankPagePlugSelector::updateDisplay() {
       writePlugBankPageTopLine();
       for (int i = 0; i < 8; i++) {
         if (pPA->isPageUsedInSelectedBank(i))
-          m_pDisplay->changeField(1, i + 1, pPA->getPageNameShortInSelectedBank(i), true);
+          m_pDisplay->changeField(1, i + 1, pPA->getPageNameShortInSelectedBank(i).toCString(), true);
       }
       m_pDisplay->resendRow(1);
       break;    
@@ -134,7 +134,7 @@ void BankPagePlugSelector::updateDisplay() {
         writeTrackPlugTopLine();
         int offset = m_pPlugMode->isModifierPressed(VK_SHIFT) ? 8 : 0;
         for (int i = 0; i < 8; i++) {
-          m_pDisplay->changeField(1, i + 1, pPA->getPlugNameShort(m_pPlugMode->selectedTrack(), i + offset));
+          m_pDisplay->changeField(1, i + 1, pPA->getPlugNameShort(m_pPlugMode->selectedTrack(), i + offset).toCString());
         }
       } else {
         int offset = m_pPlugMode->isModifierPressed(VK_SHIFT) ? 8 : 0;
@@ -142,7 +142,7 @@ void BankPagePlugSelector::updateDisplay() {
           PlugMode::tFav fav = m_pPlugMode->getFavorite(i + offset);
           if (fav.get<0>() != GUID_NOT_ACTIVE) {
             m_pDisplay->changeField(0, i + 1, m_pPlugMode->getCCSManager()->getMCU()->GetTrackName(CSurf_MCU::TrackFromGUID(fav.get<0>())));
-            m_pDisplay->changeField(1, i + 1, pPA->getPlugNameShort(CSurf_MCU::TrackFromGUID(fav.get<0>()), fav.get<1>()));
+            m_pDisplay->changeField(1, i + 1, pPA->getPlugNameShort(CSurf_MCU::TrackFromGUID(fav.get<0>()), fav.get<1>()).toCString());
           } else {
             m_pDisplay->changeField(0, i + 1, "");
             m_pDisplay->changeField(1, i + 1, "");

@@ -470,7 +470,7 @@ void MultiTrackMode::updateDisplay() {
     {
       TrackState* pTS = Tracks::instance()->getTrackStateForMediaTrack(tr);
       if (pTS) {
-        m_pDisplay->changeField(0, x, pTS->showInDisplay());
+        m_pDisplay->changeField(0, x, pTS->showInDisplay().toCString());
       }
     }
     else {

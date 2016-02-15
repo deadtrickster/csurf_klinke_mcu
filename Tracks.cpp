@@ -372,7 +372,7 @@ String MediaTrackInfo::getTrackName(MediaTrack* pMT, bool showTrackNumberIfEmpty
 
 void MediaTrackInfo::setTrackName(MediaTrack* pMT, String strTrackname) {
   assert(pMT != NULL); if (pMT == NULL) return;
-  const char* pName = strTrackname;
+  const char* pName = strTrackname.toCString();
   GetSetMediaTrackInfo(pMT, "P_NAME", (void*) pName);
 }
 

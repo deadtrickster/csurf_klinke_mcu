@@ -53,17 +53,17 @@ TrackStatesTableComponent::TrackStatesTableComponent()
   m_table->setColour (ListBox::outlineColourId, Colours::grey);
   m_table->setOutlineThickness (2);
 
-  m_table->getHeader()->addColumn(String::empty, TS_COLUMN_ON_MCU, 15, 15, 15, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Nr."), TS_COLUMN_TRACKNR, 40, 40, 40, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Track Name"), TS_COLUMN_TRACKNAME_REAPER, 140, 140, 140, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Display"), TS_COLUMN_TRACKNAME_MCU, 60, 60, 60, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("TCP"), TS_COLUMN_TCP, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("MCP"), TS_COLUMN_MCP, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("MCU"), TS_COLUMN_MCU, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Anchor"), TS_COLUMN_ANCHOR, 80, 80, 80, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Jump Slot"), TS_COLUMN_QUICK_JUMP, 80, 80, 80, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("J. Name"), TS_COLUMN_QUICK_NAME, 60, 60, 60, TableHeaderComponent::notResizableOrSortable);
-  m_table->getHeader()->addColumn(JUCE_T("Root"), TS_COLUMN_QUICK_ROOT, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(String::empty, TS_COLUMN_ON_MCU, 15, 15, 15, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Nr."), TS_COLUMN_TRACKNR, 40, 40, 40, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Track Name"), TS_COLUMN_TRACKNAME_REAPER, 140, 140, 140, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Display"), TS_COLUMN_TRACKNAME_MCU, 60, 60, 60, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("TCP"), TS_COLUMN_TCP, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("MCP"), TS_COLUMN_MCP, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("MCU"), TS_COLUMN_MCU, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Anchor"), TS_COLUMN_ANCHOR, 80, 80, 80, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Jump Slot"), TS_COLUMN_QUICK_JUMP, 80, 80, 80, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("J. Name"), TS_COLUMN_QUICK_NAME, 60, 60, 60, TableHeaderComponent::notResizableOrSortable);
+  m_table->getHeader().addColumn(JUCE_T("Root"), TS_COLUMN_QUICK_ROOT, 30, 30, 30, TableHeaderComponent::notResizableOrSortable);
 
 
   // un-comment this line to have a go of stretch-to-fit mode

@@ -126,14 +126,14 @@ void ProjectConfig::saveExtensionConfig(ProjectStateContext *ctx, bool isUndo, s
     if (to != -1) {
       if (to - from > 4000) {
         to = from + 4000;
-        ctx->AddLine(xmlDocString.substring(from, to));
+        ctx->AddLine(xmlDocString.substring(from, to).toCString());
       } else {
-        ctx->AddLine(xmlDocString.substring(from, to-1));
+        ctx->AddLine(xmlDocString.substring(from, to-1).toCString());
         from = to + 1;
       }
     } 
     else {
-      ctx->AddLine(xmlDocString.substring(from));
+      ctx->AddLine(xmlDocString.substring(from).toCString());
       break;
     }
   } while (to != -1); // to < found
