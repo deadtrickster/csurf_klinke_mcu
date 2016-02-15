@@ -45,8 +45,8 @@ void ActionsDisplay::switchTo( int nr )
 
 void ActionsDisplay::updateDisplay() {
   for (int i = 0; i < 4; i++) {
-    changeText(0, i * 14, m_strLabel[m_shownModifier][i], 13);
-    changeText(1, i * 14, m_strLabel[m_shownModifier][i+4], 13);
+    changeText(0, i * 14, m_strLabel[m_shownModifier][i].toCString(), 13);
+    changeText(1, i * 14, m_strLabel[m_shownModifier][i+4].toCString(), 13);
   }
 }
 

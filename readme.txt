@@ -7,7 +7,8 @@ protocol).
 
 Beside the Reaper SDK the code also depends on the JUCE and BOOST
 libraries. So you will need to indicate three SDK locations via
-environment variables.
+environment variables. Sometimes the JUCE library is not backward
+compatible, therefore you need v1.50 or v1.52!
 
 Example: The juce SDK (v1.52) is installed in C:\juce and the
 header file is found in C:\juce\juce.h

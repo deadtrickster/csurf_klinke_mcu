@@ -162,7 +162,7 @@ static String GUID2String(GUID* guid) {
 }
 
 static void String2GUID(String& str, GUID* guid) {
-        stringToGuid(str, guid);
+        stringToGuid(str.toCString(), guid);
 }
 
 static String GetPlugName(MediaTrack* pMediaTrack, int slot) {
