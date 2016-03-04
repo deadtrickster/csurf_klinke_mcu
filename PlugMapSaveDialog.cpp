@@ -52,11 +52,11 @@ PlugMapSaveDialog::PlugMapSaveDialog (PlugMapManager* pPMM)
 {
     addAndMakeVisible (m_okButton = new TextButton (T("Ok")));
     m_okButton->setExplicitFocusOrder (2);
-    m_okButton->addButtonListener (this);
+    m_okButton->addListener (this);
 
     addAndMakeVisible (m_cancelButton = new TextButton (T("Cancel")));
     m_cancelButton->setExplicitFocusOrder (3);
-    m_cancelButton->addButtonListener (this);
+    m_cancelButton->addListener (this);
 
     addAndMakeVisible (m_labelExisting = new Label (T("Existing"),
                                                     T("Existing User-Maps:\n")));
@@ -103,7 +103,7 @@ PlugMapSaveDialog::PlugMapSaveDialog (PlugMapManager* pPMM)
     m_fileDialog->setTooltip (T("Rescan the \"My Documents/MCU/PlugMaps/\" directory."));
     m_fileDialog->setExplicitFocusOrder (2);
     m_fileDialog->setButtonText (T("Rescan"));
-    m_fileDialog->addButtonListener (this);
+    m_fileDialog->addListener (this);
 
     addAndMakeVisible (m_labelConflict = new Label (T("Conflict"),
                                                     String::empty));

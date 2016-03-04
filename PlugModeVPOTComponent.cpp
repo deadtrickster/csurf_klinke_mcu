@@ -59,17 +59,17 @@ PlugModeVPOTComponent::PlugModeVPOTComponent (PlugModeComponent* pMC, PMVPot* pV
     addAndMakeVisible (m_copyButton = new TextButton (T("Copy Button")));
     m_copyButton->setTooltip (T("Copy the table to the (local) clipboard"));
     m_copyButton->setButtonText (T("Copy"));
-    m_copyButton->addButtonListener (this);
+    m_copyButton->addListener (this);
 
     addAndMakeVisible (m_pasteButton = new TextButton (T("Paste Button")));
     m_pasteButton->setTooltip (T("Paste the table"));
     m_pasteButton->setButtonText (T("Paste"));
-    m_pasteButton->addButtonListener (this);
+    m_pasteButton->addListener (this);
 
     addAndMakeVisible (m_clearButton = new TextButton (T("Clear Button")));
     m_clearButton->setTooltip (T("Clear the table"));
     m_clearButton->setButtonText (T("Clear"));
-    m_clearButton->addButtonListener (this);
+    m_clearButton->addListener (this);
 
 
     //[UserPreSize]

@@ -403,7 +403,7 @@ ButtonColumnCustomComponent::ButtonColumnCustomComponent(TrackStatesTableCompone
 m_owner (owner) {
   addAndMakeVisible (m_toggleButton = new ToggleButton (String::empty));
 
-  m_toggleButton->addButtonListener (this);
+  m_toggleButton->addListener (this);
   m_toggleButton->setWantsKeyboardFocus (true);
 }
 

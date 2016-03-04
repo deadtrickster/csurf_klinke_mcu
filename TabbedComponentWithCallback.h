@@ -20,5 +20,5 @@ public:
         ~TabbedComponentWithCallback(void);
 private:
         TabbedCallback* m_pCallback;
-        void currentTabChanged (const int newCurrentTabIndex, const String& newTabName);
+        void currentTabChanged (int newCurrentTabIndex, const String& newTabName);
 };

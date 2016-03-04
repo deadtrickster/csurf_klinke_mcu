@@ -16,19 +16,19 @@ m_pActionDisplay (pAD)
 {
   addAndMakeVisible (m_shift = new ToggleButton (JUCE_T("Shift")));
   m_shift->setExplicitFocusOrder (1);
-  m_shift->addButtonListener (this);
+  m_shift->addListener (this);
   
   addAndMakeVisible (m_option = new ToggleButton (JUCE_T("Option")));
   m_option->setExplicitFocusOrder (2);
-  m_option->addButtonListener (this);
+  m_option->addListener (this);
   
   addAndMakeVisible (m_control = new ToggleButton (JUCE_T("Control")));
   m_control->setExplicitFocusOrder (3);
-  m_control->addButtonListener (this);
+  m_control->addListener (this);
   
   addAndMakeVisible (m_alt = new ToggleButton (JUCE_T("Alt")));
   m_alt->setExplicitFocusOrder (4);
-  m_alt->addButtonListener (this);
+  m_alt->addListener (this);
     
   for (int i = 0; i < 8; i++) {
     addAndMakeVisible (m_labelAction[i] = new Label (JUCE_T("Action"), String::empty));

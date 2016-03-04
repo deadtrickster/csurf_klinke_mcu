@@ -63,7 +63,7 @@ CommandModeVPOTComponent::CommandModeVPOTComponent (CommandMode::Page* pPage, in
     relativeButton->setTooltip (T("When enabled, the VPOT sends \"relative 2 mode\" messages. This allows you to assign \"(midi cc only)\" actions to the VPOT, but you must select \"Relative 2\" in the \"MIDI CC:\" combo box. If this button is not selected, you must select \"Absolute\"."));
     relativeButton->setExplicitFocusOrder (11);
     relativeButton->setButtonText (String::empty);
-    relativeButton->addButtonListener (this);
+    relativeButton->addListener (this);
 
     addAndMakeVisible (normalSpeedSlider = new Slider (T("NormalSpeed")));
     normalSpeedSlider->setTooltip (T("The amount of change when the VPOT is rotated but not pressed. See also the tooltip of the button above."));

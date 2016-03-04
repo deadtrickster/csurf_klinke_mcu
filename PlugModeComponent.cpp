@@ -69,41 +69,41 @@ PlugModeComponent::PlugModeComponent (PlugAccess* pPA)
     addAndMakeVisible (m_save = new TextButton (T("Save")));
     m_save->setTooltip (T("Save the current mapping to the current file"));
     m_save->setExplicitFocusOrder (6);
-    m_save->addButtonListener (this);
+    m_save->addListener (this);
 
     addAndMakeVisible (m_autosave = new ToggleButton (T("Autosave")));
     m_autosave->setTooltip (T("Save the mapping file automatical when the editor get closed or another mapping file is loaded."));
     m_autosave->setExplicitFocusOrder (8);
-    m_autosave->addButtonListener (this);
+    m_autosave->addListener (this);
 
     addAndMakeVisible (m_bankComponent = new PlugModeBankComponent (pPA->getMap(), this));
     m_bankComponent->setExplicitFocusOrder (9);
     addAndMakeVisible (m_learn = new ToggleButton (T("Learn")));
     m_learn->setTooltip (T("If enabled, you can assign a parameter to a fader or vpot by changing the parameter value (e.g. in the plugin user interface)"));
     m_learn->setExplicitFocusOrder (3);
-    m_learn->addButtonListener (this);
+    m_learn->addListener (this);
 
     addAndMakeVisible (m_saveAs = new TextButton (T("SaveAs")));
     m_saveAs->setTooltip (T("Save the current mapping to a new file"));
     m_saveAs->setExplicitFocusOrder (7);
     m_saveAs->setButtonText (T("As"));
-    m_saveAs->addButtonListener (this);
+    m_saveAs->addListener (this);
 
     addAndMakeVisible (m_useParamName = new ToggleButton (T("Use Param Name")));
     m_useParamName->setTooltip (T("If enabled and a parameter assignment gets changed then the user given parameter names will be overwritten with the names as given from the FX."));
     m_useParamName->setExplicitFocusOrder (4);
     m_useParamName->setButtonText (T("Autoname"));
-    m_useParamName->addButtonListener (this);
+    m_useParamName->addListener (this);
 
     addAndMakeVisible (m_clear = new TextButton (T("Clear")));
     m_clear->setTooltip (T("Clear the parameter map"));
     m_clear->setExplicitFocusOrder (2);
-    m_clear->addButtonListener (this);
+    m_clear->addListener (this);
 
     addAndMakeVisible (m_local = new ToggleButton (T("Local")));
     m_local->setTooltip (T("If enabled, the map is bind to the actual selected plugin. This allows to create different map for different instances of the same plugin. Eq. it possible to use the IX/Mixer script and name the channels to mix for each instance."));
     m_local->setExplicitFocusOrder (5);
-    m_local->addButtonListener (this);
+    m_local->addListener (this);
 
 
     //[UserPreSize]
