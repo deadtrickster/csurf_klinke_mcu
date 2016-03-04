@@ -130,9 +130,17 @@ void DisplayHandler::enableMeter( int channel, bool enable ) // channel is 1 bas
 
   mm.evt.midi_message[mm.evt.size++]=0x20;
   mm.evt.midi_message[mm.evt.size++]=0x00+channel-1;
-  mm.evt.midi_message[mm.evt.size++]=enable ? 0x03 : 0x01;
+  mm.evt.midi_message[mm.evt.size++]=enable ? 0x07 : 0x01;
   mm.evt.midi_message[mm.evt.size++]=0xF7;
   m_pMCU->SendMsg(&mm.evt,-1);
+
+  if (m_pActualDisplay->hasMeter()) {
+    if(enable)
+	  m_pActualDisplay->changeField(1, channel, "      ");
+    else	
+	  m_pActualDisplay->changeField(1, channel, "------");
+	m_pActualDisplay->resendRow(1);
+  }
 //  Sleep(50);
   //  D0 yx    : update VU meter, y=track, x=0..d=volume, e=clip on, f=clip off
 //  if (enable) {
