@@ -67,7 +67,8 @@ void DisplayTrackMeter::updateTrackMeter(DWORD now)
         }
       } 
       
-      m_pDisplayHandler->getMCU()->SendMidi(0xD0,((x-1)<<4)|v,0,-1);
+	  if (m_pDisplayHandler->getDisplay() && m_pDisplayHandler->getDisplay()->hasMeter()) 
+        m_pDisplayHandler->getMCU()->SendMidi(0xD0,((x-1)<<4)|v,0,-1);
     }
   }
 }

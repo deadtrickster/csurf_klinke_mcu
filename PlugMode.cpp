@@ -464,8 +464,6 @@ void PlugMode::switchDisplay() {
   } else {
     m_pCCSManager->switchToDisplay(this, m_pParamsDisplay);
   }
-
-//  m_pCCSManager->getDisplayHandler()->enableMeter(false);
 }
 
 void PlugMode::updateParamsDisplay() {

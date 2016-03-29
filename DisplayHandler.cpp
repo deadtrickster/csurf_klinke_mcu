@@ -100,16 +100,16 @@ void DisplayHandler::switchTo( Display* pDisplay )
   if (m_pActualDisplay == pDisplay)
     return;
 
-  enableMeter(pDisplay->hasMeter());
+  if (m_mcuType == MCU_EX && !pDisplay->onlyOnMainUnit() || m_mcuType != MCU_EX) {
+    m_pActualDisplay = pDisplay;
+    pDisplay->activate();
+  }
 
   if (!pDisplay->hasMeter()) {
     memset(m_pHardwareState->getText()[1], 1, DISPLAY_ROW_LENGTH);
   }
 
-  if (m_mcuType == MCU_EX && !pDisplay->onlyOnMainUnit() || m_mcuType != MCU_EX) {
-    m_pActualDisplay = pDisplay;
-    pDisplay->activate();
-  }
+  enableMeter(pDisplay->hasMeter());
 }
 
 void DisplayHandler::enableMeter( int channel, bool enable ) // channel is 1 based
@@ -134,12 +134,11 @@ void DisplayHandler::enableMeter( int channel, bool enable ) // channel is 1 bas
   mm.evt.midi_message[mm.evt.size++]=0xF7;
   m_pMCU->SendMsg(&mm.evt,-1);
 
-  if (m_pActualDisplay->hasMeter()) {
+  if (m_pActualDisplay && m_pActualDisplay->hasMeter()) {
     if(enable)
-	  m_pActualDisplay->changeField(1, channel, "      ");
+	  m_pActualDisplay->changeField(1, channel, "......");
     else	
 	  m_pActualDisplay->changeField(1, channel, "------");
-	m_pActualDisplay->resendRow(1);
   }
 //  Sleep(50);
   //  D0 yx    : update VU meter, y=track, x=0..d=volume, e=clip on, f=clip off
@@ -154,6 +153,7 @@ void DisplayHandler::enableMeter( bool enable )
   for (int i = 1; i < 9; i++) {
     enableMeter(i, enable);
   }
+  safe_call(m_pActualDisplay,resendRow(1));
 }
 
 void DisplayHandler::addHeader( MIDI_Message* pmm )
