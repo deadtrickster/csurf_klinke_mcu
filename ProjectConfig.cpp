@@ -88,10 +88,8 @@ bool ProjectConfig::processExtensionLine(const char *line, ProjectStateContext *
       buildString += String(linebuf);
     }
 
-    // '<' and '>' can't be used in the project files, so i replace them with @#$ and $#@ before writing into the file
+    // '<' and '>' can't be used in the project files, so i replace them with |#{ and }#| before writing into the file
     // and convert this back here
-//    buildString.replace(JUCE_T('@#$'), JUCE_T('<'));
-//    buildString.replace(JUCE_T('$#@'), JUCE_T('>'));
     XmlDocument* pTmpDoc = new XmlDocument(buildString.replace(JUCE_T("|#{"), JUCE_T("<")).replace(JUCE_T("}#|"), JUCE_T(">")));
     XmlElement* pElement = pTmpDoc->getDocumentElement();
     if (pElement) {
@@ -109,11 +107,9 @@ void ProjectConfig::saveExtensionConfig(ProjectStateContext *ctx, bool isUndo, s
 {
   bool commentign=false;
 
-  String xmlDocString = createXmlDocString().replace(JUCE_T("<"), JUCE_T("|#{")).replace(JUCE_T(">"), JUCE_T("}#|"));
-  // '<' and '>' can't be used in the project files, so i replace them with @#$ and $#@ before writing into the file
+  // '<' and '>' can't be used in the project files, so i replace them with |#{ and }#| before writing into the file
   // and convert this back after reading from it
-//  xmlDocString.replace(JUCE_T('<'), JUCE_T('@#$'));
-//  xmlDocString.replace(JUCE_T('>'), JUCE_T('$#@'));
+  String xmlDocString = createXmlDocString().replace(JUCE_T("<"), JUCE_T("|#{")).replace(JUCE_T(">"), JUCE_T("}#|"));
 
   ctx->AddLine(CONFIG_ID);
 // the fucking buffer overwrite in ctx->AddLine took me two days of debugging
