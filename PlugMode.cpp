@@ -583,6 +583,10 @@ Component** PlugMode::createEditorComponent() {
   return reinterpret_cast<Component**>(&m_pPlugEditor);
 }
 
+void PlugMode::deleteEditorComponent() {
+  removeEditor();
+}
+
 void PlugMode::removeEditor() {
   m_pCCSManager->closeEditorIfOpen(m_pPlugEditor);
 

@@ -57,9 +57,6 @@
     <Filter Include="Source Files\Display_src">
       <UniqueIdentifier>{cbd89adc-da8e-416b-b4d7-6c54ab14a749}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JUCE">
-      <UniqueIdentifier>{f0034465-cd18-4720-b0e9-fae23d740c7d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions.h">
@@ -456,11 +453,5 @@
     <ResourceCompile Include="res.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="juce\JUCE_CodeFragments.txt">
-      <Filter>JUCE</Filter>
-    </None>
-    <None Include="MCU_Klinke_Readme.txt" />
   </ItemGroup>
 </Project>

@@ -85,6 +85,7 @@ public:
 
 
         Component** createEditorComponent();
+        void deleteEditorComponent();
         void removeEditor();
 
         void projectChanged(XmlElement* pXmlElement, ProjectConfig::EAction action);

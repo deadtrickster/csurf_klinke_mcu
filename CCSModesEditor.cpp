@@ -4,6 +4,7 @@
 */
 
 #include "CCSModesEditor.h"
+#include "CommandMode.h"
 
 CCSModesEditor::CCSModesEditor(CCSManager* pManager) :
 m_pManager(pManager),
@@ -19,16 +20,15 @@ CCSModesEditor::~CCSModesEditor(void)
   safe_delete(m_pTooltipWindow);
 }
 
+void CCSModesEditor::setMainComponent(CCSMode* pCommandMode, bool visible) {
+  setMainComponent(pCommandMode->createEditorComponent(), visible);
+  m_pComponentsCommandMode = pCommandMode;
+}
+
+
 void CCSModesEditor::setMainComponent(Component** ppComponent, bool visible) {
-//  if (m_pWindow->getLastUsedComponent() != ppComponent) {
-//    m_pWindow->removeComponent();
-//    if (!visible)
-//      m_pWindow->setVisible(visible);
-// 
-//    m_pWindow->setMainComponent(ppComponent);
-//    m_pWindow->setUsingNativeTitleBar(true);
-//  }
   deleteWindow();
+  m_pComponentsCommandMode = NULL;
   m_pWindow = new CCSModesEditorWindow("MCU Editor", Colours::white, false, true, m_pManager);
   m_pWindow->setUsingNativeTitleBar(true);
 
@@ -54,6 +54,7 @@ void CCSModesEditor::closeWindowAndRemoveComponent( Component* pComponent )
 void CCSModesEditor::deleteWindow()
 {
   if (m_pWindow) {
+    safe_call(m_pComponentsCommandMode, deleteEditorComponent());
     m_pWindow->removeFromDesktop();
     m_pWindow->removeComponent();
     safe_delete(m_pWindow);

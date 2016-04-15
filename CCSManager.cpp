@@ -98,13 +98,13 @@ bool CCSManager::buttonVPOTassign(int button, bool pressed) {
     if (pressed) { 
       switch (button) {
         case B_VPOT_EQ:
-          m_pEditor->setMainComponent(m_pCommandMode->createEditorComponent(), true);
+          m_pEditor->setMainComponent(m_pCommandMode, true);
           break;
         case B_VPOT_PLUG:
-          m_pEditor->setMainComponent(m_pPlugMode->createEditorComponent(), true);
+          m_pEditor->setMainComponent(m_pPlugMode, true);
           break;
         case B_VPOT_PAN:
-          m_pEditor->setMainComponent(m_pPanMode->createEditorComponent(), true);
+          m_pEditor->setMainComponent(m_pPanMode, true);
           break;
       }
     }

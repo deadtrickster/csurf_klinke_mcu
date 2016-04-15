@@ -11,6 +11,7 @@
 class CCSManager;
 class CCSModesEditorWindow;
 class CCSMode;
+class CommandMode;
 
 class CCSModesEditor 
 {
@@ -20,12 +21,14 @@ public:
         virtual ~CCSModesEditor(void);
 
         void setMainComponent(Component** ppComponent, bool visible);
+        void setMainComponent(CCSMode* pCommandMode, bool visible);
         void closeWindowAndRemoveComponent(Component* pComponent);
         void deleteWindow();
 
 private:
         CCSManager* m_pManager;
         CCSModesEditorWindow* m_pWindow;
+        CCSMode* m_pComponentsCommandMode;
         TooltipWindow* m_pTooltipWindow;
         Component* m_pActiveComponent;
 };
@@ -55,6 +58,7 @@ public:
         }
 
         void setMainComponent(Component** ppComponent) {
+                                removeComponent();
                 m_ppLastUsedComponent = ppComponent;
         }
 

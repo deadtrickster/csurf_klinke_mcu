@@ -70,6 +70,7 @@ public:
         void updateDisplay();
 
         Component** createEditorComponent();
+        void deleteEditorComponent();
 
         Selector* getSelector() {return (Selector*) m_pSelector;}
 

@@ -273,6 +273,10 @@ Component** CommandMode::createEditorComponent() {
   return reinterpret_cast<Component**>(&m_pMainComponent);
 }
 
+void CommandMode::deleteEditorComponent() {
+  safe_delete(m_pMainComponent)
+}
+
 #ifdef EXT_B
 #define AM_FILE JUCE_T("\\ActionModeB.xml")
 #else

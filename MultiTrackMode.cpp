@@ -496,3 +496,7 @@ Component** MultiTrackMode::createEditorComponent() {
 
   return reinterpret_cast<Component**>(&m_pTrackStatesEditor);
 }
+
+void MultiTrackMode::deleteEditorComponent() {
+  safe_delete(m_pTrackStatesEditor)
+}

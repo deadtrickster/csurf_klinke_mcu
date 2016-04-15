@@ -68,6 +68,7 @@ public:
         virtual Options* get2ndOptions(){return Tracks::instance()->get2ndOptions();}
 
         virtual Component** createEditorComponent();
+        virtual void deleteEditorComponent();
 
 protected:
         void toggleShowInMixer( MediaTrack * tr );
