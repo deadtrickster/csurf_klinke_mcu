@@ -1,23 +1,23 @@
 /**
-* Copyright (C) 2009-2012 Steffen Fuerst 
-* Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
-*/
+ * Copyright (C) 2009-2012 Steffen Fuerst 
+ * Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
+ */
 
 #pragma once
 #include "ccsmode.h"
 
 class PerformanceMode :
-        public CCSMode
+public CCSMode
 {
-public:
-        PerformanceMode(CCSManager* pManager);
-public:
-        virtual ~PerformanceMode(void);
+ public:
+  PerformanceMode(CCSManager* pManager);
+ public:
+  virtual ~PerformanceMode(void);
 
-        void updateDisplay();
+  void updateDisplay();
 
-private:
-        Display* m_pDisplay;
+ private:
+  Display* m_pDisplay;
 };
 
 // class MyApp : public wxApp

@@ -1,7 +1,7 @@
 /**
-* Copyright (C) 2009-2012 Steffen Fuerst 
-* Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
-*/
+ * Copyright (C) 2009-2012 Steffen Fuerst 
+ * Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
+ */
 
 #pragma once
 #include "options.h"
@@ -33,19 +33,19 @@
 #define PMOA_ONLY_CHAIN JUCE_T("only chain")
 
 class PlugModeOptions :
-        public Options
+  public Options
 {
-public:
-        PlugModeOptions(DisplayHandler* pDH);
-public:
-        virtual ~PlugModeOptions(void);
+ public:
+  PlugModeOptions(DisplayHandler* pDH);
+ public:
+  virtual ~PlugModeOptions(void);
 
-protected:
-        String getConfigFileName();
+ protected:
+  String getConfigFileName();
 
-        void checkAndModifyOptions();
+  void checkAndModifyOptions();
 
-private:
-        bool m_bMCUFollowModified;
-        int m_iLastMCUFollowOption;
+ private:
+  bool m_bMCUFollowModified;
+  int m_iLastMCUFollowOption;
 };

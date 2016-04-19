@@ -1,7 +1,7 @@
 /**
-* Copyright (C) 2009-2012 Steffen Fuerst 
-* Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
-*/
+ * Copyright (C) 2009-2012 Steffen Fuerst 
+ * Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
+ */
 
 #pragma once
 #include "options.h"
@@ -25,20 +25,20 @@
 #define MTO2A_AUTO_TOUCH_OFF JUCE_T("no")
 #define MTO2A_AUTO_TOUCH_ON JUCE_T("yes")
 
-class MultiTrackOptions2 :
-        public Options
-{
-public:
-        MultiTrackOptions2(DisplayHandler* pDH);
-public:
-        virtual ~MultiTrackOptions2(void);
+  class MultiTrackOptions2 :
+  public Options
+  {
+  public:
+    MultiTrackOptions2(DisplayHandler* pDH);
+  public:
+    virtual ~MultiTrackOptions2(void);
 
-protected:
-        String getConfigFileName();
+  protected:
+    String getConfigFileName();
         
-        void activateSelector();
-        void checkAndModifyOptions();
+    void activateSelector();
+    void checkAndModifyOptions();
 
-        bool m_tcpNotAdjust;
-        bool m_mcpNotAdjust;
-};
+    bool m_tcpNotAdjust;
+    bool m_mcpNotAdjust;
+  };

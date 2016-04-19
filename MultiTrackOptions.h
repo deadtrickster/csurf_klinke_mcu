@@ -1,7 +1,7 @@
 /**
-* Copyright (C) 2009-2012 Steffen Fuerst 
-* Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
-*/
+ * Copyright (C) 2009-2012 Steffen Fuerst 
+ * Distributed under the GNU GPL v2. For full terms see the file gplv2.txt.
+ */
 
 #pragma once
 #include "options.h"
@@ -24,16 +24,16 @@
 #define MTOA_ANCHORS_YES JUCE_T("yes")
 
 class MultiTrackOptions :
-        public Options
+public Options
 {
-public:
-        MultiTrackOptions(DisplayHandler* pDH);
-public:
-        virtual ~MultiTrackOptions(void);
+ public:
+  MultiTrackOptions(DisplayHandler* pDH);
+ public:
+  virtual ~MultiTrackOptions(void);
 
-protected:
-        String getConfigFileName();
-        void checkAndModifyOptions();// when the reflect_folder option change, the track graph must be rebuild
+ protected:
+  String getConfigFileName();
+  void checkAndModifyOptions();// when the reflect_folder option change, the track graph must be rebuild
 
-        int m_iReflect; 
+  int m_iReflect; 
 };
