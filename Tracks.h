@@ -181,7 +181,7 @@ class Tracks
   virtual ~Tracks(void);
 
   void selectionChanged();
-  bool tracksStatesChanged();
+  bool tracksStatesChanged(bool checkProjectChange = true);
   MediaTrack* getSelectedSingleTrack();
 
   int getChannelForMediaTrack(MediaTrack* pMT); // returns -1 if MediaTrack isn't mapped to a channel

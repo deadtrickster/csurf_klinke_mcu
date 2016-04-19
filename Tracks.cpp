@@ -299,7 +299,6 @@ void TrackState::setAnchorChannel( int channel )
 {
   if (m_anchorChannel != channel) {
     m_anchorChannel = channel;  
-    TrackList_UpdateAllExternalSurfaces();
   }
 }
 
@@ -458,8 +457,11 @@ void Tracks::moveSelectedTrack2MCU() {
   }
 }
 
-bool Tracks::tracksStatesChanged() {
-	bool somethingHasChanged = false;
+bool Tracks::tracksStatesChanged(bool checkProjectChange) {
+  if (checkProjectChange)
+    ProjectConfig::instance()->checkReaProjectChange();
+
+  bool somethingHasChanged = false;
   m_pAllTracksNow->clear();
 
   for ( TrackIterator ti; !ti.end(); ++ti) {
@@ -530,6 +532,7 @@ void Tracks::createChannelTrackVector()
   for (int i = 1; i < 9; i++) {
     m_channelTracks[i] = findMediaTrackForChannel(i);
   }
+//  TrackList_UpdateAllExternalSurfaces();
 }
 
 MediaTrack* Tracks::getMediaTrackForChannel(int channel)
@@ -936,7 +939,7 @@ void Tracks::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction act
       // this is done in trackStatesChanged()
       break;
     case ProjectConfig::READ:
-      tracksStatesChanged();
+      tracksStatesChanged(false);
       pStatesNode = pXmlElement->getChildByName(TRACKSTATE_NODE_ROOT);
       if (pStatesNode) {
         forEachXmlChildElement (*pStatesNode, pChild) {
