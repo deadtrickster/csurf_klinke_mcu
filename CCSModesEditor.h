@@ -7,6 +7,7 @@
 
 #include "csurf_mcu.h"
 #include <src/juce_WithoutMacros.h> // includes everything in juce.h, but
+#include "ProjectConfig.h"
 
 class CCSManager;
 class CCSModesEditorWindow;
@@ -25,12 +26,15 @@ class CCSModesEditor
   void closeWindowAndRemoveComponent(Component* pComponent);
   void deleteWindow();
 
+  void projectChanged(XmlElement* pXmlElement, ProjectConfig::EAction action);
+
  private:
   CCSManager* m_pManager;
   CCSModesEditorWindow* m_pWindow;
   CCSMode* m_pComponentsCommandMode;
   TooltipWindow* m_pTooltipWindow;
   Component* m_pActiveComponent;
+  int m_projectChangedConnectionId;
 };
 
 

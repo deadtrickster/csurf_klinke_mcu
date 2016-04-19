@@ -13,11 +13,22 @@ m_pActiveComponent(NULL)
 {
 //  m_pWindow = new CCSModesEditorWindow("MCU Editor", Colours::white, false, true, pManager);
   m_pTooltipWindow = new TooltipWindow();
+
+  m_projectChangedConnectionId = ProjectConfig::instance()->connect2ProjectChangeSignal(boost::bind(&CCSModesEditor::projectChanged, this, _1, _2));
 }
 
 CCSModesEditor::~CCSModesEditor(void)
 {
+  ProjectConfig::instance()->disconnectProjectChangeSignal(m_projectChangedConnectionId);
+	
   safe_delete(m_pTooltipWindow);
+}
+
+void CCSModesEditor::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction action )
+{
+  if (action == ProjectConfig::FREE) {
+    deleteWindow();
+  }
 }
 
 void CCSModesEditor::setMainComponent(CCSMode* pCommandMode, bool visible) {
