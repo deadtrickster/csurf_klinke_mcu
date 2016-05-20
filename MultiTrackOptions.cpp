@@ -46,6 +46,8 @@ void MultiTrackOptions::checkAndModifyOptions()
     m_iReflect = getSelectedOption(MTO_REFLECT_FOLDER);
     Tracks::instance()->setGlobalOffset(0);
     Tracks::instance()->tracksStatesChanged();
+	if (!m_iReflect)
+	  while(Tracks::instance()->moveBaseTrackToParent()){}
   } 
 
   Tracks::instance()->buildGraph();
