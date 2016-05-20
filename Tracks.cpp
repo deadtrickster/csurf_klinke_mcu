@@ -435,6 +435,10 @@ void Tracks::selectionChanged() {
 }
 
 void Tracks::moveSelectedTrack2MCU() {
+  // without this check we will never leave the while loop below
+  if (getNumberOfAnchors() == 8)
+	return;
+
   MediaTrack* trackid = getSelectedSingleTrack();
   if (trackid && Tracks::instance()->get2ndOptions()->isOptionSetTo(MTO2_FOLLOW_REAPER, MTO2A_FOLLOW_REAPER_ON)) {  
     tracksStatesChanged();
