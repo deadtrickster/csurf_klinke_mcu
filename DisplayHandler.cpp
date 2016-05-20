@@ -136,7 +136,7 @@ void DisplayHandler::enableMeter( int channel, bool enable ) // channel is 1 bas
 
   if (m_pActualDisplay && m_pActualDisplay->hasMeter()) {
     if(enable)
-	  m_pActualDisplay->changeField(1, channel, "......");
+	  m_pActualDisplay->changeField(1, channel, "||||||");
     else	
 	  m_pActualDisplay->changeField(1, channel, "------");
   }
