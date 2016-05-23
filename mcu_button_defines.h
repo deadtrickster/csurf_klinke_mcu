@@ -153,6 +153,9 @@ PC=>MCU:
 #define B_ZOOM                                                  0x64 
 #define B_SCRUB                                                 0x65 
 
+#define L_RUDESOLO                                              0x73
+
+
 #define LED_ON                                                  0x7f
 #define LED_OFF                                                 0x00
 #define LED_BLINK                                               0x01

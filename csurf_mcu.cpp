@@ -1342,13 +1342,16 @@ void CSurf_MCU::UpdateGlobalSoloLED() {
   GetTrackInfo(-1, &flags);
   if (flags & 8) {
     SetLED(B_SOLO, LED_BLINK);
+    SetLED(L_RUDESOLO, LED_BLINK);
     return;  
   }
   if (SomethingSoloed()) {
     SetLED(B_SOLO, LED_ON);
+    SetLED(L_RUDESOLO, LED_ON);
     return;
   }
   SetLED(B_SOLO, LED_OFF);
+  SetLED(L_RUDESOLO, LED_OFF);
 }
 
 void CSurf_MCU::UpdateMetronomLED() {
