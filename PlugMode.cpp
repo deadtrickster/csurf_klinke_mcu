@@ -805,10 +805,12 @@ void PlugMode::projectChanged( XmlElement* pXmlElement, ProjectConfig::EAction a
 
 void PlugMode::writeLastCalledPresetsToProjectConfig(XmlElement* pNode) {
   BOOST_FOREACH(tLCPs::value_type& tLCP, m_lastCalledPreset) { 
-    XmlElement* pPresetNode = new XmlElement(PLUGMODE_NODE_LAST_CALLED_PRESET);
-    pPresetNode->setAttribute(PLUGMODE_ATT_LAST_CALLED_PRESET_FXGUID, tLCP.first);
-    pPresetNode->setAttribute(PLUGMODE_ATT_LAST_CALLED_PRESET_PRESET, tLCP.second);
-    pNode->addChildElement(pPresetNode);
+    if (tLCP.second >= 0) { // -1 is used for never changed preset 
+      XmlElement* pPresetNode = new XmlElement(PLUGMODE_NODE_LAST_CALLED_PRESET);
+      pPresetNode->setAttribute(PLUGMODE_ATT_LAST_CALLED_PRESET_FXGUID, tLCP.first);
+      pPresetNode->setAttribute(PLUGMODE_ATT_LAST_CALLED_PRESET_PRESET, tLCP.second);
+      pNode->addChildElement(pPresetNode);
+    }
   }
 }
 
