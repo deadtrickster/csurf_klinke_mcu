@@ -600,7 +600,10 @@ int Tracks::getNumMediaTracksOnMCU()
   if (pNode == NULL)
     return 0;
 
-  return pNode->numChilds(getFilter());
+  int numChildren = pNode->numChilds(getFilter());
+  if (Tracks::instance()->getOptions()->isOptionSetTo(MTO_REFLECT_FOLDER, MTOA_REFLECT_PLUS)) 
+    return numChildren + 1;
+  return numChildren;
 }
 
 bool Tracks::moveBaseTrack(MediaTrack* pMT)
